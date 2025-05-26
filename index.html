@@ -128,8 +128,7 @@
   <figure>
     <img src="https://img1.daumcdn.net/thumb/R1280x0.fjpg/?fname=https://t1.daumcdn.net/brunch/service/user/cnoC/image/hHg97SJeyrfrZAfXYIqwSJAsvC8" alt="">
     <img src="https://i.namu.wiki/i/YWLbg882cQ7U8x5HFx__WAaXYGy3yLETS9OmDJw3QTwmoZnmPxVk5gFu_xRpg8R3hLo9PUnGpgVkW3XKsVHjOg.gif" alt="">
-    <img
-     src="https://i.namu.wiki/i/-nHeh9dkfWQPL40idYcllYzPtdRPEfacqpZYdlWaP0Mn8lICffHpK4vXLsN-OdfxnhoZOd8mxwEZskFQjIQ_nw.webp" alt="">
+    <img src="https://i.namu.wiki/i/-nHeh9dkfWQPL40idYcllYzPtdRPEfacqpZYdlWaP0Mn8lICffHpK4vXLsN-OdfxnhoZOd8mxwEZskFQjIQ_nw.webp" alt="">
   </figure>
   <h1>
     맛집 리스트
@@ -141,7 +140,7 @@
     <select id="filterSelect" aria-label="장소 상태 필터 선택">
       <option value="all">전체 보기</option>
       <option value="done">같이 다녀왔어!</option>
-      <option value="notdone" selected>같이 가자!</option>
+      <option value="not_yet" selected>같이 가자!</option>
     </select>
   </div>
 
@@ -204,50 +203,51 @@
       </li>
     </ul>
   </section>
+  
   <script>
-  const baseDate = new Date('2025-05-25');
-  const today = new Date();
-  const diffTime = today - baseDate;
-  const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-  const resultEl = document.getElementById('result');
-  
-  // 기본 출력
-  let html = `<p>2025-05-25일 부터 우리 만난지 <strong style="color: #ff6b6b;">D+${diffDays +1}</strong>일째</p>`;
-  
-  // 기념일 목록
-  const anniversaries = [100, 200, 365, 400, 500];
-  
-  html += `<h3>🎉 기념일 목록:</h3><ul>`;
-  anniversaries.forEach(day => {
-    const anniversaryDate = new Date(baseDate);
-    anniversaryDate.setDate(baseDate.getDate() + (day - 1));
-    const formatted = anniversaryDate.toLocaleDateString();
+    const baseDate = new Date('2025-05-25');
+    const today = new Date();
+    const diffTime = today - baseDate;
+    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+    const resultEl = document.getElementById('result');
     
-    if (diffDays === day) {
-      html += `<li class="highlight">D+${day}: ${formatted} (오늘!)</li>`;
-    } else {
-      html += `<li>D+${day}: ${formatted}</li>`;
-    }
-  });
-  html += '</ul>';
-  resultEl.innerHTML = html;
-
-  const filterSelect = document.getElementById('filterSelect');
-  const sections = document.querySelectorAll('.brunch_section');
-
-  filterSelect.addEventListener('change', () => {
-    const value = filterSelect.value;
-
-    sections.forEach(section => {
-      if (value === 'all') {
-        section.style.display = 'block';
-      } else if (value === 'done') {
-        section.style.display = section.classList.contains('done') ? 'block' : 'none';
-      } else if (value === 'notdone') {
-        section.style.display = !section.classList.contains('done') ? 'block' : 'none';
+    // 기본 출력
+    let html = `<p>2025-05-25일 부터 우리 만난지 <strong style="color: #ff6b6b;">D+${diffDays +1}</strong>일째</p>`;
+    
+    // 기념일 목록
+    const anniversaries = [100, 200, 365, 400, 500];
+    
+    html += `<h3>🎉 기념일 목록:</h3><ul>`;
+    anniversaries.forEach(day => {
+      const anniversaryDate = new Date(baseDate);
+      anniversaryDate.setDate(baseDate.getDate() + (day - 1));
+      const formatted = anniversaryDate.toLocaleDateString();
+      
+      if (diffDays === day) {
+        html += `<li class="highlight">D+${day}: ${formatted} (오늘!)</li>`;
+      } else {
+        html += `<li>D+${day}: ${formatted}</li>`;
       }
     });
-  });
-</script>
+    html += '</ul>';
+    resultEl.innerHTML = html;
+
+    const filterSelect = document.getElementById('filterSelect');
+    const sections = document.querySelectorAll('.brunch_section');
+
+    filterSelect.addEventListener('change', () => {
+      const value = filterSelect.value;
+
+      sections.forEach(section => {
+        if (value === 'all') {
+          section.style.display = 'block';
+        } else if (value === 'done') {
+          section.style.display = section.classList.contains('done') ? 'block' : 'none';
+        } else if (value === 'not_yet') {
+          section.style.display = !section.classList.contains('done') ? 'block' : 'none';
+        }
+      });
+    });
+  </script>
 </body>
 </html>
