@@ -22,9 +22,49 @@
       color: #2c3e50;
     }
 
+    select {
+      appearance: none; /* 기본 화살표 제거 */
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background-color: #fff;
+      border: 2px solid #ff6b6b;
+      border-radius: 8px;
+      padding: 10px 40px 10px 16px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #4a4a4a;
+      cursor: pointer;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D'12'%20height%3D'8'%20viewBox%3D'0%200%2012%208'%20fill%3D'none'%20xmlns%3D'http%3A//www.w3.org/2000/svg'%3E%3Cpath%20d%3D'M1%201L6%207L11%201'%20stroke%3D'%23ff6b6b'%20stroke-width%3D'2'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      background-size: 12px 8px;
+    }
+
+    select:focus {
+      outline: none;
+      border-color: #ff6b6b;
+      box-shadow: 0 0 8px #ff6b6b;
+    }
+
+    option {
+      padding: 10px 16px;
+      font-weight: 600;
+      color: #4a4a4a;
+      background-color: #fff;
+    }
+
+    option:hover {
+      background-color: #f0ebff;
+      color: #ff6b6b;
+    }
+    .filter_box {
+      float: right;
+    }
     .brunch_section {
       margin-bottom: 3rem;
     }
+    .brunch_section.done {display: none;}
 
     .brunch_section h2 {
       font-size: 1.5rem;
@@ -94,12 +134,22 @@
   <h1>
     맛집 리스트
   </h1>
+  <h2>기념일 달력</h2>
+  <div id="result"></div>
   
-  <section class="brunch_section">
+  <div class="filter_box">
+    <select id="filterSelect" aria-label="장소 상태 필터 선택">
+      <option value="all">전체 보기</option>
+      <option value="done">같이 다녀왔어!</option>
+      <option value="notdone" selected>같이 가자!</option>
+    </select>
+  </div>
+
+  <section class="brunch_section done">
     <h2>보라매공원</h2>
     <ul class="brunch_items">
       <li class="brunch_card">
-        <a href="https://naver.me/Fw7im0ES" target="_blank">로드파스타피자(일요일 갈 곳)
+        <a href="https://naver.me/Fw7im0ES" target="_blank">로드파스타피자(2025.05.25)
           <p>보라매역 2번 출구에서 289m</p>
         </a>
       </li>
@@ -154,5 +204,50 @@
       </li>
     </ul>
   </section>
+  <script>
+  const baseDate = new Date('2025-05-25');
+  const today = new Date();
+  const diffTime = today - baseDate;
+  const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+  const resultEl = document.getElementById('result');
+  
+  // 기본 출력
+  let html = `<p>2025-05-25일 부터 우리 만난지 <strong style="color: #ff6b6b;">D+${diffDays +1}</strong>일째</p>`;
+  
+  // 기념일 목록
+  const anniversaries = [100, 200, 365, 400, 500];
+  
+  html += `<h3>🎉 기념일 목록:</h3><ul>`;
+  anniversaries.forEach(day => {
+    const anniversaryDate = new Date(baseDate);
+    anniversaryDate.setDate(baseDate.getDate() + (day - 1));
+    const formatted = anniversaryDate.toLocaleDateString();
+    
+    if (diffDays === day) {
+      html += `<li class="highlight">D+${day}: ${formatted} (오늘!)</li>`;
+    } else {
+      html += `<li>D+${day}: ${formatted}</li>`;
+    }
+  });
+  html += '</ul>';
+  resultEl.innerHTML = html;
+
+  const filterSelect = document.getElementById('filterSelect');
+  const sections = document.querySelectorAll('.brunch_section');
+
+  filterSelect.addEventListener('change', () => {
+    const value = filterSelect.value;
+
+    sections.forEach(section => {
+      if (value === 'all') {
+        section.style.display = 'block';
+      } else if (value === 'done') {
+        section.style.display = section.classList.contains('done') ? 'block' : 'none';
+      } else if (value === 'notdone') {
+        section.style.display = !section.classList.contains('done') ? 'block' : 'none';
+      }
+    });
+  });
+</script>
 </body>
 </html>
