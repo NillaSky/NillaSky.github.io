@@ -61,12 +61,12 @@
     .filter_box {
       float: right;
     }
-    .brunch_section {
+    .menu_section {
       margin-bottom: 3rem;
     }
-    .brunch_section.done {display: none;}
+    .menu_section.done {display: none;}
 
-    .brunch_section h2 {
+    .menu_section h2 {
       font-size: 1.5rem;
       color: #444;
       border-left: 4px solid #ff6b6b;
@@ -127,106 +127,69 @@
 <body>
   
   <h1>
-    잘지내세요
+    신촌 식당
   </h1>
-<!--   <h2>기념일 달력</h2>
-  <div id="result"></div> -->
   
-<!--   <div class="filter_box">
-    <select id="filterSelect" aria-label="장소 상태 필터 선택">
-      <option value="all">전체 보기</option>
-      <option value="done">같이 다녀왔어!</option>
-      <option value="not_yet" selected>같이 가자!</option>
-    </select>
-  </div> -->
 
-  <!-- <section class="brunch_section done">
-    <h2>보라매공원</h2>
+  <section class="menu_section">
+    <h2>신촌</h2>
     <ul class="brunch_items">
       <li class="brunch_card">
-        <a href="https://naver.me/Fw7im0ES" target="_blank">로드파스타피자(2025.05.25)
-          <p>보라매역 2번 출구에서 289m</p>
+        <a href="https://naver.me/xmxI5K0d" target="_blank">대포찜닭
+          <p>신촌역 2번 출구에서 278m 찜닭</p>
+        </a>
+      </li>
+
+      <li class="brunch_card">
+        <a href="https://naver.me/x8tpLbKO" target="_blank">포가레 신촌점
+          <p>신촌역 3번 출구에서 328m 쌀국수</p>
+        </a>
+      </li>
+
+      <li class="brunch_card">
+        <a href="https://naver.me/xTTVuBJp" target="_blank">프레퍼스
+          <p>신촌역 3번 출구에서 216m 샐러드파스타</p>
+        </a>
+      </li>
+    </ul>
+    <ul class="brunch_items">
+      <li class="brunch_card">
+        <a href="https://naver.me/G7V4zYrC" target="_blank">오므파탈 신촌점
+          <p>신촌역 1번 출구에서 457m 오므라이스</p>
+        </a>
+      </li>
+      <li class="brunch_card">
+        <a href="https://naver.me/xExWMLb5" target="_blank">춘천집 닭갈비막국수
+          <p>신촌역 1번 출구에서 210m 닭갈비</p>
         </a>
       </li>
     </ul>
   </section>
 
-  <section class="brunch_section">
-    <h2>문래</h2>
+  <section class="menu_section">
+    <h2>홍대</h2>
+
     <ul class="brunch_items">
       <li class="brunch_card">
-        <a href="https://map.naver.com/p/search/라크라센타/place/38463917" target="_blank">라크라센타
-          <p>문래역 3번 출구에서 296m</p>
-        </a>
-      </li>
-    </ul>
-  </section>
-  <section class="brunch_section">
-    <h2>신대방</h2>
-    <ul class="brunch_items">
-      <li class="brunch_card">
-        <a href="https://map.naver.com/p/entry/place/1991354117" target="_blank">NOSH
-          <p>신대방역 2번 출구에서 316m</p>
+        <a href="https://naver.me/Gn0yWzaC" target="_blank">트래블메이커
+          <p>홍대입구역 3번 출구에서 183m 브런치</p>
         </a>
       </li>
     </ul>
   </section>
 
-  <section class="brunch_section">
-    <h2>신림</h2>
+  <section class="menu_section">
+    <h2>이대</h2>
+
     <ul class="brunch_items">
       <li class="brunch_card">
-        <a href="https://map.naver.com/p/entry/place/1102802134" target="_blank">버딩
-          <p>신림당곡역 2번 출구에서 392m</p>
-        </a>        
+        <a href="https://naver.me/x0ahzhiJ" target="_blank">비아37 신촌본점
+          <p>경의중앙신촌역 1번 출구에서 238m 양식</p>
+        </a>
       </li>
     </ul>
-  </section> -->
+  </section>
   
-  <script>
-    // const baseDate = new Date('2025-05-25');
-    // const today = new Date();
-    // const diffTime = today - baseDate;
-    // const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-    // const resultEl = document.getElementById('result');
-    
-    // // 기본 출력
-    // let html = `<p>2025-05-25일 부터 우리 만난지 <strong style="color: #ff6b6b;">D+${diffDays +1}</strong>일째</p>`;
-    
-    // // 기념일 목록
-    // const anniversaries = [100, 200, 365, 400, 500];
-    
-    // html += `<h3>🎉 기념일 목록:</h3><ul>`;
-    // anniversaries.forEach(day => {
-    //   const anniversaryDate = new Date(baseDate);
-    //   anniversaryDate.setDate(baseDate.getDate() + (day - 1));
-    //   const formatted = anniversaryDate.toLocaleDateString();
-      
-    //   if (diffDays === day) {
-    //     html += `<li class="highlight">D+${day}: ${formatted} (오늘!)</li>`;
-    //   } else {
-    //     html += `<li>D+${day}: ${formatted}</li>`;
-    //   }
-    // });
-    // html += '</ul>';
-    // resultEl.innerHTML = html;
 
-    // const filterSelect = document.getElementById('filterSelect');
-    // const sections = document.querySelectorAll('.brunch_section');
-
-    // filterSelect.addEventListener('change', () => {
-    //   const value = filterSelect.value;
-
-    //   sections.forEach(section => {
-    //     if (value === 'all') {
-    //       section.style.display = 'block';
-    //     } else if (value === 'done') {
-    //       section.style.display = section.classList.contains('done') ? 'block' : 'none';
-    //     } else if (value === 'not_yet') {
-    //       section.style.display = !section.classList.contains('done') ? 'block' : 'none';
-    //     }
-    //   });
-    // });
-  </script>
 </body>
 </html>
