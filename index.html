@@ -59,12 +59,75 @@
       color: #ff6b6b;
     }
     .filter_box {
-      float: right;
+      position: fixed;
+      top: 110px;
+      right: 30px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .filter_box h3 {
+      font-size: 1rem;
+      margin: 0 0 0.5rem 0;
+      color: #2c3e50;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .filter_box h3::after {
+      content: '▼';
+      font-size: 0.8rem;
+      transition: transform 0.3s;
+      margin-left: 1rem;
+    }
+
+    .filter_box.collapsed h3::after {
+      transform: rotate(-90deg);
+    }
+
+    .filter_options {
+      display: block;
+      margin-top: 0.5rem;
+    }
+
+    .filter_box.collapsed .filter_options {
+      display: none;
+    }
+
+    .filter_item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .filter_item input[type="checkbox"] {
+      margin-right: 0.5rem;
+      cursor: pointer;
+      width: 18px;
+      height: 18px;
+    }
+
+    .filter_item label {
+      cursor: pointer;
+      font-size: 0.9rem;
+      color: #4a4a4a;
+    }
+
+    .clearfix::after {
+      content: "";
+      display: table;
+      clear: both;
     }
     .menu_section {
       margin-bottom: 3rem;
     }
     .menu_section.done {display: none;}
+    .menu_section.hidden {display: none;}
 
     .menu_section h2 {
       font-size: 1.5rem;
@@ -127,10 +190,38 @@
   </style>
 </head>
 <body>
-  
-  <h1>민아랑 같이 갈 맛집 리스트!</h1>
-  
-  <section class="menu_section">
+
+  <h1>우리애기 데이트 코스♥️</h1>
+
+  <div class="clearfix">
+    <div class="filter_box collapsed">
+      <h3 onclick="toggleFilter()">필터</h3>
+      <div class="filter_options">
+        <div class="filter_item">
+          <input type="checkbox" id="filter_hyehwa" value="hyehwa" checked onchange="filterSections()">
+          <label for="filter_hyehwa">혜화역</label>
+        </div>
+        <div class="filter_item">
+          <input type="checkbox" id="filter_snu" value="snu" checked onchange="filterSections()">
+          <label for="filter_snu">서울대입구</label>
+        </div>
+        <div class="filter_item">
+          <input type="checkbox" id="filter_sillim" value="sillim" checked onchange="filterSections()">
+          <label for="filter_sillim">신림 베이커리</label>
+        </div>
+        <div class="filter_item">
+          <input type="checkbox" id="filter_anyang" value="anyang" checked onchange="filterSections()">
+          <label for="filter_anyang">안양 카페</label>
+        </div>
+        <div class="filter_item">
+          <input type="checkbox" id="filter_sindaebang" value="sindaebang" checked onchange="filterSections()">
+          <label for="filter_sindaebang">신대방</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="menu_section" id="hyehwa">
     <h2>혜화역 연극</h2>
     <ul class="menu_list">
 
@@ -199,8 +290,8 @@
       </li>
     </ul>
   </section>
-  
-  <section class="menu_section">
+
+  <section class="menu_section" id="snu">
     <h2>서울대 입구</h2>
     <ul class="menu_list">
 
@@ -215,8 +306,8 @@
         </a>
       </li>
 
-      <li class="menu_list_items">
-        <a href="https://naver.me/5l7k8xxQ" target="_blank">텐동요츠야(텐동)
+      <li class="menu_list_items done">
+        <a href="https://naver.me/5l7k8xxQ" target="_blank">텐동요츠야(다녀옴!)
           <p>서울대입구역 2번 출구에서 344m</p>
         </a>
       </li>      
@@ -236,7 +327,7 @@
     </ul>
   </section>
 
-  <section class="menu_section">
+  <section class="menu_section" id="sillim">
     <h2>빵순이 민아 꼭 대려갈 신림 베이커리</h2>
     <ul class="menu_list" >
       <li class="menu_list_items" style="background-color: #f9dddf;">
@@ -246,8 +337,8 @@
       </li>
     </ul>
   </section>
-  
-  <section class="menu_section">
+
+  <section class="menu_section" id="anyang">
     <h2>안양 카페</h2>
     <ul class="menu_list">
 
@@ -278,7 +369,7 @@
     </ul>
   </section>
 
-  <section class="menu_section">
+  <section class="menu_section" id="sindaebang">
     <h2>신대방 (다음에 같이 가봐요!)</h2>
     <ul class="menu_list">
       <li class="menu_list_items">
@@ -294,6 +385,33 @@
       </li>
     </ul>
   </section>
+
+  <script>
+    // 필터 박스 토글 기능
+    function toggleFilter() {
+      const filterBox = document.querySelector('.filter_box');
+      filterBox.classList.toggle('collapsed');
+    }
+
+    // 섹션 필터링 기능
+    function filterSections() {
+      const checkboxes = document.querySelectorAll('.filter_item input[type="checkbox"]');
+      const sections = document.querySelectorAll('.menu_section');
+
+      checkboxes.forEach(checkbox => {
+        const sectionId = checkbox.value;
+        const section = document.getElementById(sectionId);
+
+        if (section) {
+          if (checkbox.checked) {
+            section.classList.remove('hidden');
+          } else {
+            section.classList.add('hidden');
+          }
+        }
+      });
+    }
+  </script>
 
 </body>
 </html>
