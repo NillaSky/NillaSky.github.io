@@ -199,7 +199,11 @@
       <h3 onclick="toggleFilter()">필터</h3>
       <div class="filter_options">
         <div class="filter_item">
-          <input type="checkbox" id="filter_hyehwa" value="hyehwa" checked onchange="filterSections()">
+          <input type="checkbox" id="filter_camp" value="camp" checked onchange="filterSections()">
+          <label for="filter_camp">카라반 글램핑</label>
+        </div>
+        <div class="filter_item">
+          <input type="checkbox" id="filter_hyehwa" value="hyehwa" onchange="filterSections()">
           <label for="filter_hyehwa">혜화역</label>
         </div>
         <div class="filter_item">
@@ -222,7 +226,32 @@
     </div>
   </div>
 
-  <section class="menu_section" id="hyehwa">
+  <section class="menu_section" id="camp">
+
+    <h2>글램핑</h2>
+    <ul class="menu_list">
+      <li class="menu_list_items">
+        <a href="https://naver.me/5b0XY2td" target="_blank">피카푸 피크닉앤글램핑 서울YMCA 도봉산점
+          <p>청계산역 도보 이동</p>
+        </a>
+      </li>
+
+      <li class="menu_list_items">
+        <a href="https://naver.me/FV7V0Dzy" target="_blank">웨일로 서울김포공항점
+          <p>화곡역 실내 호텔 + 온천 글램핑</p>
+        </a>
+      </li>
+
+      <li class="menu_list_items">
+        <a href="https://naver.me/5uIY6gYc" target="_blank">서울 북한산 럭셔리카라반
+          <p>불광역 버스이동</p>
+        </a>
+      </li>
+
+    </ul>
+  </section>
+
+  <section class="menu_section hidden" id="hyehwa">
     <h2>혜화역 연극</h2>
     <ul class="menu_list">
 
@@ -237,7 +266,7 @@
         </a>
       </li>
 
-      <li class="menu_list_items">
+      <li class="menu_list_items done">
         <a href="https://tickets.interpark.com/goods/23005704" target="_blank">행오버
           <p>공포 추리 코믹?</p>
         </a>
@@ -252,7 +281,7 @@
         </a>
       </li>
 
-      <li class="menu_list_items">
+      <li class="menu_list_items done">
         <a href="https://naver.me/Gsj2Jk62" target="_blank">핏제리아오 화덕피자
           <p>혜화역 1번 출구에서 332m</p>
         </a>
@@ -271,7 +300,7 @@
     </ul>
 
     <h2>혜화역 카페</h2>
-    <ul class="menu_list">
+    <ul class="menu_list done">
       <li class="menu_list_items">
         <a href="https://naver.me/GYC9dnF9" target="_blank">카페랑솜(케이크)
           <p>혜화역 3번 출구에서 225m</p>
