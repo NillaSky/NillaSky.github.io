@@ -142,12 +142,29 @@
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       gap: 1.5rem;
+      padding-left: 10px;
     }
     .menu_list_items.done {
-      background-color: #e7ddf9;  
+      background-color: #e7ddf9;
+      background-image: url(./img/mina.png);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position-x: right;
+    }
+    .menu_list_items.done a {
+      color: #ff6b6b;
+    }
+    .menu_list_items.mina {
+      background-color: #e7ddf9;
+      background-image: url(./img/mina.png);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position-x: right;
+    }
+    .menu_list_items.mina a {
+      color: #ff6b6b;
     }
     .menu_list_items {
-      background: #fff;
       border-radius: 12px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
       padding: 1rem;
@@ -192,7 +209,7 @@
 </head>
 <body>
 
-  <h1>우리애기 데이트 코스♥️</h1>
+  <h1>우리애기 데이트 코스♥️ <br> <img src="./img/mina.png" alt=""></h1>
 
   <div class="clearfix">
     <div class="filter_box collapsed">
@@ -437,7 +454,7 @@
   <section class="menu_section" id="sillim">
     <h2>빵순이 민아 꼭 대려갈 신림 베이커리</h2>
     <ul class="menu_list" >
-      <li class="menu_list_items" style="background-color: #f9dddf;">
+      <li class="menu_list_items mina" style="background-color: #f9dddf;">
         <a href="https://naver.me/IGJCtHYF" target="_blank">소망제과
           <p>집근처</p>
         </a>
