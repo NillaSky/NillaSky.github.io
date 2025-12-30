@@ -231,11 +231,15 @@
       <h3 onclick="toggleFilter()">필터</h3>
       <div class="filter_options">
         <div class="filter_item">
-          <input type="checkbox" id="filter_camp" value="camp" checked onchange="filterSections()">
+          <input type="checkbox" id="filter_camp" value="jamsil" checked onchange="filterSections()">
+          <label for="filter_camp">잠실 석촌</label>
+        </div>
+        <div class="filter_item">
+          <input type="checkbox" id="filter_camp" value="camp" onchange="filterSections()">
           <label for="filter_camp">카라반 글램핑</label>
         </div>
         <div class="filter_item">
-          <input type="checkbox" id="filter_myeongdong" value="myeongdong" checked onchange="filterSections()">
+          <input type="checkbox" id="filter_myeongdong" value="myeongdong" onchange="filterSections()">
           <label for="filter_myeongdong">명동, 을지로</label>
         </div>
         <div class="filter_item">
@@ -262,7 +266,67 @@
     </div>
   </div>
 
-  <section class="menu_section" id="camp">
+  <section class="menu_section" id="jamsil">
+
+    <h2>잠실 석촌호수</h2>
+    <ul class="menu_list">
+      <li class="menu_list_items">
+        <a href="https://naver.me/x2jQnYqq" target="_blank">수작나베 석촌호수직영점
+          <p>석촌역 8번 출구에서 553m</p>
+        </a>
+      </li>
+
+      <li class="menu_list_items">
+        <a href="https://naver.me/F42Mv50x" target="_blank">조개진
+          <p>잠실역 10번 출구에서 493m</p>
+        </a>
+      </li>
+
+      <li class="menu_list_items">
+        <a href="https://naver.me/xeASpRR9" target="_blank">일일향 (탕수육)
+          <p>송파나루역 1번 출구에서 482m</p>
+        </a>
+      </li>
+      <li class="menu_list_items">
+        <a href="https://naver.me/5mI0JIvm" target="_blank">후라토식당
+          <p>잠실역 10번 출구에서 319m</p>
+        </a>
+      </li>
+
+      <li class="menu_list_items">
+        <a href="https://naver.me/x7ndZeCR" target="_blank">카페드로잉(브런치)
+          <p>잠실역 10번 출구에서 319m</p>
+        </a>
+      </li>
+
+      <li class="menu_list_items">
+        <a href="https://naver.me/IMyGfECR" target="_blank">마라공방 
+          <p>잠실역 7번 출구에서 121m</p>
+        </a>
+      </li>
+    </ul>
+    <h2>잠실 석촌호수 카페</h2>
+    <ul class="menu_list">
+      <li class="menu_list_items">
+        <a href="https://naver.me/x4FLixXK" target="_blank">마이 서울바이츠
+          <p>석촌역 1번 출구에서 487m</p>
+        </a>
+      </li>
+      <li class="menu_list_items">
+        <a href="https://naver.me/57VZbKRM" target="_blank">하우모찌(키티마들렌)
+          <p>송파나루역 1번 출구에서 212m</p>
+        </a>
+      </li>
+
+      <li class="menu_list_items">
+        <a href="https://naver.me/F9hECqjE" target="_blank">로피 카페(두바이 쿠키)
+          <p>송파나루역 1번 출구에서 209m</p>
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <section class="menu_section hidden" id="camp">
 
     <h2>글램핑</h2>
     <ul class="menu_list">
@@ -280,7 +344,7 @@
     </ul>
   </section>
 
-  <section class="menu_section" id="myeongdong">
+  <section class="menu_section hidden" id="myeongdong">
     <h2>명동, 을지로</h2>
     <ul class="menu_list">
       <li class="menu_list_items">
