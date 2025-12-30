@@ -224,7 +224,10 @@
     <img src="./img/mina.png" alt="">
     <img src="./img/smart.png" alt="">
     <img src="./img/cafe.png" alt="">
+    <div id="result"></div>
   </h1>
+
+  
 
   <div class="clearfix">
     <div class="filter_box collapsed">
@@ -302,7 +305,7 @@
           <p>잠실역 10번 출구에서 594m</p>
         </a>
       </li>
-      
+
       <li class="menu_list_items">
         <a href="https://naver.me/x7ndZeCR" target="_blank">카페드로잉(브런치)
           <p>잠실역 10번 출구에서 319m</p>
@@ -624,6 +627,18 @@
         }
       });
     }
+      const baseDate = new Date('2025-10-07');
+      const today = new Date();
+      const diffTime = today - baseDate;
+      const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+      const resultEl = document.getElementById('result');
+      
+      // 기본 출력
+      let html = `<p>2025-10-07일 부터 우리 만난지 <strong style="color: #ff6b6b;">D+${diffDays +1}</strong>일째</p>`;
+      html += '</ul>';
+      resultEl.innerHTML = html;
+
+      
   </script>
 
 </body>
