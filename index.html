@@ -234,7 +234,11 @@
       <h3 onclick="toggleFilter()">필터</h3>
       <div class="filter_options">
         <div class="filter_item">
-          <input type="checkbox" id="filter_camp" value="jamsil" checked onchange="filterSections()">
+          <input type="checkbox" id="event" value="event" checked onchange="filterSections()">
+          <label for="filter_camp">기념일</label>
+        </div>
+        <div class="filter_item">
+          <input type="checkbox" id="filter_jamsil" value="jamsil" onchange="filterSections()">
           <label for="filter_camp">잠실 석촌</label>
         </div>
         <div class="filter_item">
@@ -269,7 +273,7 @@
     </div>
   </div>
 
-  <section class="menu_section" id="jamsil">
+  <section class="menu_section hidden" id="jamsil">
 
     <h2>잠실 석촌호수</h2>
     <ul class="menu_list">
@@ -331,7 +335,7 @@
         </a>
       </li>
 
-      <li class="menu_list_items">
+      <li class="menu_list_items cafe">
         <a href="https://naver.me/F9hECqjE" target="_blank">로피 카페(두바이 쿠키)
           <p>송파나루역 1번 출구에서 209m</p>
         </a>
@@ -538,6 +542,17 @@
       <li class="menu_list_items">
         <a href="https://naver.me/5mI0JEw1" target="_blank">동경산책 서울대입구점 <br> (스키야키 포함 일식 여럿)
           <p>서울대입구역 1번 출구에서 259m</p>
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <section class="menu_section" id="event">
+    <h2>기념일</h2>
+    <ul class="menu_list" >
+      <li class="menu_list_items mina">
+        <a href="https://naver.me/5uIR9Gbr" target="_blank">갓포쿠모 양재
+          <p>100일 기념</p>
         </a>
       </li>
     </ul>
