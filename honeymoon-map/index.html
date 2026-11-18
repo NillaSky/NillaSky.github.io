@@ -1,0 +1,1210 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>또치와 똥글이의 신혼여행</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<!-- 개인 여행 일정이라 검색엔진에 노출하지 않음 -->
+<meta name="robots" content="noindex, nofollow">
+<!-- 브라우저 상단 바 색: :root 의 --bg 값과 같게 유지 -->
+<meta name="theme-color" content="#edf1f5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f1724" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="또치♥똥글이">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@600;700&family=IBM+Plex+Sans+KR:wght@400;500;600&family=Barlow+Condensed:wght@500;600&display=swap">
+<style>
+/* 디자인 방향: 겨울 중부유럽 철도 여행.
+   - 하나의 주인공: '다음 일정' 출발 안내판(밤의 블타바 남색 + 금박 숫자)과 기차표처럼 절취선이 있는 날짜 카드.
+   - 나머지는 조용하게: 눈빛 배경, 얇은 테두리, 그림자 없음.
+   - 글꼴: 제목 Hahmlet(한글 세리프), 본문 IBM Plex Sans KR, 시간·날짜 Barlow Condensed(역 안내판 숫자). */
+:root{
+  --bg:#edf1f5; --surface:#ffffff; --ink:#1b2333; --muted:#5a6476; --line:#d5dce5;
+  --wine:#8b2e3f; --wine-soft:#f4e4e8; --on-wine:#ffffff;
+  --gold:#8a5f17; --gold-soft:#f6ecd9;
+  --board:#1b2a44; --board-ink:#f3ebdd; --board-muted:#a9b4c8; --board-gold:#e6bc6a; --board-line:#33456a; --board-ok:#9fd8b2;
+  --cz:#2f5d8a; --at:#8b2e3f; --hu:#3d7a52;
+  --warn:#9a5b00; --warn-soft:#fbf1df;
+  --ok:#2f6b45; --ok-soft:#e5f2ea;
+  --display:"Hahmlet", "Nanum Myeongjo", "Noto Serif KR", Georgia, serif;
+  --body:"IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+  --num:"Barlow Condensed", "Arial Narrow", var(--body);
+  --tabbar-h:62px;
+  --gutter:16px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0f1724; --surface:#172030; --ink:#e7ebf2; --muted:#a3adbd; --line:#2a3546;
+  --wine:#e38c9c; --wine-soft:#3a2129; --on-wine:#0f1724;
+  --gold:#e2b96a; --gold-soft:#3a2e17;
+  --board:#1f2e4a; --board-line:#3a4d74;
+  --cz:#86b2de; --at:#e38c9c; --hu:#8cc9a0;
+  --warn:#f0b75e; --warn-soft:#3a2d17; --ok:#8cc9a0; --ok-soft:#1d3226;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0f1724; --surface:#172030; --ink:#e7ebf2; --muted:#a3adbd; --line:#2a3546;
+  --wine:#e38c9c; --wine-soft:#3a2129; --on-wine:#0f1724;
+  --gold:#e2b96a; --gold-soft:#3a2e17;
+  --board:#1f2e4a; --board-line:#3a4d74;
+  --cz:#86b2de; --at:#e38c9c; --hu:#8cc9a0;
+  --warn:#f0b75e; --warn-soft:#3a2d17; --ok:#8cc9a0; --ok-soft:#1d3226;
+  color-scheme:dark }
+
+*{box-sizing:border-box}
+[hidden]{display:none !important}
+html{scroll-padding-top:72px;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.6;-webkit-tap-highlight-color:transparent;
+  padding-bottom:calc(var(--tabbar-h) + 28px + env(safe-area-inset-bottom, 0px))}
+.wrap{max-width:600px;margin:0 auto;padding:0 max(var(--gutter), env(safe-area-inset-right, 0px)) 0 max(var(--gutter), env(safe-area-inset-left, 0px));display:flex;flex-direction:column;gap:18px}
+h1,h2,h3,h4{margin:0;line-height:1.3;text-wrap:balance}
+h1,h2{font-family:var(--display);font-weight:700;letter-spacing:-.01em}
+h1{font-size:22px}
+h2{font-size:20px}
+h3{font-size:16px}
+ul,ol{margin:0;padding:0;list-style:none}
+p{margin:0}
+a{color:inherit}
+.eyebrow{font-size:12.5px;color:var(--muted);font-weight:600}
+.mono{font-family:var(--num);font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:.01em}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.lead{color:var(--muted);font-size:14px}
+.hint{font-size:13px;color:var(--muted)}
+.sec{display:flex;flex-direction:column;gap:12px}
+.sec-head{display:flex;flex-direction:column;gap:4px}
+.sec-head.row{flex-direction:row;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px}
+.sec-head.row > div{display:flex;flex-direction:column;gap:2px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px}
+.panel{display:flex;flex-direction:column;gap:30px}
+.panel:focus-visible{outline:2px solid var(--wine);outline-offset:6px;border-radius:8px}
+.btn{font:inherit;font-size:14px;font-weight:600;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:8px 14px;cursor:pointer;min-height:42px}
+.btn:hover{border-color:var(--ink)}
+.btn:disabled{color:var(--muted);opacity:.4;cursor:default;border-color:var(--line)}
+.btn:focus-visible,a:focus-visible,summary:focus-visible,button:focus-visible{outline:2px solid var(--wine);outline-offset:2px}
+.tag{display:inline-block;font-family:var(--body);font-size:11px;font-weight:600;padding:1px 7px;border-radius:5px;background:var(--wine-soft);color:var(--wine);margin-left:6px;vertical-align:2px}
+.tag.new{background:var(--warn-soft);color:var(--warn)}
+.tag.opt{background:transparent;color:var(--muted);border:1px solid var(--line)}
+.pill{font-size:11px;font-weight:600;padding:1px 8px;border-radius:5px;white-space:nowrap}
+.pill.fix,.pill.ok{background:var(--ok-soft);color:var(--ok)}
+.pill.tbd{background:var(--warn-soft);color:var(--warn)}
+.pill.book{background:var(--wine-soft);color:var(--wine)}
+
+/* ---------- header ---------- */
+.top{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;padding-top:max(16px, env(safe-area-inset-top, 0px))}
+.top > div{display:flex;flex-direction:column;gap:2px;min-width:0}
+.top .sub{font-size:12.5px;color:var(--muted)}
+.offline{background:var(--warn-soft);color:var(--ink);border-radius:10px;padding:9px 12px;font-size:13px;font-weight:600}
+.dday{flex:none;background:var(--board);color:var(--board-gold);border-radius:8px;padding:2px 10px 1px;font-size:20px;line-height:1.3;white-space:nowrap}
+
+/* ---------- tab bar ---------- */
+.tabbar{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--surface);
+  background:color-mix(in srgb, var(--surface) 92%, transparent);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  border-top:1px solid var(--line);
+  padding:6px max(8px, env(safe-area-inset-right, 0px)) calc(6px + env(safe-area-inset-bottom, 0px)) max(8px, env(safe-area-inset-left, 0px))}
+.tabbar [role="tablist"]{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;max-width:520px;margin:0 auto}
+.tabbar [role="tab"]{font:inherit;background:none;border:0;border-radius:12px;color:var(--muted);cursor:pointer;position:relative;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:5px 4px;min-height:calc(var(--tabbar-h) - 12px);font-size:11.5px;font-weight:600}
+.tabbar [role="tab"] svg{width:23px;height:23px}
+.tabbar [role="tab"][aria-selected="true"]{color:var(--ink)}
+.tabbar [role="tab"][aria-selected="true"]::before{content:"";position:absolute;top:-7px;left:30%;right:30%;height:3px;border-radius:0 0 3px 3px;background:var(--wine)}
+.tabbar [role="tab"]:focus-visible{outline:2px solid var(--wine);outline-offset:-2px}
+
+/* ---------- 출발 안내판 (오늘 탭의 주인공) ---------- */
+.board{background:var(--board);color:var(--board-ink);border-radius:14px;padding:14px 16px 16px;display:flex;flex-direction:column;gap:10px;
+  background-image:repeating-linear-gradient(0deg, transparent 0 3px, rgb(255 255 255 / .025) 3px 4px)}
+.board-head{display:flex;justify-content:space-between;align-items:baseline;gap:8px;border-bottom:1px solid var(--board-line);padding-bottom:8px}
+.board-label{font-size:13px;font-weight:600;color:var(--board-muted)}
+.board .mono,.board-big{color:var(--board-gold)}
+.next-when{font-family:var(--num);font-weight:600;font-size:17px;color:var(--board-gold)}
+/* 안내판 안의 고정 일정 한 줄 */
+.board .fixed{gap:0}
+.board .fx + .fx{border-top:1px solid var(--board-line);margin-top:10px;padding-top:12px}
+.board .fx{background:transparent;border:0;border-radius:0;padding:2px 0 0;grid-template-columns:minmax(0,1fr) auto;row-gap:6px}
+.board .fx .fx-time{grid-column:1 / -1;grid-row:1;font-family:var(--num);font-weight:600;font-size:40px;line-height:1;color:var(--board-gold);letter-spacing:.01em}
+.board .fx .fx-time:not(.mono){font-family:var(--body);font-size:15px;line-height:1.4}
+.board .fx .fx-main{grid-column:1;grid-row:2}
+.board .fx .fx-side{grid-column:2;grid-row:2}
+.board .fx-label{color:var(--board-ink);font-size:15px}
+.board .fx-kind{background:var(--board-line);color:var(--board-ink)}
+.board .fx-note{color:var(--board-muted)}
+.board .fx-map{background:transparent;color:var(--board-ink);border-color:var(--board-line)}
+.board .fx-map:hover{border-color:var(--board-gold)}
+.board .fx-here{background:var(--board-gold);color:var(--board);border-color:var(--board-gold)}
+.board .pill.tbd{background:transparent;color:var(--board-gold);border:1px solid var(--board-gold)}
+.board .pill.ok{background:transparent;color:var(--board-ok);border:1px solid var(--board-ok)}
+.board .pill.book{background:transparent;color:var(--board-ink);border:1px solid var(--board-ink)}
+/* 출발 전 */
+.pre-top{display:flex;justify-content:space-between;align-items:flex-end;gap:8px}
+.board-big{font-family:var(--num);font-weight:600;font-size:52px;line-height:.95;letter-spacing:.01em}
+.pre .btn{background:transparent;color:var(--board-ink);border-color:var(--board-line)}
+.pre .btn:hover{border-color:var(--board-gold)}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid var(--board-line);padding-top:10px}
+.stats li{display:flex;flex-direction:column;gap:1px;padding:0 10px}
+.stats li + li{border-left:1px solid var(--board-line)}
+.stats li:first-child{padding-left:0}
+.stat-n{font-family:var(--num);font-weight:600;font-size:22px;line-height:1.1;color:var(--board-ink)}
+.stat-l{font-size:12px;color:var(--board-muted)}
+.bar{display:block;height:3px;border-radius:99px;background:var(--board-line);overflow:hidden;margin-top:6px}
+.bar b{display:block;height:100%;width:0;background:var(--board-gold);border-radius:inherit;transition:width .3s}
+
+/* ---------- 날짜 스트립 ---------- */
+.daystrip{display:flex;gap:6px;overflow-x:auto;scroll-snap-type:x proximity;margin:0 calc(var(--gutter) * -1);padding:2px var(--gutter) 4px;scrollbar-width:none;overscroll-behavior-x:contain}
+.daystrip::-webkit-scrollbar{display:none}
+.ds{flex:none;width:48px;scroll-snap-align:center;font:inherit;display:flex;flex-direction:column;align-items:center;gap:0;padding:6px 0 7px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;position:relative}
+.ds::after{content:"";position:absolute;left:12px;right:12px;bottom:3px;height:2px;border-radius:2px;background:var(--c);opacity:.7}
+.ds-w{font-size:11px;color:var(--muted)}
+.ds-d{font-family:var(--num);font-weight:600;font-size:19px;line-height:1.15}
+.ds-dot{display:none}
+.ds.cz{--c:var(--cz)} .ds.at{--c:var(--at)} .ds.hu{--c:var(--hu)}
+.ds.is-today .ds-w{color:var(--gold);font-weight:600}
+.ds[aria-current="true"]{background:var(--board);border-color:var(--board);color:var(--board-gold)}
+.ds[aria-current="true"] .ds-w{color:var(--board-ink)}
+.ds[aria-current="true"]::after{background:var(--board-gold);opacity:1}
+
+/* ---------- 오늘 보기 ---------- */
+.viewer{display:flex;flex-direction:column;gap:12px}
+.viewer-bar{position:sticky;top:0;z-index:10;display:grid;grid-template-columns:44px 1fr 44px;align-items:center;gap:8px;
+  margin:0 calc(var(--gutter) * -1);padding:8px var(--gutter);padding-top:max(8px, env(safe-area-inset-top, 0px));
+  background:var(--bg);background:color-mix(in srgb, var(--bg) 90%, transparent);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.icon-btn{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;padding:0;font-size:22px;line-height:1}
+.viewer-title{text-align:center;min-width:0;display:flex;flex-direction:column;line-height:1.25}
+.viewer-title .eyebrow{color:var(--gold);font-size:12px}
+.viewer-title h2{font-family:var(--num);font-weight:600;font-size:22px;letter-spacing:.01em}
+#backToday{align-self:center;min-height:36px;font-size:13px}
+@keyframes slide-l{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:none}}
+@keyframes slide-r{from{opacity:0;transform:translateX(-24px)}to{opacity:1;transform:none}}
+.viewer .days.from-r{animation:slide-l .22s ease-out}
+.viewer .days.from-l{animation:slide-r .22s ease-out}
+
+/* ---------- 날짜 카드 (일정 탭: 접힌 목록 / 오늘 탭: 기차표) ---------- */
+.city{display:flex;flex-direction:column;gap:10px}
+.city-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;padding:0 2px;border-bottom:2px solid var(--c);padding-bottom:6px}
+.city-head h2{color:var(--c)}
+.city-head .nights{font-size:12.5px;color:var(--muted)}
+.city.cz,.day.cz,.hotel.cz,.fa-day.cz{--c:var(--cz)} .city.at,.day.at,.hotel.at,.fa-day.at{--c:var(--at)} .city.hu,.day.hu,.hotel.hu,.fa-day.hu{--c:var(--hu)}
+.days{display:flex;flex-direction:column;gap:8px}
+.day{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;scroll-margin-top:16px}
+.day-sum{display:grid;grid-template-columns:52px minmax(0,1fr) 18px;grid-template-areas:"date where chev" "date title chev" "date meta chev";column-gap:12px;row-gap:1px;align-items:center;padding:12px 14px 12px 12px;cursor:pointer;list-style:none}
+.day-sum::-webkit-details-marker{display:none}
+.day-sum.static{cursor:default}
+.date{grid-area:date;align-self:stretch;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;border-right:1px dashed var(--line);padding-right:10px;margin-right:-2px}
+.date .n{font-size:10px;color:var(--c);font-weight:600}
+.date .d{font-family:var(--num);font-weight:600;font-size:21px;line-height:1.05}
+.date .w{font-size:10.5px;color:var(--muted);text-align:center;line-height:1.25}
+.day-where{grid-area:where;font-size:12px;font-weight:600;color:var(--c)}
+.day .title{grid-area:title;font-family:var(--body);font-weight:600;font-size:15.5px}
+.day-meta{grid-area:meta;font-size:12px;color:var(--muted)}
+.chev{grid-area:chev;width:9px;height:9px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);margin-top:-4px;transition:transform .2s}
+.day-d[open] .chev{transform:rotate(-135deg);margin-top:4px}
+.day-d[open] .day-sum{border-bottom:1px dashed var(--line)}
+.is-today{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold)}
+.is-today .day-where::after{content:"오늘";margin-left:6px;font-size:10.5px;background:var(--gold);color:var(--surface);padding:0 6px;border-radius:4px}
+.body{min-width:0;display:flex;flex-direction:column;gap:16px;padding:14px}
+.blk{display:flex;flex-direction:column;gap:8px}
+.blk h4{font-size:12.5px;font-weight:600;color:var(--muted)}
+/* 일몰 */
+.sun{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--ink);background:var(--gold-soft);border-radius:10px;padding:8px 12px}
+.sun-ic{width:20px;height:20px;flex:none;color:var(--gold)}
+.sun b.mono{font-size:18px;line-height:1;color:var(--gold)}
+.sun-dusk{color:var(--muted)}
+.sun-dusk .mono{font-size:15px}
+.sun-city{margin-left:auto;font-size:12px;color:var(--muted);white-space:nowrap}
+.meals{display:flex;flex-wrap:wrap;gap:6px}
+.meals li{font-size:12px;padding:2px 9px;border-radius:5px;border:1px solid var(--line);color:var(--muted)}
+.meals li.inc{background:var(--ok-soft);border-color:transparent;color:var(--ok);font-weight:600}
+.meals li.bk{background:var(--wine-soft);border-color:transparent;color:var(--wine);font-weight:600}
+.flow{display:flex;flex-wrap:wrap;gap:2px 6px;font-size:13.5px;color:var(--muted);line-height:1.7}
+.flow li:not(:last-child)::after{content:"›";margin-left:6px;color:var(--line);font-weight:600}
+.sched{display:flex;flex-direction:column;font-size:14px}
+.sched li{display:grid;grid-template-columns:52px 1fr;gap:10px;padding:6px 0;align-items:baseline}
+.sched li + li{border-top:1px dotted var(--line)}
+.sched .mono{font-size:18px;line-height:1;color:var(--ink)}
+.sched li.opt{color:var(--muted)}
+.sched li.opt .mono{color:var(--muted);font-weight:500}
+.note{font-size:13.5px;padding:10px 12px;border-radius:10px}
+.note.warn{background:var(--warn-soft);color:var(--ink)}
+.note.tip{background:var(--ok-soft);color:var(--ink)}
+.note b{font-weight:600}
+/* 동선: 노선도처럼 이어진 점 */
+.routes{position:relative;display:flex;flex-direction:column;gap:6px;padding-left:20px}
+.routes::before{content:"";position:absolute;left:5px;top:20px;bottom:20px;border-left:2px solid var(--c);opacity:.35}
+.routes li{position:relative}
+.routes li::before{content:"";position:absolute;left:-20px;top:50%;width:12px;height:12px;margin-top:-6px;border-radius:50%;background:var(--surface);border:2px solid var(--c);box-sizing:border-box}
+.rt{display:flex;align-items:center;gap:8px;padding:9px 12px;border-radius:10px;border:1px solid var(--line);color:var(--ink);text-decoration:none;font-size:13.5px;min-width:0;min-height:48px}
+.rt:hover,.rt:active{border-color:var(--c);background:var(--bg)}
+.rl{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.4}
+.rt-when{font-size:12px;color:var(--c);font-weight:600}
+.ra{color:var(--muted);font-size:13px}
+/* 내 위치에서 출발 */
+.routes li{display:flex;gap:6px;align-items:stretch}
+.routes li .rt{flex:1}
+.rt-here{flex:none;width:54px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;border:1px solid var(--line);border-radius:10px;color:var(--wine);font-size:11px;font-weight:600;text-decoration:none}
+.rt-here:hover,.rt-here:active{border-color:var(--wine);background:var(--wine-soft)}
+.pin{width:16px;height:16px;flex:none}
+.rm{flex:none;font-size:11px;font-weight:600;padding:1px 7px;border-radius:5px}
+.rm.walking{background:var(--ok-soft);color:var(--ok)}
+.rm.transit{background:var(--wine-soft);color:var(--wine)}
+.rm.driving{background:var(--bg);color:var(--muted)}
+.rm.train{background:var(--gold-soft);color:var(--gold)}
+.stay{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;font-size:13.5px;border-top:1px dashed var(--line);padding-top:12px}
+.stay-ic{width:20px;height:20px;flex:none;color:var(--c)}
+.sl{color:var(--muted);font-weight:600;font-size:12px}
+.stay a{color:var(--c);font-weight:600}
+.stay .stay-here{display:inline-flex;align-items:center;gap:3px;margin-left:auto;font-size:12.5px;color:var(--wine);text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:5px 9px;min-height:32px}
+.stay .stay-here + .taxi-btn{margin-left:0}
+.more summary{cursor:pointer;font-size:13px;color:var(--muted);font-weight:600;padding:4px 0;width:fit-content;min-height:32px;display:flex;align-items:center;gap:6px}
+.more summary:hover{color:var(--ink)}
+.more-body{display:flex;flex-direction:column;gap:8px;padding-top:6px}
+.rec-list{display:flex;flex-direction:column;padding-top:4px}
+.rec-list li{display:flex;gap:10px;align-items:baseline;padding:8px 0;font-size:13.5px}
+.rec-list li + li{border-top:1px dotted var(--line)}
+.rec-list a{color:var(--c);font-weight:600}
+.rec-list small{display:block;color:var(--muted);font-size:12.5px}
+.rec-type{flex:none;font-size:11px;font-weight:600;color:var(--muted);border:1px solid var(--line);border-radius:5px;padding:0 6px}
+/* 오늘 탭: 기차표 */
+.viewer .day{border-radius:14px;overflow:visible;position:relative}
+.viewer .day::before{content:"";position:absolute;left:-1px;right:-1px;top:-1px;height:5px;border-radius:14px 14px 0 0;background:var(--c)}
+.day-head{display:flex;flex-direction:column;gap:3px;padding:20px 16px 16px}
+.day-head .title{font-family:var(--display);font-weight:700;font-size:21px;line-height:1.35;letter-spacing:-.01em}
+.day-head .day-meta{display:none}
+.viewer .body{padding:16px;border-top:2px dashed var(--line);position:relative}
+.viewer .body::before,.viewer .body::after{content:"";position:absolute;top:-10px;width:18px;height:18px;border-radius:50%;background:var(--bg);border:1px solid var(--line)}
+.viewer .body::before{left:-10px;clip-path:inset(0 0 0 50%)}
+.viewer .body::after{right:-10px;clip-path:inset(0 50% 0 0)}
+
+/* ---------- 꼭 지킬 것 ---------- */
+.fixed{display:flex;flex-direction:column;gap:6px}
+.fx{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 12px;align-items:start;background:var(--bg);border-left:3px solid var(--ok);border-radius:4px 10px 10px 4px;padding:10px 12px}
+.fx.s-tbd{border-left-color:var(--warn)}
+.fx.s-book{border-left-color:var(--wine)}
+.fx.s-book.done{border-left-color:var(--ok)}
+.fx-time{grid-column:1;font-size:12.5px;color:var(--muted)}
+.fx-time.mono{font-size:19px;line-height:1.1;color:var(--ink)}
+.fx-main{grid-column:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.fx-side{grid-column:2;grid-row:1 / span 2;display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.fx-label{font-size:14px;font-weight:600;line-height:1.45}
+.fx-kind{display:inline-block;font-size:10.5px;font-weight:600;color:var(--muted);border:1px solid var(--line);border-radius:4px;padding:0 5px;margin-right:6px;vertical-align:1px}
+.fx-note{font-size:12.5px;color:var(--muted)}
+.fx-map{font-size:12.5px;font-weight:600;color:var(--ink);text-decoration:none;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:5px 10px;white-space:nowrap;min-height:34px;display:inline-flex;align-items:center;gap:4px}
+.fx-map:hover{border-color:var(--ink)}
+.fx-here{display:inline-flex;align-items:center;gap:3px;font-size:12.5px;font-weight:600;color:var(--wine);text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:5px 9px;white-space:nowrap;min-height:34px;background:var(--surface)}
+.fx-here:hover{border-color:var(--wine)}
+.fx-check{display:flex;gap:6px;align-items:center;font-size:12.5px;cursor:pointer;white-space:nowrap;min-height:30px}
+.fx-check input{width:18px;height:18px;margin:0;accent-color:var(--ok)}
+.fx.done .fx-label{color:var(--muted)}
+.fx.done .pill.book{background:var(--ok-soft);color:var(--ok)}
+.fixed-all details{padding:14px}
+.fixed-all details > summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.fixed-all details > summary::-webkit-details-marker{display:none}
+.fixed-all details > summary::after{content:"";flex:none;width:9px;height:9px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);margin-top:-4px;transition:transform .2s}
+.fixed-all details[open] > summary::after{transform:rotate(-135deg);margin-top:4px}
+.fa-head{display:flex;flex-direction:column;gap:6px}
+.fa-count{display:flex;flex-wrap:wrap;gap:6px}
+.fixed-all .hint{margin:10px 0 12px}
+.fa-days{display:flex;flex-direction:column;gap:14px}
+.fa-day{display:flex;flex-direction:column;gap:6px}
+.fa-day h3{font-size:13.5px;font-weight:600}
+.fa-day h3 a{color:var(--c);text-decoration:none}
+.fa-day h3 .mono{font-size:16px}
+.fa-n{font-size:11px;color:var(--muted);margin-left:4px}
+
+
+/* ---------- 정보 ---------- */
+.contacts{padding:2px 16px}
+.contacts li{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px 0}
+.contacts li + li{border-top:1px solid var(--line)}
+.contacts li > div{display:flex;flex-direction:column;min-width:0}
+.contacts b{font-weight:600;font-size:14.5px}
+.contacts small{color:var(--muted);font-size:12.5px}
+.call{flex:none;font-family:var(--num);font-weight:600;font-size:18px;color:var(--on-wine);background:var(--wine);border-radius:10px;padding:6px 12px;text-decoration:none;white-space:nowrap}
+.todo-later{flex:none;font-size:12px;color:var(--warn);background:var(--warn-soft);border-radius:5px;padding:1px 8px;white-space:nowrap}
+.hotels{display:flex;flex-direction:column;gap:10px}
+.hotel{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:10px;border-top:4px solid var(--c);min-width:0}
+.hotel .top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;padding:0}
+.hotel h3{font-family:var(--display);font-weight:700;font-size:18px}
+.hotel .where{font-size:12px;color:var(--muted)}
+.hotel dl,.country dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:13.5px}
+.hotel dt,.country dt{color:var(--muted)}
+.hotel dd,.country dd{margin:0}
+.hotel .maplink{align-self:flex-start;font-size:13px;font-weight:600;color:var(--c);text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:6px 12px}
+.addr{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--bg);border-radius:10px;padding:8px 8px 8px 12px;font-size:14px;font-weight:600}
+.addr span{min-width:0}
+.copy{flex:none;font:inherit;font-size:12.5px;font-weight:600;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:6px 10px;min-height:36px;cursor:pointer}
+.copy.done{color:var(--ok);border-color:var(--ok)}
+.taxi-btn{font:inherit;font-size:12.5px;font-weight:600;color:var(--board-gold);background:var(--board);border:0;border-radius:8px;padding:5px 10px;min-height:32px;cursor:pointer;margin-left:auto}
+.taxi-btn.big{align-self:stretch;font-size:14px;min-height:44px;margin:0}
+.taxi{border:0;padding:0;margin:auto;width:min(100vw - 24px, 560px);max-height:calc(100dvh - 24px);border-radius:18px;background:var(--board);color:var(--board-ink)}
+.taxi[open]{display:flex;flex-direction:column;gap:14px;padding:28px 22px 22px}
+.taxi::backdrop{background:rgb(10 16 28 / .7)}
+.taxi-say{font-size:22px;font-weight:600;line-height:1.35}
+.taxi-say-en{font-size:15px;color:var(--board-muted)}
+.taxi-name{font-family:var(--body);font-size:22px;font-weight:600;color:var(--board-ink);border-top:1px solid var(--board-line);padding-top:14px}
+.taxi-addr{font-size:30px;font-weight:600;line-height:1.3;color:var(--board-gold);word-break:keep-all;overflow-wrap:anywhere}
+.taxi-note{font-size:13px;color:var(--board-muted)}
+.lang-switch{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:4px}
+.lang-btn{font:inherit;font-size:13.5px;font-weight:600;color:var(--muted);background:transparent;border:0;border-radius:9px;min-height:42px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.2}
+.lang-btn small{font-size:10.5px;font-weight:500}
+.lang-btn[aria-pressed="true"]{background:var(--board);color:var(--board-gold)}
+.phrases{padding:4px 16px 8px}
+.phrases h3{font-size:12.5px;font-weight:600;color:var(--muted);padding:12px 0 4px}
+.phrases li + li{border-top:1px solid var(--line)}
+.ph{font:inherit;width:100%;text-align:left;background:none;border:0;padding:10px 0;min-height:52px;cursor:pointer;color:var(--ink);display:flex;justify-content:space-between;align-items:center;gap:10px}
+.ph-txt{display:flex;flex-direction:column;min-width:0}
+.ph-ko{font-size:14.5px;font-weight:600}
+.ph-local{font-size:12.5px;color:var(--muted)}
+.ph-go{flex:none;color:var(--muted);font-size:18px}
+.ph-pr{font-size:12px;color:var(--gold)}
+.phrase-pr{display:flex;flex-direction:column;gap:2px;font-size:19px;font-weight:600;color:var(--board-ink);line-height:1.4}
+.phrase-pr-l{font-size:12px;font-weight:500;color:var(--board-muted)}
+.phrase-local{font-family:var(--body);font-size:30px;font-weight:600;line-height:1.3;color:var(--board-gold);overflow-wrap:anywhere}
+.phrase-en{font-size:16px;color:var(--board-ink)}
+.taxi-close{background:transparent;color:var(--board-ink);border-color:var(--board-line);min-height:48px;margin-top:6px}
+.incl-d{padding:12px 16px}
+.incl-d > summary{cursor:pointer;font-size:13.5px;font-weight:600;color:var(--muted)}
+.countries{display:flex;flex-direction:column;gap:10px}
+.country{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--c);border-radius:6px 14px 14px 6px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.country.cz{--c:var(--cz)} .country.at{--c:var(--at)} .country.hu{--c:var(--hu)}
+.country h3{font-size:15px;font-weight:600;color:var(--c);display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 8px}
+.country .where{font-size:12px;color:var(--muted);font-weight:500}
+.incl{padding:4px 0 0}
+.incl li{display:flex;gap:10px;padding:10px 0;font-size:14px}
+.incl li + li{border-top:1px solid var(--line)}
+.incl .ic{flex:none;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:600;margin-top:1px}
+.incl .ic.y{background:var(--ok-soft);color:var(--ok)}
+.incl .ic.n{background:var(--warn-soft);color:var(--warn)}
+.incl small{display:block;color:var(--muted);font-size:12.5px}
+.source{font-size:12px;color:var(--muted)}
+
+/* ---------- 준비 ---------- */
+.tl{display:flex;flex-direction:column;padding:2px 16px}
+.tl-step{display:flex;flex-direction:column;gap:6px;padding:14px 0}
+.tl-step + .tl-step{border-top:1px solid var(--line)}
+.tl-when{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.tl-when .mono{font-size:18px;color:var(--wine)}
+.tl-when span:last-child{font-size:12px;color:var(--muted)}
+.tl-body{min-width:0;display:flex;flex-direction:column}
+.tl-body h3{font-size:15px;font-weight:600;margin-bottom:2px}
+.ck label{display:flex;gap:12px;align-items:flex-start;padding:8px 0;cursor:pointer;font-size:14px;min-height:40px}
+.ck input{margin-top:2px;width:20px;height:20px;accent-color:var(--wine);flex:none}
+.ck input:focus-visible{outline:2px solid var(--wine);outline-offset:2px}
+.ck input:checked + span{color:var(--muted);text-decoration:line-through}
+.ck small{display:block;color:var(--muted);font-size:12.5px;text-decoration:none}
+.pack{display:flex;flex-direction:column;gap:10px}
+.pack-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 16px;min-width:0}
+.pack-card h3{font-size:14px;font-weight:600;color:var(--wine);margin-bottom:2px}
+.progress{font-family:var(--num);font-weight:600;font-size:17px;color:var(--muted)}
+.boxed{padding:2px 16px}
+.boxed li + li{border-top:1px solid var(--line)}
+.howto{padding:12px 16px}
+.howto summary{cursor:pointer;font-size:13.5px;font-weight:600;color:var(--muted)}
+.howto ol{list-style:decimal;padding-left:20px;display:flex;flex-direction:column;gap:4px;font-size:13.5px;margin-top:8px}
+.howto a{color:var(--wine)}
+.howto .small{font-size:12.5px;color:var(--muted);margin-top:8px}
+
+@media (prefers-reduced-motion: reduce){
+  .chev,.fixed-all details > summary::after,.bar b{transition:none}
+  .viewer .days.from-r,.viewer .days.from-l{animation:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <div>
+    <h1>또치와 똥글이의 신혼여행</h1>
+    <p class="sub">프라하에서 부다페스트까지, 10박 12일</p>
+  </div>
+  <p class="dday mono" id="dday">D-33</p>
+</header>
+<p class="offline" id="offline" role="status" hidden>인터넷 연결이 없어요. 저장된 일정을 보여주고 있고, 길찾기는 연결되면 열려요.</p>
+
+<nav class="tabbar" aria-label="화면 전환">
+  <div role="tablist" aria-label="신혼여행 화면">
+    <button type="button" role="tab" id="tab-today" aria-controls="panel-today" aria-selected="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg>
+      오늘
+    </button>
+    <button type="button" role="tab" id="tab-plan" aria-controls="panel-plan" aria-selected="false" tabindex="-1">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4M7.5 13.5h3M7.5 16.5h6"/></svg>
+      일정
+    </button>
+    <button type="button" role="tab" id="tab-info" aria-controls="panel-info" aria-selected="false" tabindex="-1">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/></svg>
+      정보
+    </button>
+    <button type="button" role="tab" id="tab-prep" aria-controls="panel-prep" aria-selected="false" tabindex="-1">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="3"/><path d="M8 12.5l2.8 2.8L16.5 9"/></svg>
+      준비
+    </button>
+  </div>
+</nav>
+
+<main>
+
+<!-- ============ 오늘 ============ -->
+<div class="panel" role="tabpanel" id="panel-today" aria-labelledby="tab-today" tabindex="0">
+  <section class="pre board" id="todayPre" aria-labelledby="preTitle" hidden>
+    <div class="pre-top">
+      <div><h2 id="preTitle" class="board-label">출발까지</h2><p class="board-big" id="ddayBig">D-33</p></div>
+      <button type="button" class="btn" data-goto="tab-prep">준비 탭 열기</button>
+    </div>
+    <ul class="stats">
+      <li><span class="stat-n" id="prepCount">0 / 0</span><span class="stat-l">준비 체크</span><span class="bar" aria-hidden="true"><b></b></span></li>
+      <li><span class="stat-n" id="askCount">0 / 0</span><span class="stat-l">여행사 답변</span><span class="bar" aria-hidden="true"><b></b></span></li>
+      <li><span class="stat-n" id="bookCount">0 / 0</span><span class="stat-l">예약</span><span class="bar" aria-hidden="true"><b></b></span></li>
+    </ul>
+  </section>
+
+  <section class="viewer" aria-labelledby="viewerLabel">
+    <div class="daystrip" id="dayStrip" role="group" aria-label="날짜 선택"></div>
+    <div class="viewer-bar">
+      <button type="button" class="btn icon-btn" id="prevDay" aria-label="이전 날"><span aria-hidden="true">‹</span></button>
+      <div class="viewer-title">
+        <span class="eyebrow" id="viewerKind">오늘</span>
+        <h2 id="viewerLabel">DAY 1 · 12/21 월</h2>
+      </div>
+      <button type="button" class="btn icon-btn" id="nextDay" aria-label="다음 날"><span aria-hidden="true">›</span></button>
+    </div>
+    <p class="sr-only" aria-live="polite" id="viewerLive"></p>
+    <button type="button" class="btn" id="backToday" hidden>오늘 일정으로</button>
+    <section class="next board" id="nextFixed" aria-labelledby="nextTitle" hidden>
+      <div class="board-head"><h2 class="board-label" id="nextTitle">다음 일정</h2><p class="next-when" id="nextWhen"></p></div>
+      <ul class="fixed" id="nextBody"></ul>
+    </section>
+    <ol class="days" id="viewerBody"></ol>
+  </section>
+</div>
+
+<!-- ============ 일정 ============ -->
+<div class="panel" role="tabpanel" id="panel-plan" aria-labelledby="tab-plan" tabindex="0" hidden>
+  <section class="sec" aria-labelledby="planTitle">
+    <h2 id="planTitle" class="sr-only">전체 일정</h2>
+    <p class="hint">날짜를 누르면 펼쳐져요. 길찾기 버튼은 구글맵으로 열리고, 열차·셔틀 구간은 경로 참고용이에요.</p>
+  </section>
+
+<!-- DAYS -->
+<section class="sec fixed-all" aria-labelledby="fixedAllTitle"><details class="card"><summary><span class="fa-head"><h2 id="fixedAllTitle">꼭 지킬 일정</h2><span class="fa-count"><span class="pill ok">확정 3</span><span class="pill tbd">미정 13</span><span class="pill book">예약 필요 <span data-book-count>5</span></span></span></span></summary><p class="hint">숙소·교통·투어·예약처럼 시간을 꼭 지켜야 하는 것만 모았어요. 투어는 늦으면 환불이 안 되니 미팅 10분 전에 도착하세요.</p><ol class="fa-days"><li class="fa-day cz"><h3><a href="#d1221"><span class="mono">12/21</span> 월 <span class="fa-n">DAY 1</span></a></h3><ul class="fixed" aria-label="꼭 지킬 것"><li class="fx s-tbd"><span class="fx-time">시간 미정</span><div class="fx-main"><p class="fx-label"><span class="fx-kind k-move">교통</span>프라하 공항 도착</p><p class="fx-note">편명·도착 시간을 바우처 후 추가</p></div><div class="fx-side"><span class="pill tbd">미정</span><a class="fx-map" href="https://www.google.com/maps/search/?api=1&amp;query=V%C3%A1clav%20Havel%20Airport%20Prague" target="_blank" rel="noopener">지도 <span aria-hidden="true">↗</span></a></div></li><li class="fx s-tbd"><span class="fx-time">도착 후</span><div class="fx-main"><p class="fx-label"><span class="fx-kind k-tour">투어</span>공항 픽업 (한인 기사)</p><p class="fx-note">입국 지연 시 기사 대기 여부 확인 중</p></div><div class="fx-side"><span class="pill tbd">미정</span><a class="fx-map" href="https://www.google.com/maps/dir/?api=1&amp;origin=V%C3%A1clav%20Havel%20Airport%20Prague&amp;destination=Hotel%20Adria%20Prague%2C%20V%C3%A1clavsk%C3%A9%20n%C3%A1m%C4%9Bst%C3%AD%2026%2C%20110%2000%20Praha%201&amp;travelmode=driving" target="_blank" rel="noopener">길찾기 <span aria-hidden="true">↗</span></a></div></li><li class="fx s-tbd"><span class="fx-time">체크인</span><div class="fx-main"><p class="fx-label"><span class="fx-kind k-stay">숙소</span>Hotel Adria</p><p class="fx-note">예상 호텔, 바우처로 확정</p></div><div class="fx-side"><span class="pill tbd">미정</span><a class="fx-map" href="https://www.google.com/maps/search/?api=1&amp;query=Hotel%20Adria%20Prague%2C%20V%C3%A1clavsk%C3%A9%20n%C3%A1m%C4%9Bst%C3%AD%2026%2C%20110%2000%20Praha%201" target="_blank" rel="noopener">지도 <span aria-hidden="true">↗</span></a><a class="fx-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Hotel%20Adria%20Prague%2C%20V%C3%A1clavsk%C3%A9%20n%C3%A1m%C4%9Bst%C3%AD%2026%2C%20110%2000%20Praha%201&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 Hotel Adria까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg>여기서 가기</a></div></li></ul></li><li class="fa-day cz"><h3><a href="#d1222"><span class="mono">12/22</span> 화 <span class="fa-n">DAY 2</span></a></h3><ul class="fixed" aria-label="꼭 지킬 것"><li class="fx s-tbd"><span class="fx-time">시간 미정</span><div class="fx-main"><p class="fx-label"><span class="fx-kind k-tour">투어</span>프라하 전일 시내투어</p><p class="fx-note">미팅 시간·장소를 바우처로 확인 · 늦으면 환불 안 돼요</p></div><div class="fx-side"><span class="pill tbd">미정</span></div></li></ul></li><li class="fa-day cz"><h3><a href="#d1223"><span class="mono">12/23</span> 수 <span class="fa-n">DAY 3</span></a></h3><ul class="fixed" aria-label="꼭 지킬 것"><li class="fx s-book"><span class="fx-time">저녁</span><div class="fx-main"><p class="fx-label"><span class="fx-kind k-book">예약</span>테라사 우 즐라테 스투드녜 디너</p><p class="fx-note">전망 디너, 예약 필수 · 안 되면 Lokál Dlouhá</p></div><div class="fx-side"><span class="pill book">예약 필요</span><a class="fx-map" href="https://www.google.com/maps/search/?api=1&amp;query=Terasa%20U%20Zlat%C3%A9%20studn%C4%9B%2C%20U%20Zlat%C3%A9%20studn%C4%9B%204%2C%20Praha%201" target="_blank" rel="noopener">지도 <span aria-hidden="true">↗</span></a><a class="fx-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Terasa%20U%20Zlat%C3%A9%20studn%C4%9B%2C%20U%20Zlat%C3%A9%20studn%C4%9B%204%2C%20Praha%201&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 테라사 우 즐라테 스투드녜까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg>여기서 가기</a><label class="fx-check"><input type="checkbox" data-check="r-terasa"><span>예약함</span></label></div></li></ul></li><li class="fa-day cz"><h3><a href="#d1224"><span class="mono">12/24</span> 목 <span class="fa-n">DAY 4</span></a></h3><ul class="fixed" aria-label="꼭 지킬 것"><li class="fx s-tbd"><span class="fx-time">시간 미정</span><div class="fx-main"><p class="fx-label"><span class="fx-kind k-tour">투어</span>체스키크룸로프 차량투어 (프라하 출발)</p><p class="fx-note">미팅 시간 · 짐을 Oldinn까지 옮겨주는지 확인 · 늦으면 환불 안 돼요</p></div><div class="fx-side"><span class="pill tbd">미정</span><a class="fx-map" href="https://www.google.com/maps/dir/?api=1&amp;origin=Hotel%20Adria%20Prague%2C%20V%C3%A1clavsk%C3%A9%20n%C3%A1m%C4%9Bst%C3%AD%2026%2C%20110%2000%20Praha%201&amp;destination=Hotel%20Oldinn%2C%20n%C3%A1m%C4%9Bst%C3%AD%20Svornosti%2012%2C%20381%2001%20%C4%8Cesk%C3%BD%20Krumlov&amp;travelmode=driving" target="_blank" rel="noopener">길찾기 <span aria-hidden="true">↗</span></a></div></li><li class="fx s-tbd"><span class="fx-time">체크인</span><div class="fx-main"><p class="fx-label"><span class="fx-kind k-stay">숙소</span>Hotel Oldinn</p><p class="fx-note">픽스 요청, 바우처로 확정</p></div><div class="fx-side"><span class="pill tbd">미정</span><a class="fx-map" href="https://www.google.com/maps/search/?api=1&amp;query=Hotel%20Oldinn%2C%20n%C3%A1m%C4%9Bst%C3%AD%20Svornosti%2012%2C%20381%2001%20%C4%8Cesk%C3%BD%20Krumlov" target="_blank" rel="noopener">지도 <span aria-hidden="true">↗</span></a><a class="fx-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Hotel%20Oldinn%2C%20n%C3%A1m%C4%9Bst%C3%AD%20Svornosti%2012%2C%20381%2001%20%C4%8Cesk%C3%BD%20Krumlov&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 Hotel Oldinn까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg>여기서 가기</a></div></li><li class="fx s-book"><span class="fx-time">저녁</span><div class="fx-main"><p class="fx-label"><span class="fx-kind k-book">예약</span>Oldinn 레스토랑 이브 디너</p><p class="fx-note">이브라 다른 식당은 일찍 닫아요</p></div><div class="fx-side"><span class="pill book">예약 필요</span><a class="fx-map" href="https://www.google.com/maps/search/?api=1&amp;query=Hotel%20Oldinn%2C%20n%C3%A1m%C4%9Bst%C3%AD%20Svornosti%2012%2C%20381%2001%20%C4%8Cesk%C3%BD%20Krumlov" target="_blank" rel="noopener">지도 <span aria-hidden="true">↗</span></a><a class="fx-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Hotel%20Oldinn%2C%20n%C3%A1m%C4%9Bst%C3%AD%20Svornosti%2012%2C%20381%2001%20%C4%8Cesk%C3%BD%20Krumlov&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 Hotel Oldinn까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg>여기서 가기</a><label class="fx-check"><input type="checkbox" data-check="r-oldinn"><span>예약함</span></label></div></li></ul></li><li class="fa-day at"><h3><a href="#d1225"><span class="mono">12/25</span> 금 <span class="fa-n">DAY 5</span></a></h3><ul class="fixed" aria-label="꼭 지킬 것"><li class="fx s-tbd" data-at="2026-12-25T09:20"><span class="fx-time mono">09:20</span><div class="fx-main"><p class="fx-label"><span class="fx-kind k-move">교통</span>셔틀 체스키 → 잘츠부르크 중앙역</p><p class="fx-note">탑승: 관광안내소 앞 (같은 광장) · 성탄절 운행 확정 대기</p></div><div class="fx-side"><span class="pill tbd">미정</span><a class="fx-map" href="https://www.google.com/maps/dir/?api=1&amp;origin=Hotel%20Oldinn%2C%20n%C3%A1m%C4%9Bst%C3%AD%20Svornosti%2012%2C%20381%2001%20%C4%8Cesk%C3%BD%20Krumlov&amp;destination=n%C3%A1m%C4%9Bst%C3%AD%20Svornosti%202%2C%20381%2001%20%C4%8Cesk%C3%BD%20Krumlov&amp;travelmode=walking" target="_blank" rel="noopener">길찾기 <span aria-hidden="true">↗</span></a><a class="fx-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=n%C3%A1m%C4%9Bst%C3%AD%20Svornosti%202%2C%20381%2001%20%C4%8Cesk%C3%BD%20Krumlov&amp;travelmode=walking" target="_blank" rel="noopener" aria-label="내 위치에서 셔틀 탑승장까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg>여기서 가기</a></div></li><li class="fx s-tbd" data-at="2026-12-25T18:00"><span class="fx-time mono">18:00~19:30</span><div class="fx-main"><p class="fx-label"><span class="fx-kind k-move">교통</span>잘츠부르크 → 비엔나 열차</p><p class="fx-note">정확한 시간은 티켓으로 · 서역 도착편 요청 중</p></div><div class="fx-side"><span class="pill tbd">미정</span><a class="fx-map" href="https://www.google.com/maps/dir/?api=1&amp;origin=Salzburg%20Hauptbahnhof%2C%20S%C3%BCdtiroler%20Platz%201%2C%205020%20Salzburg&amp;destination=Wien%20Westbahnhof&amp;travelmode=transit" target="_blank" rel="noopener">길찾기 <span aria-hidden="true">↗</span></a><a class="fx-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Salzburg%20Hauptbahnhof%2C%20S%C3%BCdtiroler%20Platz%201%2C%205020%20Salzburg&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 잘츠부르크 중앙역까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg>여기서 가기</a></div></li><li class="fx s-ok"><span class="fx-time">도착 후</span><div class="fx-main"><p class="fx-label"><span class="fx-kind k-stay">숙소</span>Leonardo Westbahnhof</p><p class="fx-note">서역에서 도보 2분</p></div><div class="fx-side"><span class="pill ok">확정</span><a class="fx-map" href="https://www.google.com/maps/search/?api=1&amp;query=Leonardo%20Hotel%20Vienna%20Westbahnhof%2C%20Wien" target="_blank" rel="noopener">지도 <span aria-hidden="true">↗</span></a><a class="fx-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Leonardo%20Hotel%20Vienna%20Westbahnhof%2C%20Wien&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 Leonardo Hotel Westbahnhof까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg>여기서 가기</a></div></li></ul></li><li class="fa-day at"><h3><a href="#d1226"><span class="mono">12/26</span> 토 <span class="fa-n">DAY 6</span></a></h3><ul class="fixed" aria-label="꼭 지킬 것"><li class="fx s-tbd"><span class="fx-time">시간 미정</span><div class="fx-main"><p class="fx-label"><span class="fx-kind k-tour">투어</span>비엔나 시내 가이드투어 (쇤부른 포함)</p><p class="fx-note">미팅 시간·장소를 바우처로 확인 · 늦으면 환불 안 돼요</p></div><div class="fx-side"><span class="pill tbd">미정</span><a class="fx-map" href="https://www.google.com/maps/search/?api=1&amp;query=Stephansdom%2C%20Stephansplatz%203%2C%201010%20Wien" target="_blank" rel="noopener">지도 <span aria-hidden="true">↗</span></a><a class="fx-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Stephansdom%2C%20Stephansplatz%203%2C%201010%20Wien&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 슈테판 대성당까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg>여기서 가기</a></div></li></ul></li><li class="fa-day at"><h3><a href="#d1227"><span class="mono">12/27</span> 일 <span class="fa-n">DAY 7</span></a></h3><ul class="fixed" aria-label="꼭 지킬 것"><li class="fx s-book"><span class="fx-time">저녁</span><div class="fx-main"><p class="fx-label"><span class="fx-kind k-book">예약</span>피글뮐러 슈니첼 디너</p><p class="fx-note">안 되면 플라후타 (타펠슈피츠)</p></div><div class="fx-side"><span class="pill book">예약 필요</span><a class="fx-map" href="https://www.google.com/maps/search/?api=1&amp;query=Figlm%C3%BCller%20Wollzeile%2C%20Wollzeile%205%2C%201010%20Wien" target="_blank" rel="noopener">지도 <span aria-hidden="true">↗</span></a><a class="fx-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Figlm%C3%BCller%20Wollzeile%2C%20Wollzeile%205%2C%201010%20Wien&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 피글뮐러까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg>여기서 가기</a><label class="fx-check"><input type="checkbox" data-check="r-figl"><span>예약함</span></label></div></li></ul></li><li class="fa-day at"><h3><a href="#d1228"><span class="mono">12/28</span> 월 <span class="fa-n">DAY 8</span></a></h3><ul class="fixed" aria-label="꼭 지킬 것"><li class="fx s-ok"><span class="fx-time">체크아웃</span><div class="fx-main"><p class="fx-label"><span class="fx-kind k-stay">숙소</span>Leonardo 체크아웃, 짐 맡기기</p><p class="fx-note">레이트 체크아웃 30유로 · 짐 보관 가능 여부 확인</p></div><div class="fx-side"><span class="pill ok">확정</span><a class="fx-map" href="https://www.google.com/maps/search/?api=1&amp;query=Leonardo%20Hotel%20Vienna%20Westbahnhof%2C%20Wien" target="_blank" rel="noopener">지도 <span aria-hidden="true">↗</span></a><a class="fx-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Leonardo%20Hotel%20Vienna%20Westbahnhof%2C%20Wien&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 Leonardo Hotel Westbahnhof까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg>여기서 가기</a></div></li><li class="fx s-tbd" data-at="2026-12-28T19:40"><span class="fx-time mono">19:40~20:40</span><div class="fx-main"><p class="fx-label"><span class="fx-kind k-move">교통</span>비엔나 → 부다페스트 열차</p><p class="fx-note">출발역·시간은 티켓으로 (중앙역 예상)</p></div><div class="fx-side"><span class="pill tbd">미정</span><a class="fx-map" href="https://www.google.com/maps/dir/?api=1&amp;origin=Wien%20Hauptbahnhof&amp;destination=Budapest-Keleti%20p%C3%A1lyaudvar%2C%20Kerepesi%20%C3%BAt%202-6%2C%201087%20Budapest&amp;travelmode=transit" target="_blank" rel="noopener">길찾기 <span aria-hidden="true">↗</span></a><a class="fx-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Wien%20Hauptbahnhof&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 비엔나 중앙역까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg>여기서 가기</a></div></li></ul></li><li class="fa-day hu"><h3><a href="#d1228b"><span class="mono">12/28</span> 밤 도착 <span class="fa-n">DAY 8</span></a></h3><ul class="fixed" aria-label="꼭 지킬 것"><li class="fx s-tbd" data-at="2026-12-28T22:20"><span class="fx-time mono">22:20~23:20</span><div class="fx-main"><p class="fx-label"><span class="fx-kind k-stay">숙소</span>Hotel Nemzeti 체크인</p><p class="fx-note">예상 호텔 · 늦은 도착 미리 알리기</p></div><div class="fx-side"><span class="pill tbd">미정</span><a class="fx-map" href="https://www.google.com/maps/dir/?api=1&amp;origin=Budapest-Keleti%20p%C3%A1lyaudvar%2C%20Kerepesi%20%C3%BAt%202-6%2C%201087%20Budapest&amp;destination=Hotel%20Nemzeti%20Budapest%20MGallery%2C%20J%C3%B3zsef%20krt.%204%2C%201088%20Budapest&amp;travelmode=driving" target="_blank" rel="noopener">길찾기 <span aria-hidden="true">↗</span></a><a class="fx-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Hotel%20Nemzeti%20Budapest%20MGallery%2C%20J%C3%B3zsef%20krt.%204%2C%201088%20Budapest&amp;travelmode=driving" target="_blank" rel="noopener" aria-label="내 위치에서 Hotel Nemzeti MGallery까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg>여기서 가기</a></div></li></ul></li><li class="fa-day hu"><h3><a href="#d1229"><span class="mono">12/29</span> 화 <span class="fa-n">DAY 9</span></a></h3><ul class="fixed" aria-label="꼭 지킬 것"><li class="fx s-tbd"><span class="fx-time">일몰 무렵</span><div class="fx-main"><p class="fx-label"><span class="fx-kind k-tour">투어</span>야경 투어 스냅 (2시간)</p><p class="fx-note">미팅 장소·시간은 일몰 기준, 바우처 확인 · 스냅용 옷 · 늦으면 환불 안 돼요</p></div><div class="fx-side"><span class="pill tbd">미정</span><a class="fx-map" href="https://www.google.com/maps/search/?api=1&amp;query=Sz%C3%A9chenyi%20L%C3%A1nch%C3%ADd%2C%20Budapest" target="_blank" rel="noopener">지도 <span aria-hidden="true">↗</span></a><a class="fx-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Sz%C3%A9chenyi%20L%C3%A1nch%C3%ADd%2C%20Budapest&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 세체니 다리까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg>여기서 가기</a></div></li></ul></li><li class="fa-day hu"><h3><a href="#d1230"><span class="mono">12/30</span> 수 <span class="fa-n">DAY 10</span></a></h3><ul class="fixed" aria-label="꼭 지킬 것"><li class="fx s-book"><span class="fx-time">저녁</span><div class="fx-main"><p class="fx-label"><span class="fx-kind k-book">예약</span>뉴욕 카페</p><p class="fx-note">예약하면 줄 안 서요</p></div><div class="fx-side"><span class="pill book">예약 필요</span><a class="fx-map" href="https://www.google.com/maps/search/?api=1&amp;query=New%20York%20Caf%C3%A9%2C%20Erzs%C3%A9bet%20krt.%209-11%2C%201073%20Budapest" target="_blank" rel="noopener">지도 <span aria-hidden="true">↗</span></a><a class="fx-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=New%20York%20Caf%C3%A9%2C%20Erzs%C3%A9bet%20krt.%209-11%2C%201073%20Budapest&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 뉴욕 카페까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg>여기서 가기</a><label class="fx-check"><input type="checkbox" data-check="r-newyork"><span>예약함</span></label></div></li></ul></li><li class="fa-day hu"><h3><a href="#d1231"><span class="mono">12/31</span> 목 <span class="fa-n">DAY 11</span></a></h3><ul class="fixed" aria-label="꼭 지킬 것"><li class="fx s-ok"><span class="fx-time">오전</span><div class="fx-main"><p class="fx-label"><span class="fx-kind k-ticket">입장</span>세체니 온천 (패스트트랙 · 전용 탈의실)</p><p class="fx-note">연말 운영시간 확인 · 수영복·슬리퍼</p></div><div class="fx-side"><span class="pill ok">확정</span><a class="fx-map" href="https://www.google.com/maps/search/?api=1&amp;query=Sz%C3%A9chenyi%20gy%C3%B3gyf%C3%BCrd%C5%91%2C%20%C3%81llatkerti%20krt.%209-11%2C%201146%20Budapest" target="_blank" rel="noopener">지도 <span aria-hidden="true">↗</span></a><a class="fx-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Sz%C3%A9chenyi%20gy%C3%B3gyf%C3%BCrd%C5%91%2C%20%C3%81llatkerti%20krt.%209-11%2C%201146%20Budapest&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 세체니 온천까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg>여기서 가기</a></div></li><li class="fx s-book"><span class="fx-time">출발 3:30 전</span><div class="fx-main"><p class="fx-label"><span class="fx-kind k-book">예약</span>호텔 → 공항 이동</p><p class="fx-note">패키지 미포함 · 연말이라 미리 예약</p></div><div class="fx-side"><span class="pill book">예약 필요</span><a class="fx-map" href="https://www.google.com/maps/dir/?api=1&amp;origin=Hotel%20Nemzeti%20Budapest%20MGallery%2C%20J%C3%B3zsef%20krt.%204%2C%201088%20Budapest&amp;destination=Budapest%20Liszt%20Ferenc%20International%20Airport&amp;travelmode=driving" target="_blank" rel="noopener">길찾기 <span aria-hidden="true">↗</span></a><a class="fx-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Budapest%20Liszt%20Ferenc%20International%20Airport&amp;travelmode=driving" target="_blank" rel="noopener" aria-label="내 위치에서 부다페스트 공항까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg>여기서 가기</a><label class="fx-check"><input type="checkbox" data-check="r-airport"><span>예약함</span></label></div></li><li class="fx s-tbd"><span class="fx-time">시간 미정</span><div class="fx-main"><p class="fx-label"><span class="fx-kind k-move">교통</span>부다페스트 → 인천 항공</p><p class="fx-note">편명·출발 시간 바우처 후 추가</p></div><div class="fx-side"><span class="pill tbd">미정</span><a class="fx-map" href="https://www.google.com/maps/search/?api=1&amp;query=Budapest%20Liszt%20Ferenc%20International%20Airport" target="_blank" rel="noopener">지도 <span aria-hidden="true">↗</span></a></div></li></ul></li></ol></details></section>
+<section class="city cz" aria-labelledby="city-cz"><div class="city-head"><h2 id="city-cz">프라하 · 체스키크룸로프</h2><span class="nights">12/21 – 12/25 · 3박 + 1박 · 체코</span></div><ol class="days"><li><article class="day cz" id="d1221" data-date="2026-12-21"><details class="day-d"><summary class="day-sum"><span class="date" aria-hidden="true"><span class="n">DAY 1</span><span class="d">12/21</span><span class="w">월</span></span><span class="day-where">프라하</span><h3 class="title"><span class="sr-only">DAY 1 12/21 월, </span>인천 출발, 프라하 도착</h3><span class="day-meta">픽업 시간 미정 · 일몰 16:02</span><span class="chev" aria-hidden="true"></span></summary><div class="body"><p class="sun"><svg class="sun-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h18M6.5 18a5.5 5.5 0 0 1 11 0M12 6.5V9M5.4 9.9l1.7 1.7M18.6 9.9l-1.7 1.7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>일몰 <b class="mono">16:02</b><span class="sun-dusk"> · <span class="mono">16:41</span>까지 하늘이 밝아요</span></span><span class="sun-city">프라하</span></p><ul class="meals" aria-label="식사"><li class="">석식 자유</li></ul><section class="blk"><h4>꼭 지킬 것</h4><ul class="fixed" aria-label="꼭 지킬 것"><li class="fx s-tbd"><span class="fx-time">시간 미정</span><div class="fx-main"><p class="fx-label"><span class="fx-kind k-move">교통</span>프라하 공항 도착</p><p class="fx-note">편명·도착 시간을 바우처 후 추가</p></div><div class="fx-side"><span class="pill tbd">미정</span><a class="fx-map" href="https://www.google.com/maps/search/?api=1&amp;query=V%C3%A1clav%20Havel%20Airport%20Prague" target="_blank" rel="noopener">지도 <span aria-hidden="true">↗</span></a></div></li><li class="fx s-tbd"><span class="fx-time">도착 후</span><div class="fx-main"><p class="fx-label"><span class="fx-kind k-tour">투어</span>공항 픽업 (한인 기사)</p><p class="fx-note">입국 지연 시 기사 대기 여부 확인 중</p></div><div class="fx-side"><span class="pill tbd">미정</span><a class="fx-map" href="https://www.google.com/maps/dir/?api=1&amp;origin=V%C3%A1clav%20Havel%20Airport%20Prague&amp;destination=Hotel%20Adria%20Prague%2C%20V%C3%A1clavsk%C3%A9%20n%C3%A1m%C4%9Bst%C3%AD%2026%2C%20110%2000%20Praha%201&amp;travelmode=driving" target="_blank" rel="noopener">길찾기 <span aria-hidden="true">↗</span></a></div></li><li class="fx s-tbd"><span class="fx-time">체크인</span><div class="fx-main"><p class="fx-label"><span class="fx-kind k-stay">숙소</span>Hotel Adria</p><p class="fx-note">예상 호텔, 바우처로 확정</p></div><div class="fx-side"><span class="pill tbd">미정</span><a class="fx-map" href="https://www.google.com/maps/search/?api=1&amp;query=Hotel%20Adria%20Prague%2C%20V%C3%A1clavsk%C3%A9%20n%C3%A1m%C4%9Bst%C3%AD%2026%2C%20110%2000%20Praha%201" target="_blank" rel="noopener">지도 <span aria-hidden="true">↗</span></a><a class="fx-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Hotel%20Adria%20Prague%2C%20V%C3%A1clavsk%C3%A9%20n%C3%A1m%C4%9Bst%C3%AD%2026%2C%20110%2000%20Praha%201&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 Hotel Adria까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg>여기서 가기</a></div></li></ul></section><p class="note warn"><b>EES 첫 등록:</b> 입국 때 지문·얼굴 등록으로 줄이 길 수 있어요. 기사님께 늦어질 수 있다고 미리 알려두세요.</p><section class="blk"><h4>동선 · 길찾기</h4><ol class="routes"><li><a class="rt" href="https://www.google.com/maps/dir/?api=1&amp;origin=Hotel%20Adria%20Prague%2C%20V%C3%A1clavsk%C3%A9%20n%C3%A1m%C4%9Bst%C3%AD%2026%2C%20110%2000%20Praha%201&amp;destination=Starom%C4%9Bstsk%C3%A9%20n%C3%A1m%C4%9Bst%C3%AD%2C%20Praha&amp;travelmode=walking" target="_blank" rel="noopener"><span class="rl">호텔 → 구시가지 광장 크리스마스 마켓</span><span class="rm walking">도보</span><span class="ra" aria-hidden="true">↗</span></a><a class="rt-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Starom%C4%9Bstsk%C3%A9%20n%C3%A1m%C4%9Bst%C3%AD%2C%20Praha&amp;travelmode=walking" target="_blank" rel="noopener" aria-label="내 위치에서 구시가지 광장 크리스마스 마켓까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg><span aria-hidden="true">여기서</span></a></li></ol></section><p class="stay"><svg class="stay-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18V7M3 14h18v4M21 14v-2.5A2.5 2.5 0 0 0 18.5 9H11v5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7" cy="11" r="1.8" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span class="sl">오늘 밤</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Hotel%20Adria%20Prague%2C%20V%C3%A1clavsk%C3%A9%20n%C3%A1m%C4%9Bst%C3%AD%2026%2C%20110%2000%20Praha%201" target="_blank" rel="noopener">Hotel Adria</a><a class="stay-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Hotel%20Adria%20Prague%2C%20V%C3%A1clavsk%C3%A9%20n%C3%A1m%C4%9Bst%C3%AD%2026%2C%20110%2000%20Praha%201&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 Hotel Adria까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg>호텔로</a><button type="button" class="taxi-btn" data-taxi="adria">택시에 보여주기</button></p></div></details></article></li><li><article class="day cz" id="d1222" data-date="2026-12-22"><details class="day-d"><summary class="day-sum"><span class="date" aria-hidden="true"><span class="n">DAY 2</span><span class="d">12/22</span><span class="w">화</span></span><span class="day-where">프라하</span><h3 class="title"><span class="sr-only">DAY 2 12/22 화, </span>프라하 전일 시내투어 <span class="tag">포함</span></h3><span class="day-meta">투어 시간 미정 · 일몰 16:03</span><span class="chev" aria-hidden="true"></span></summary><div class="body"><p class="sun"><svg class="sun-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h18M6.5 18a5.5 5.5 0 0 1 11 0M12 6.5V9M5.4 9.9l1.7 1.7M18.6 9.9l-1.7 1.7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>일몰 <b class="mono">16:03</b><span class="sun-dusk"> · <span class="mono">16:41</span>까지 하늘이 밝아요</span></span><span class="sun-city">프라하</span></p><ul class="meals" aria-label="식사"><li class="">조식 호텔</li><li class="inc">중식 포함 · 체코식 (음료 1잔)</li><li class="">석식 자유</li></ul><section class="blk"><h4>꼭 지킬 것</h4><ul class="fixed" aria-label="꼭 지킬 것"><li class="fx s-tbd"><span class="fx-time">시간 미정</span><div class="fx-main"><p class="fx-label"><span class="fx-kind k-tour">투어</span>프라하 전일 시내투어</p><p class="fx-note">미팅 시간·장소를 바우처로 확인 · 늦으면 환불 안 돼요</p></div><div class="fx-side"><span class="pill tbd">미정</span></div></li></ul></section><ol class="flow" aria-label="투어 순서"><li>프라하성 내부·성비투스·구왕궁</li><li>황금소로</li><li>스트라호프 수도원</li><li>체코식 중식</li><li>까를교</li><li>구시가지 광장</li><li>천문시계탑 전망대</li><li>시민회관·화약탑</li><li>바츨라프 광장</li></ol><section class="blk"><h4>동선 · 길찾기</h4><ol class="routes"><li><a class="rt" href="https://www.google.com/maps/dir/?api=1&amp;origin=Prague%20Castle%2C%20Hrad%C4%8Dany%2C%20Praha&amp;destination=Wenceslas%20Square%2C%20Praha&amp;travelmode=walking&amp;waypoints=Charles%20Bridge%2C%20Praha%7CPrague%20Astronomical%20Clock%2C%20Starom%C4%9Bstsk%C3%A9%20n%C3%A1m.%201%2C%20Praha%7CPowder%20Tower%2C%20n%C3%A1m%C4%9Bst%C3%AD%20Republiky%205%2C%20Praha" target="_blank" rel="noopener"><span class="rl">프라하성 → 까를교 → 천문시계 → 화약탑 → 바츨라프 광장</span><span class="rm walking">도보</span><span class="ra" aria-hidden="true">↗</span></a><a class="rt-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Wenceslas%20Square%2C%20Praha&amp;travelmode=walking&amp;waypoints=Charles%20Bridge%2C%20Praha%7CPrague%20Astronomical%20Clock%2C%20Starom%C4%9Bstsk%C3%A9%20n%C3%A1m.%201%2C%20Praha%7CPowder%20Tower%2C%20n%C3%A1m%C4%9Bst%C3%AD%20Republiky%205%2C%20Praha" target="_blank" rel="noopener" aria-label="내 위치에서 바츨라프 광장까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg><span aria-hidden="true">여기서</span></a></li></ol></section><p class="stay"><svg class="stay-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18V7M3 14h18v4M21 14v-2.5A2.5 2.5 0 0 0 18.5 9H11v5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7" cy="11" r="1.8" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span class="sl">오늘 밤</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Hotel%20Adria%20Prague%2C%20V%C3%A1clavsk%C3%A9%20n%C3%A1m%C4%9Bst%C3%AD%2026%2C%20110%2000%20Praha%201" target="_blank" rel="noopener">Hotel Adria</a><a class="stay-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Hotel%20Adria%20Prague%2C%20V%C3%A1clavsk%C3%A9%20n%C3%A1m%C4%9Bst%C3%AD%2026%2C%20110%2000%20Praha%201&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 Hotel Adria까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg>호텔로</a><button type="button" class="taxi-btn" data-taxi="adria">택시에 보여주기</button></p><details class="more"><summary>메모</summary><div class="more-body"><p class="note tip">투어 동선은 가이드가 안내해요. 위 경로는 위치 감 잡기용이에요.</p><p class="note tip"><b>천문시계탑 전망대 입장권은 원하는 시간에 자유 입장</b>이에요. 해 지는 오후 4시 전후가 가장 예뻐요. 23일 일몰 때 써도 돼요.</p></div></details></div></details></article></li><li><article class="day cz" id="d1223" data-date="2026-12-23"><details class="day-d"><summary class="day-sum"><span class="date" aria-hidden="true"><span class="n">DAY 3</span><span class="d">12/23</span><span class="w">수</span></span><span class="day-where">프라하</span><h3 class="title"><span class="sr-only">DAY 3 12/23 수, </span>프라하 자유일정</h3><span class="day-meta">예약 1 · 일몰 16:03</span><span class="chev" aria-hidden="true"></span></summary><div class="body"><p class="sun"><svg class="sun-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h18M6.5 18a5.5 5.5 0 0 1 11 0M12 6.5V9M5.4 9.9l1.7 1.7M18.6 9.9l-1.7 1.7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>일몰 <b class="mono">16:03</b><span class="sun-dusk"> · <span class="mono">16:42</span>까지 하늘이 밝아요</span></span><span class="sun-city">프라하</span></p><ul class="meals" aria-label="식사"><li class="">조식 호텔</li><li class="">중식 자유 (&#x27;현지식&#x27; 표기 확인 중)</li><li class="bk">석식 예약 · 테라사</li></ul><section class="blk"><h4>꼭 지킬 것</h4><ul class="fixed" aria-label="꼭 지킬 것"><li class="fx s-book"><span class="fx-time">저녁</span><div class="fx-main"><p class="fx-label"><span class="fx-kind k-book">예약</span>테라사 우 즐라테 스투드녜 디너</p><p class="fx-note">전망 디너, 예약 필수 · 안 되면 Lokál Dlouhá</p></div><div class="fx-side"><span class="pill book">예약 필요</span><a class="fx-map" href="https://www.google.com/maps/search/?api=1&amp;query=Terasa%20U%20Zlat%C3%A9%20studn%C4%9B%2C%20U%20Zlat%C3%A9%20studn%C4%9B%204%2C%20Praha%201" target="_blank" rel="noopener">지도 <span aria-hidden="true">↗</span></a><a class="fx-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Terasa%20U%20Zlat%C3%A9%20studn%C4%9B%2C%20U%20Zlat%C3%A9%20studn%C4%9B%204%2C%20Praha%201&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 테라사 우 즐라테 스투드녜까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg>여기서 가기</a><label class="fx-check"><input type="checkbox" data-check="r-terasa"><span>예약함</span></label></div></li></ul></section><section class="blk"><h4>동선 · 길찾기</h4><ol class="routes"><li><a class="rt" href="https://www.google.com/maps/dir/?api=1&amp;origin=Hotel%20Adria%20Prague%2C%20V%C3%A1clavsk%C3%A9%20n%C3%A1m%C4%9Bst%C3%AD%2026%2C%20110%2000%20Praha%201&amp;destination=Vy%C5%A1ehrad%2C%20V%20Pevnosti%2C%20Praha%202&amp;travelmode=transit" target="_blank" rel="noopener"><span class="rl"><span class="rt-when">오전</span>호텔 → 비셰흐라드 (지하철 C선)</span><span class="rm transit">대중교통</span><span class="ra" aria-hidden="true">↗</span></a><a class="rt-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Vy%C5%A1ehrad%2C%20V%20Pevnosti%2C%20Praha%202&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 비셰흐라드까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg><span aria-hidden="true">여기서</span></a></li><li><a class="rt" href="https://www.google.com/maps/dir/?api=1&amp;origin=Vy%C5%A1ehrad%2C%20V%20Pevnosti%2C%20Praha%202&amp;destination=Caf%C3%A9%20Louvre%2C%20N%C3%A1rodn%C3%AD%2022%2C%20Praha%201&amp;travelmode=transit" target="_blank" rel="noopener"><span class="rl"><span class="rt-when">점심</span>비셰흐라드 → 카페 루브르</span><span class="rm transit">대중교통</span><span class="ra" aria-hidden="true">↗</span></a><a class="rt-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Caf%C3%A9%20Louvre%2C%20N%C3%A1rodn%C3%AD%2022%2C%20Praha%201&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 카페 루브르까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg><span aria-hidden="true">여기서</span></a></li><li><a class="rt" href="https://www.google.com/maps/dir/?api=1&amp;origin=Caf%C3%A9%20Louvre%2C%20N%C3%A1rodn%C3%AD%2022%2C%20Praha%201&amp;destination=Kampa%20Island%2C%20Praha&amp;travelmode=walking&amp;waypoints=National%20Theatre%2C%20N%C3%A1rodn%C3%AD%202%2C%20Praha" target="_blank" rel="noopener"><span class="rl"><span class="rt-when">오후</span>카페 루브르 → 국민극장 → 레기교 → 캄파 섬</span><span class="rm walking">도보</span><span class="ra" aria-hidden="true">↗</span></a><a class="rt-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Kampa%20Island%2C%20Praha&amp;travelmode=walking&amp;waypoints=National%20Theatre%2C%20N%C3%A1rodn%C3%AD%202%2C%20Praha" target="_blank" rel="noopener" aria-label="내 위치에서 캄파 섬까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg><span aria-hidden="true">여기서</span></a></li><li><a class="rt" href="https://www.google.com/maps/dir/?api=1&amp;origin=Kampa%20Island%2C%20Praha&amp;destination=Prague%20Astronomical%20Clock%2C%20Starom%C4%9Bstsk%C3%A9%20n%C3%A1m.%201%2C%20Praha&amp;travelmode=walking" target="_blank" rel="noopener"><span class="rl"><span class="rt-when">일몰</span>캄파 섬 → 천문시계탑 전망대</span><span class="rm walking">도보</span><span class="ra" aria-hidden="true">↗</span></a><a class="rt-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Prague%20Astronomical%20Clock%2C%20Starom%C4%9Bstsk%C3%A9%20n%C3%A1m.%201%2C%20Praha&amp;travelmode=walking" target="_blank" rel="noopener" aria-label="내 위치에서 천문시계탑 전망대까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg><span aria-hidden="true">여기서</span></a></li><li><a class="rt" href="https://www.google.com/maps/dir/?api=1&amp;origin=Prague%20Astronomical%20Clock%2C%20Starom%C4%9Bstsk%C3%A9%20n%C3%A1m.%201%2C%20Praha&amp;destination=Terasa%20U%20Zlat%C3%A9%20studn%C4%9B%2C%20U%20Zlat%C3%A9%20studn%C4%9B%204%2C%20Praha%201&amp;travelmode=walking" target="_blank" rel="noopener"><span class="rl"><span class="rt-when">저녁</span>천문시계 → 테라사 우 즐라테 스투드녜</span><span class="rm walking">도보</span><span class="ra" aria-hidden="true">↗</span></a><a class="rt-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Terasa%20U%20Zlat%C3%A9%20studn%C4%9B%2C%20U%20Zlat%C3%A9%20studn%C4%9B%204%2C%20Praha%201&amp;travelmode=walking" target="_blank" rel="noopener" aria-label="내 위치에서 테라사 우 즐라테 스투드녜까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg><span aria-hidden="true">여기서</span></a></li><li><a class="rt" href="https://www.google.com/maps/dir/?api=1&amp;origin=Terasa%20U%20Zlat%C3%A9%20studn%C4%9B%2C%20U%20Zlat%C3%A9%20studn%C4%9B%204%2C%20Praha%201&amp;destination=Hotel%20Adria%20Prague%2C%20V%C3%A1clavsk%C3%A9%20n%C3%A1m%C4%9Bst%C3%AD%2026%2C%20110%2000%20Praha%201&amp;travelmode=transit" target="_blank" rel="noopener"><span class="rl"><span class="rt-when">귀가</span>레스토랑 → 호텔</span><span class="rm transit">대중교통</span><span class="ra" aria-hidden="true">↗</span></a><a class="rt-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Hotel%20Adria%20Prague%2C%20V%C3%A1clavsk%C3%A9%20n%C3%A1m%C4%9Bst%C3%AD%2026%2C%20110%2000%20Praha%201&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 Hotel Adria까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg><span aria-hidden="true">여기서</span></a></li></ol></section><p class="stay"><svg class="stay-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18V7M3 14h18v4M21 14v-2.5A2.5 2.5 0 0 0 18.5 9H11v5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7" cy="11" r="1.8" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span class="sl">오늘 밤</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Hotel%20Adria%20Prague%2C%20V%C3%A1clavsk%C3%A9%20n%C3%A1m%C4%9Bst%C3%AD%2026%2C%20110%2000%20Praha%201" target="_blank" rel="noopener">Hotel Adria</a><a class="stay-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Hotel%20Adria%20Prague%2C%20V%C3%A1clavsk%C3%A9%20n%C3%A1m%C4%9Bst%C3%AD%2026%2C%20110%2000%20Praha%201&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 Hotel Adria까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg>호텔로</a><button type="button" class="taxi-btn" data-taxi="adria">택시에 보여주기</button></p><details class="more"><summary>메모</summary><div class="more-body"><p class="note warn">일정표 중식 '현지식' 표기는 오기로 보여요. 포함 여부 확인이 필요해요.</p></div></details><details class="more recs"><summary>추천 더보기 6곳</summary><ul class="rec-list"><li><span class="rec-type">식당</span><div><a href="https://www.google.com/maps/search/?api=1&amp;query=Caf%C3%A9%20Savoy%2C%20V%C3%ADt%C4%9Bzn%C3%A1%20124%2F5%2C%20Praha%205" target="_blank" rel="noopener">카페 사보이</a><small>레기교 건너 바로, 아침·브런치</small></div></li><li><span class="rec-type">식당</span><div><a href="https://www.google.com/maps/search/?api=1&amp;query=Kav%C3%A1rna%20Slavia%2C%20Smetanovo%20n%C3%A1b%C5%99e%C5%BE%C3%AD%201012%2F2%2C%20Praha%201" target="_blank" rel="noopener">카바르나 슬라비아</a><small>국민극장 맞은편 강변 클래식 카페</small></div></li><li><span class="rec-type">명소</span><div><a href="https://www.google.com/maps/search/?api=1&amp;query=Tan%C4%8D%C3%ADc%C3%AD%20d%C5%AFm%2C%20Jir%C3%A1skovo%20n%C3%A1m%C4%9Bst%C3%AD%201981%2F6%2C%20Praha%202" target="_blank" rel="noopener">댄싱 하우스</a><small>국민극장에서 강변 따라 10분</small></div></li><li><span class="rec-type">명소</span><div><a href="https://www.google.com/maps/search/?api=1&amp;query=Klementinum%2C%20Praha%201" target="_blank" rel="noopener">클레멘티눔 바로크 도서관</a><small>가이드투어로만 입장, 연말 운영 확인</small></div></li><li><span class="rec-type">식당</span><div><a href="https://www.google.com/maps/search/?api=1&amp;query=U%20Flek%C5%AF%2C%20K%C5%99emencova%2011%2C%20Praha%201" target="_blank" rel="noopener">우 플레쿠</a><small>오래된 양조 맥주홀, 흑맥주</small></div></li><li><span class="rec-type">명소</span><div><a href="https://www.google.com/maps/search/?api=1&amp;query=Letensk%C3%A9%20sady%2C%20Praha%207" target="_blank" rel="noopener">레트나 공원 전망</a><small>블타바강 다리들이 한눈에</small></div></li></ul></details></div></details></article></li><li><article class="day cz" id="d1224" data-date="2026-12-24"><details class="day-d"><summary class="day-sum"><span class="date" aria-hidden="true"><span class="n">DAY 4</span><span class="d">12/24</span><span class="w">목 · 이브</span></span><span class="day-where">프라하 → 체스키크룸로프</span><h3 class="title"><span class="sr-only">DAY 4 12/24 목 · 이브, </span>체스키크룸로프 차량투어, 체스키 1박 <span class="tag">포함</span></h3><span class="day-meta">예약 1 · 투어 시간 미정 · 일몰 16:10</span><span class="chev" aria-hidden="true"></span></summary><div class="body"><p class="sun"><svg class="sun-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h18M6.5 18a5.5 5.5 0 0 1 11 0M12 6.5V9M5.4 9.9l1.7 1.7M18.6 9.9l-1.7 1.7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>일몰 <b class="mono">16:10</b><span class="sun-dusk"> · <span class="mono">16:47</span>까지 하늘이 밝아요</span></span><span class="sun-city">체스키크룸로프</span></p><ul class="meals" aria-label="식사"><li class="">조식 호텔</li><li class="inc">중식 포함 · 중세식 (음료 1잔)</li><li class="bk">석식 예약 · Oldinn</li></ul><section class="blk"><h4>꼭 지킬 것</h4><ul class="fixed" aria-label="꼭 지킬 것"><li class="fx s-tbd"><span class="fx-time">시간 미정</span><div class="fx-main"><p class="fx-label"><span class="fx-kind k-tour">투어</span>체스키크룸로프 차량투어 (프라하 출발)</p><p class="fx-note">미팅 시간 · 짐을 Oldinn까지 옮겨주는지 확인 · 늦으면 환불 안 돼요</p></div><div class="fx-side"><span class="pill tbd">미정</span><a class="fx-map" href="https://www.google.com/maps/dir/?api=1&amp;origin=Hotel%20Adria%20Prague%2C%20V%C3%A1clavsk%C3%A9%20n%C3%A1m%C4%9Bst%C3%AD%2026%2C%20110%2000%20Praha%201&amp;destination=Hotel%20Oldinn%2C%20n%C3%A1m%C4%9Bst%C3%AD%20Svornosti%2012%2C%20381%2001%20%C4%8Cesk%C3%BD%20Krumlov&amp;travelmode=driving" target="_blank" rel="noopener">길찾기 <span aria-hidden="true">↗</span></a></div></li><li class="fx s-tbd"><span class="fx-time">체크인</span><div class="fx-main"><p class="fx-label"><span class="fx-kind k-stay">숙소</span>Hotel Oldinn</p><p class="fx-note">픽스 요청, 바우처로 확정</p></div><div class="fx-side"><span class="pill tbd">미정</span><a class="fx-map" href="https://www.google.com/maps/search/?api=1&amp;query=Hotel%20Oldinn%2C%20n%C3%A1m%C4%9Bst%C3%AD%20Svornosti%2012%2C%20381%2001%20%C4%8Cesk%C3%BD%20Krumlov" target="_blank" rel="noopener">지도 <span aria-hidden="true">↗</span></a><a class="fx-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Hotel%20Oldinn%2C%20n%C3%A1m%C4%9Bst%C3%AD%20Svornosti%2012%2C%20381%2001%20%C4%8Cesk%C3%BD%20Krumlov&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 Hotel Oldinn까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg>여기서 가기</a></div></li><li class="fx s-book"><span class="fx-time">저녁</span><div class="fx-main"><p class="fx-label"><span class="fx-kind k-book">예약</span>Oldinn 레스토랑 이브 디너</p><p class="fx-note">이브라 다른 식당은 일찍 닫아요</p></div><div class="fx-side"><span class="pill book">예약 필요</span><a class="fx-map" href="https://www.google.com/maps/search/?api=1&amp;query=Hotel%20Oldinn%2C%20n%C3%A1m%C4%9Bst%C3%AD%20Svornosti%2012%2C%20381%2001%20%C4%8Cesk%C3%BD%20Krumlov" target="_blank" rel="noopener">지도 <span aria-hidden="true">↗</span></a><a class="fx-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Hotel%20Oldinn%2C%20n%C3%A1m%C4%9Bst%C3%AD%20Svornosti%2012%2C%20381%2001%20%C4%8Cesk%C3%BD%20Krumlov&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 Hotel Oldinn까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg>여기서 가기</a><label class="fx-check"><input type="checkbox" data-check="r-oldinn"><span>예약함</span></label></div></li></ul></section><ol class="flow" aria-label="투어 순서"><li>체스키크룸로프 성</li><li>이발사의 다리</li><li>에곤 쉴레 갤러리 (외관)</li><li>망토다리</li><li>스보르노스티 광장</li><li>세미나르니 정원</li><li>중세식 중식</li></ol><section class="blk"><h4>동선 · 길찾기</h4><ol class="routes"><li><a class="rt" href="https://www.google.com/maps/dir/?api=1&amp;origin=Hotel%20Oldinn%2C%20n%C3%A1m%C4%9Bst%C3%AD%20Svornosti%2012%2C%20381%2001%20%C4%8Cesk%C3%BD%20Krumlov&amp;destination=Hotel%20Oldinn%2C%20n%C3%A1m%C4%9Bst%C3%AD%20Svornosti%2012%2C%20381%2001%20%C4%8Cesk%C3%BD%20Krumlov&amp;travelmode=walking&amp;waypoints=%C4%8Cesk%C3%BD%20Krumlov%20Castle%2C%20Z%C3%A1mek%2059%2C%20%C4%8Cesk%C3%BD%20Krumlov%7CSemin%C3%A1rn%C3%AD%20zahrada%2C%20%C4%8Cesk%C3%BD%20Krumlov%7CLazebnick%C3%BD%20most%2C%20%C4%8Cesk%C3%BD%20Krumlov" target="_blank" rel="noopener"><span class="rl"><span class="rt-when">저녁 산책</span>호텔 → 성 → 세미나르니 정원 → 이발사의 다리 → 호텔</span><span class="rm walking">도보</span><span class="ra" aria-hidden="true">↗</span></a><a class="rt-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Hotel%20Oldinn%2C%20n%C3%A1m%C4%9Bst%C3%AD%20Svornosti%2012%2C%20381%2001%20%C4%8Cesk%C3%BD%20Krumlov&amp;travelmode=walking&amp;waypoints=%C4%8Cesk%C3%BD%20Krumlov%20Castle%2C%20Z%C3%A1mek%2059%2C%20%C4%8Cesk%C3%BD%20Krumlov%7CSemin%C3%A1rn%C3%AD%20zahrada%2C%20%C4%8Cesk%C3%BD%20Krumlov%7CLazebnick%C3%BD%20most%2C%20%C4%8Cesk%C3%BD%20Krumlov" target="_blank" rel="noopener" aria-label="내 위치에서 Hotel Oldinn까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg><span aria-hidden="true">여기서</span></a></li></ol></section><p class="stay"><svg class="stay-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18V7M3 14h18v4M21 14v-2.5A2.5 2.5 0 0 0 18.5 9H11v5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7" cy="11" r="1.8" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span class="sl">오늘 밤</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Hotel%20Oldinn%2C%20n%C3%A1m%C4%9Bst%C3%AD%20Svornosti%2012%2C%20381%2001%20%C4%8Cesk%C3%BD%20Krumlov" target="_blank" rel="noopener">Hotel Oldinn</a><a class="stay-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Hotel%20Oldinn%2C%20n%C3%A1m%C4%9Bst%C3%AD%20Svornosti%2012%2C%20381%2001%20%C4%8Cesk%C3%BD%20Krumlov&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 Hotel Oldinn까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg>호텔로</a><button type="button" class="taxi-btn" data-taxi="oldinn">택시에 보여주기</button></p><details class="more"><summary>메모</summary><div class="more-body"><p class="note warn"><b>성 내부·성탑은 12/24·25 휴관일 가능성이 높아요</b> (작년 기준). 투어는 성 외관·정원 위주일 수 있으니 여행사에 확인하세요.</p><p class="note tip"><b>관광객이 빠진 저녁 마을</b>을 둘이서 걸어보세요. 조명 켜진 성과 강변이 이번 여행에서 가장 조용한 밤이 될 거예요.</p></div></details></div></details></article></li></ol></section>
+<section class="city at" aria-labelledby="city-at"><div class="city-head"><h2 id="city-at">잘츠부르크 · 비엔나</h2><span class="nights">12/25 – 12/28 · 반나절 + 3박 · 오스트리아</span></div><ol class="days"><li><article class="day at" id="d1225" data-date="2026-12-25"><details class="day-d"><summary class="day-sum"><span class="date" aria-hidden="true"><span class="n">DAY 5</span><span class="d">12/25</span><span class="w">금 · 성탄</span></span><span class="day-where">체스키 → 잘츠부르크 → 비엔나</span><h3 class="title"><span class="sr-only">DAY 5 12/25 금 · 성탄, </span>체스키 → 잘츠부르크 반나절 → 비엔나</h3><span class="day-meta">09:20 셔틀 · 18:00 비엔나행 열차 · 일몰 16:20</span><span class="chev" aria-hidden="true"></span></summary><div class="body"><p class="sun"><svg class="sun-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h18M6.5 18a5.5 5.5 0 0 1 11 0M12 6.5V9M5.4 9.9l1.7 1.7M18.6 9.9l-1.7 1.7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>일몰 <b class="mono">16:20</b><span class="sun-dusk"> · <span class="mono">16:56</span>까지 하늘이 밝아요</span></span><span class="sun-city">잘츠부르크</span></p><ul class="meals" aria-label="식사"><li class="">조식 호텔</li><li class="">점심 돔 광장 마켓</li><li class="">저녁 잘츠부르크에서</li></ul><section class="blk"><h4>꼭 지킬 것</h4><ul class="fixed" aria-label="꼭 지킬 것"><li class="fx s-tbd" data-at="2026-12-25T09:20"><span class="fx-time mono">09:20</span><div class="fx-main"><p class="fx-label"><span class="fx-kind k-move">교통</span>셔틀 체스키 → 잘츠부르크 중앙역</p><p class="fx-note">탑승: 관광안내소 앞 (같은 광장) · 성탄절 운행 확정 대기</p></div><div class="fx-side"><span class="pill tbd">미정</span><a class="fx-map" href="https://www.google.com/maps/dir/?api=1&amp;origin=Hotel%20Oldinn%2C%20n%C3%A1m%C4%9Bst%C3%AD%20Svornosti%2012%2C%20381%2001%20%C4%8Cesk%C3%BD%20Krumlov&amp;destination=n%C3%A1m%C4%9Bst%C3%AD%20Svornosti%202%2C%20381%2001%20%C4%8Cesk%C3%BD%20Krumlov&amp;travelmode=walking" target="_blank" rel="noopener">길찾기 <span aria-hidden="true">↗</span></a><a class="fx-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=n%C3%A1m%C4%9Bst%C3%AD%20Svornosti%202%2C%20381%2001%20%C4%8Cesk%C3%BD%20Krumlov&amp;travelmode=walking" target="_blank" rel="noopener" aria-label="내 위치에서 셔틀 탑승장까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg>여기서 가기</a></div></li><li class="fx s-tbd" data-at="2026-12-25T18:00"><span class="fx-time mono">18:00~19:30</span><div class="fx-main"><p class="fx-label"><span class="fx-kind k-move">교통</span>잘츠부르크 → 비엔나 열차</p><p class="fx-note">정확한 시간은 티켓으로 · 서역 도착편 요청 중</p></div><div class="fx-side"><span class="pill tbd">미정</span><a class="fx-map" href="https://www.google.com/maps/dir/?api=1&amp;origin=Salzburg%20Hauptbahnhof%2C%20S%C3%BCdtiroler%20Platz%201%2C%205020%20Salzburg&amp;destination=Wien%20Westbahnhof&amp;travelmode=transit" target="_blank" rel="noopener">길찾기 <span aria-hidden="true">↗</span></a><a class="fx-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Salzburg%20Hauptbahnhof%2C%20S%C3%BCdtiroler%20Platz%201%2C%205020%20Salzburg&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 잘츠부르크 중앙역까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg>여기서 가기</a></div></li><li class="fx s-ok"><span class="fx-time">도착 후</span><div class="fx-main"><p class="fx-label"><span class="fx-kind k-stay">숙소</span>Leonardo Westbahnhof</p><p class="fx-note">서역에서 도보 2분</p></div><div class="fx-side"><span class="pill ok">확정</span><a class="fx-map" href="https://www.google.com/maps/search/?api=1&amp;query=Leonardo%20Hotel%20Vienna%20Westbahnhof%2C%20Wien" target="_blank" rel="noopener">지도 <span aria-hidden="true">↗</span></a><a class="fx-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Leonardo%20Hotel%20Vienna%20Westbahnhof%2C%20Wien&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 Leonardo Hotel Westbahnhof까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg>여기서 가기</a></div></li></ul></section><p class="note warn"><b>성탄절이라 비엔나 도착(21~22시) 후엔 문 연 식당이 거의 없어요.</b> 저녁은 잘츠부르크에서 해결하거나 마켓·역에서 사 가세요.</p><section class="blk"><h4>시간표</h4><ol class="sched"><li class="opt"><span class="mono">08:30</span><span>체스키 아침 산책 <span class="tag opt">선택</span></span></li><li><span class="mono">09:20</span><span>셔틀 탑승: 관광안내소 앞 (nám. Svornosti 2)</span></li><li><span class="mono">12:20</span><span>잘츠부르크 중앙역 하차, 락커 보관</span></li><li><span class="mono">12:40</span><span>미라벨 정원 → 마카르트 다리</span></li><li><span class="mono">13:10</span><span>돔 광장 크리스마스 마켓 점심 (25일 11~18시)</span></li><li><span class="mono">14:00</span><span>게트라이데 거리 → 대성당</span></li><li class="opt"><span class="mono">14:00</span><span>모차르트 생가 내부 (성탄 운영 미확인) <span class="tag opt">선택</span></span></li><li class="opt"><span class="mono">14:30</span><span>장크트 페터 수도원·묘지 <span class="tag opt">선택</span></span></li><li><span class="mono">15:00</span><span>푸니쿨라로 호헨잘츠부르크성, 일몰 16:20경</span></li><li class="opt"><span class="mono">16:30</span><span>마켓에서 간식·이른 저녁 / 논베르크 수도원은 선택 <span class="tag opt">선택</span></span></li><li><span class="mono">17:15</span><span>역 도착, 짐 찾기 (열차 45분 전)</span></li><li><span class="mono">18:00</span><span>비엔나행 열차 (18:00~19:30 사이, 발권 후 확정)</span></li></ol></section><section class="blk"><h4>동선 · 길찾기</h4><ol class="routes"><li><a class="rt" href="https://www.google.com/maps/dir/?api=1&amp;origin=n%C3%A1m%C4%9Bst%C3%AD%20Svornosti%202%2C%20381%2001%20%C4%8Cesk%C3%BD%20Krumlov&amp;destination=Salzburg%20Hauptbahnhof%2C%20S%C3%BCdtiroler%20Platz%201%2C%205020%20Salzburg&amp;travelmode=driving" target="_blank" rel="noopener"><span class="rl"><span class="rt-when">09:20</span>셔틀 체스키 → 잘츠부르크 중앙역 (도로 경로 참고)</span><span class="rm driving">차량</span><span class="ra" aria-hidden="true">↗</span></a><a class="rt-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=n%C3%A1m%C4%9Bst%C3%AD%20Svornosti%202%2C%20381%2001%20%C4%8Cesk%C3%BD%20Krumlov&amp;travelmode=walking" target="_blank" rel="noopener" aria-label="내 위치에서 셔틀 탑승장까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg><span aria-hidden="true">여기서</span></a></li><li><a class="rt" href="https://www.google.com/maps/dir/?api=1&amp;origin=Salzburg%20Hauptbahnhof%2C%20S%C3%BCdtiroler%20Platz%201%2C%205020%20Salzburg&amp;destination=Domplatz%2C%205020%20Salzburg&amp;travelmode=walking&amp;waypoints=Mirabellgarten%2C%20Mirabellplatz%2C%205020%20Salzburg%7CMakartsteg%2C%20Salzburg" target="_blank" rel="noopener"><span class="rl"><span class="rt-when">12:40</span>중앙역 → 미라벨 → 마카르트 다리 → 돔 광장</span><span class="rm walking">도보</span><span class="ra" aria-hidden="true">↗</span></a><a class="rt-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Domplatz%2C%205020%20Salzburg&amp;travelmode=walking&amp;waypoints=Mirabellgarten%2C%20Mirabellplatz%2C%205020%20Salzburg%7CMakartsteg%2C%20Salzburg" target="_blank" rel="noopener" aria-label="내 위치에서 돔 광장 크리스마스 마켓까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg><span aria-hidden="true">여기서</span></a></li><li><a class="rt" href="https://www.google.com/maps/dir/?api=1&amp;origin=Domplatz%2C%205020%20Salzburg&amp;destination=FestungsBahn%2C%20Festungsgasse%204%2C%205020%20Salzburg&amp;travelmode=walking&amp;waypoints=Mozarts%20Geburtshaus%2C%20Getreidegasse%209%2C%205020%20Salzburg%7CSalzburger%20Dom%2C%20Domplatz%201a%2C%205020%20Salzburg" target="_blank" rel="noopener"><span class="rl"><span class="rt-when">14:00</span>돔 광장 → 게트라이데 거리 → 대성당 → 성 푸니쿨라</span><span class="rm walking">도보</span><span class="ra" aria-hidden="true">↗</span></a><a class="rt-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=FestungsBahn%2C%20Festungsgasse%204%2C%205020%20Salzburg&amp;travelmode=walking&amp;waypoints=Mozarts%20Geburtshaus%2C%20Getreidegasse%209%2C%205020%20Salzburg%7CSalzburger%20Dom%2C%20Domplatz%201a%2C%205020%20Salzburg" target="_blank" rel="noopener" aria-label="내 위치에서 성 푸니쿨라 승강장까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg><span aria-hidden="true">여기서</span></a></li><li><a class="rt" href="https://www.google.com/maps/dir/?api=1&amp;origin=Festung%20Hohensalzburg%2C%20M%C3%B6nchsberg%2034%2C%205020%20Salzburg&amp;destination=Salzburg%20Hauptbahnhof%2C%20S%C3%BCdtiroler%20Platz%201%2C%205020%20Salzburg&amp;travelmode=transit" target="_blank" rel="noopener"><span class="rl"><span class="rt-when">16:30</span>성 → 중앙역 (버스 · 추우면 택시)</span><span class="rm transit">대중교통</span><span class="ra" aria-hidden="true">↗</span></a><a class="rt-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Salzburg%20Hauptbahnhof%2C%20S%C3%BCdtiroler%20Platz%201%2C%205020%20Salzburg&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 잘츠부르크 중앙역까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg><span aria-hidden="true">여기서</span></a></li><li><a class="rt" href="https://www.google.com/maps/dir/?api=1&amp;origin=Salzburg%20Hauptbahnhof%2C%20S%C3%BCdtiroler%20Platz%201%2C%205020%20Salzburg&amp;destination=Wien%20Westbahnhof&amp;travelmode=transit" target="_blank" rel="noopener"><span class="rl"><span class="rt-when">18:00</span>잘츠부르크 → 비엔나 열차</span><span class="rm train">열차</span><span class="ra" aria-hidden="true">↗</span></a><a class="rt-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Salzburg%20Hauptbahnhof%2C%20S%C3%BCdtiroler%20Platz%201%2C%205020%20Salzburg&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 잘츠부르크 중앙역까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg><span aria-hidden="true">여기서</span></a></li><li><a class="rt" href="https://www.google.com/maps/dir/?api=1&amp;origin=Wien%20Westbahnhof&amp;destination=Leonardo%20Hotel%20Vienna%20Westbahnhof%2C%20Wien&amp;travelmode=walking" target="_blank" rel="noopener"><span class="rl"><span class="rt-when">도착</span>서역 → 호텔</span><span class="rm walking">도보</span><span class="ra" aria-hidden="true">↗</span></a><a class="rt-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Leonardo%20Hotel%20Vienna%20Westbahnhof%2C%20Wien&amp;travelmode=walking" target="_blank" rel="noopener" aria-label="내 위치에서 Leonardo Hotel Westbahnhof까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg><span aria-hidden="true">여기서</span></a></li></ol></section><p class="stay"><svg class="stay-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18V7M3 14h18v4M21 14v-2.5A2.5 2.5 0 0 0 18.5 9H11v5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7" cy="11" r="1.8" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span class="sl">오늘 밤</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Leonardo%20Hotel%20Vienna%20Westbahnhof%2C%20Wien" target="_blank" rel="noopener">Leonardo Hotel Westbahnhof</a><a class="stay-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Leonardo%20Hotel%20Vienna%20Westbahnhof%2C%20Wien&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 Leonardo Hotel Westbahnhof까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg>호텔로</a><button type="button" class="taxi-btn" data-taxi="leonardo">택시에 보여주기</button></p><details class="more"><summary>메모</summary><div class="more-body"><p class="note tip"><b>빠듯하면 줄일 순서:</b> 논베르크 → 장크트 페터 → 모차르트 생가 내부. 미라벨·구시가지·성 일몰 세 가지만 지켜도 충분해요.</p><p class="note tip"><b>셔틀이 13시 넘어 도착하면</b> 미라벨을 건너뛰고 바로 구시가지로 가세요. <b>열차가 19:30이면</b> 1시간 여유가 생기니 장크트 페터 슈티프츠쿨리나리움에서 이른 저녁(예약)도 가능해요.</p><p class="note tip">시티패스 없이 성(€16.5, 푸니쿨라 포함)과 모차르트 생가(€13, 선택)만 현장 구매. 성이 휴관이면 묀히스베르크 엘리베이터로 바꾸세요.</p></div></details></div></details></article></li><li><article class="day at" id="d1226" data-date="2026-12-26"><details class="day-d"><summary class="day-sum"><span class="date" aria-hidden="true"><span class="n">DAY 6</span><span class="d">12/26</span><span class="w">토 · 공휴일</span></span><span class="day-where">비엔나</span><h3 class="title"><span class="sr-only">DAY 6 12/26 토 · 공휴일, </span>비엔나 시내 가이드투어 <span class="tag">포함</span></h3><span class="day-meta">투어 시간 미정 · 일몰 16:06</span><span class="chev" aria-hidden="true"></span></summary><div class="body"><p class="sun"><svg class="sun-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h18M6.5 18a5.5 5.5 0 0 1 11 0M12 6.5V9M5.4 9.9l1.7 1.7M18.6 9.9l-1.7 1.7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>일몰 <b class="mono">16:06</b><span class="sun-dusk"> · <span class="mono">16:42</span>까지 하늘이 밝아요</span></span><span class="sun-city">비엔나</span></p><ul class="meals" aria-label="식사"><li class="">조식 호텔</li><li class="inc">소시지·비엔나 커피 시음 포함</li><li class="">석식 자유</li></ul><section class="blk"><h4>꼭 지킬 것</h4><ul class="fixed" aria-label="꼭 지킬 것"><li class="fx s-tbd"><span class="fx-time">시간 미정</span><div class="fx-main"><p class="fx-label"><span class="fx-kind k-tour">투어</span>비엔나 시내 가이드투어 (쇤부른 포함)</p><p class="fx-note">미팅 시간·장소를 바우처로 확인 · 늦으면 환불 안 돼요</p></div><div class="fx-side"><span class="pill tbd">미정</span><a class="fx-map" href="https://www.google.com/maps/search/?api=1&amp;query=Stephansdom%2C%20Stephansplatz%203%2C%201010%20Wien" target="_blank" rel="noopener">지도 <span aria-hidden="true">↗</span></a><a class="fx-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Stephansdom%2C%20Stephansplatz%203%2C%201010%20Wien&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 슈테판 대성당까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg>여기서 가기</a></div></li></ul></section><ol class="flow" aria-label="투어 순서"><li>슈테판 대성당</li><li>그라벤·성 페터 성당</li><li>미카엘 광장·콜마르크트</li><li>호프부르크 왕궁·영웅광장</li><li>국립오페라하우스</li><li>소시지·커피 시음</li><li>쇤부른 궁전 (40개 방, 패스트트랙)</li><li>글로리에떼 전망</li></ol><section class="blk"><h4>동선 · 길찾기</h4><ol class="routes"><li><a class="rt" href="https://www.google.com/maps/dir/?api=1&amp;origin=Leonardo%20Hotel%20Vienna%20Westbahnhof%2C%20Wien&amp;destination=Stephansdom%2C%20Stephansplatz%203%2C%201010%20Wien&amp;travelmode=transit" target="_blank" rel="noopener"><span class="rl">호텔 → 슈테판 대성당 (미팅 장소에 따라 변경)</span><span class="rm transit">대중교통</span><span class="ra" aria-hidden="true">↗</span></a><a class="rt-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Stephansdom%2C%20Stephansplatz%203%2C%201010%20Wien&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 슈테판 대성당까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg><span aria-hidden="true">여기서</span></a></li><li><a class="rt" href="https://www.google.com/maps/dir/?api=1&amp;origin=Schloss%20Sch%C3%B6nbrunn%2C%20Sch%C3%B6nbrunner%20Schlo%C3%9Fstra%C3%9Fe%2047%2C%201130%20Wien&amp;destination=Leonardo%20Hotel%20Vienna%20Westbahnhof%2C%20Wien&amp;travelmode=transit" target="_blank" rel="noopener"><span class="rl"><span class="rt-when">투어 후</span>쇤부른 → 호텔</span><span class="rm transit">대중교통</span><span class="ra" aria-hidden="true">↗</span></a><a class="rt-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Leonardo%20Hotel%20Vienna%20Westbahnhof%2C%20Wien&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 Leonardo Hotel Westbahnhof까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg><span aria-hidden="true">여기서</span></a></li></ol></section><p class="stay"><svg class="stay-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18V7M3 14h18v4M21 14v-2.5A2.5 2.5 0 0 0 18.5 9H11v5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7" cy="11" r="1.8" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span class="sl">오늘 밤</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Leonardo%20Hotel%20Vienna%20Westbahnhof%2C%20Wien" target="_blank" rel="noopener">Leonardo Hotel Westbahnhof</a><a class="stay-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Leonardo%20Hotel%20Vienna%20Westbahnhof%2C%20Wien&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 Leonardo Hotel Westbahnhof까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg>호텔로</a><button type="button" class="taxi-btn" data-taxi="leonardo">택시에 보여주기</button></p><details class="more"><summary>메모</summary><div class="more-body"><p class="note tip">투어가 쇤부른에서 끝나고 <b>오후는 자유시간</b>이에요. 궁전 앞 크리스마스 마켓(1/6까지)을 바로 구경하세요.</p></div></details></div></details></article></li><li><article class="day at" id="d1227" data-date="2026-12-27"><details class="day-d"><summary class="day-sum"><span class="date" aria-hidden="true"><span class="n">DAY 7</span><span class="d">12/27</span><span class="w">일</span></span><span class="day-where">비엔나</span><h3 class="title"><span class="sr-only">DAY 7 12/27 일, </span>비엔나 자유일정</h3><span class="day-meta">예약 1 · 일몰 16:06</span><span class="chev" aria-hidden="true"></span></summary><div class="body"><p class="sun"><svg class="sun-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h18M6.5 18a5.5 5.5 0 0 1 11 0M12 6.5V9M5.4 9.9l1.7 1.7M18.6 9.9l-1.7 1.7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>일몰 <b class="mono">16:06</b><span class="sun-dusk"> · <span class="mono">16:43</span>까지 하늘이 밝아요</span></span><span class="sun-city">비엔나</span></p><ul class="meals" aria-label="식사"><li class="">조식 호텔</li><li class="bk">석식 예약 · 피글뮐러</li></ul><section class="blk"><h4>꼭 지킬 것</h4><ul class="fixed" aria-label="꼭 지킬 것"><li class="fx s-book"><span class="fx-time">저녁</span><div class="fx-main"><p class="fx-label"><span class="fx-kind k-book">예약</span>피글뮐러 슈니첼 디너</p><p class="fx-note">안 되면 플라후타 (타펠슈피츠)</p></div><div class="fx-side"><span class="pill book">예약 필요</span><a class="fx-map" href="https://www.google.com/maps/search/?api=1&amp;query=Figlm%C3%BCller%20Wollzeile%2C%20Wollzeile%205%2C%201010%20Wien" target="_blank" rel="noopener">지도 <span aria-hidden="true">↗</span></a><a class="fx-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Figlm%C3%BCller%20Wollzeile%2C%20Wollzeile%205%2C%201010%20Wien&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 피글뮐러까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg>여기서 가기</a><label class="fx-check"><input type="checkbox" data-check="r-figl"><span>예약함</span></label></div></li></ul></section><p class="note warn">일요일이라 상점 대부분이 쉬어요. 미술관·카페 위주로 다니세요.</p><section class="blk"><h4>동선 · 길찾기</h4><ol class="routes"><li><a class="rt" href="https://www.google.com/maps/dir/?api=1&amp;origin=Leonardo%20Hotel%20Vienna%20Westbahnhof%2C%20Wien&amp;destination=Caf%C3%A9%20Sperl%2C%20Gumpendorfer%20Stra%C3%9Fe%2011%2C%201060%20Wien&amp;travelmode=transit" target="_blank" rel="noopener"><span class="rl"><span class="rt-when">10:00</span>호텔 → 카페 슈페를 (일요일 10시 오픈)</span><span class="rm transit">대중교통</span><span class="ra" aria-hidden="true">↗</span></a><a class="rt-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Caf%C3%A9%20Sperl%2C%20Gumpendorfer%20Stra%C3%9Fe%2011%2C%201060%20Wien&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 카페 슈페를까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg><span aria-hidden="true">여기서</span></a></li><li><a class="rt" href="https://www.google.com/maps/dir/?api=1&amp;origin=Caf%C3%A9%20Sperl%2C%20Gumpendorfer%20Stra%C3%9Fe%2011%2C%201060%20Wien&amp;destination=Oberes%20Belvedere%2C%20Prinz-Eugen-Stra%C3%9Fe%2027%2C%201030%20Wien&amp;travelmode=transit" target="_blank" rel="noopener"><span class="rl"><span class="rt-when">오전</span>카페 슈페를 → 벨베데레 궁전</span><span class="rm transit">대중교통</span><span class="ra" aria-hidden="true">↗</span></a><a class="rt-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Oberes%20Belvedere%2C%20Prinz-Eugen-Stra%C3%9Fe%2027%2C%201030%20Wien&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 벨베데레 궁전까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg><span aria-hidden="true">여기서</span></a></li><li><a class="rt" href="https://www.google.com/maps/dir/?api=1&amp;origin=Oberes%20Belvedere%2C%20Prinz-Eugen-Stra%C3%9Fe%2027%2C%201030%20Wien&amp;destination=Stephansdom%2C%20Stephansplatz%203%2C%201010%20Wien&amp;travelmode=transit" target="_blank" rel="noopener"><span class="rl"><span class="rt-when">오후</span>벨베데레 → 슈테판 대성당</span><span class="rm transit">대중교통</span><span class="ra" aria-hidden="true">↗</span></a><a class="rt-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Stephansdom%2C%20Stephansplatz%203%2C%201010%20Wien&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 슈테판 대성당까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg><span aria-hidden="true">여기서</span></a></li><li><a class="rt" href="https://www.google.com/maps/dir/?api=1&amp;origin=Stephansdom%2C%20Stephansplatz%203%2C%201010%20Wien&amp;destination=Figlm%C3%BCller%20Wollzeile%2C%20Wollzeile%205%2C%201010%20Wien&amp;travelmode=walking" target="_blank" rel="noopener"><span class="rl"><span class="rt-when">저녁</span>슈테판 대성당 → 피글뮐러</span><span class="rm walking">도보</span><span class="ra" aria-hidden="true">↗</span></a><a class="rt-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Figlm%C3%BCller%20Wollzeile%2C%20Wollzeile%205%2C%201010%20Wien&amp;travelmode=walking" target="_blank" rel="noopener" aria-label="내 위치에서 피글뮐러까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg><span aria-hidden="true">여기서</span></a></li><li><a class="rt" href="https://www.google.com/maps/dir/?api=1&amp;origin=Figlm%C3%BCller%20Wollzeile%2C%20Wollzeile%205%2C%201010%20Wien&amp;destination=Leonardo%20Hotel%20Vienna%20Westbahnhof%2C%20Wien&amp;travelmode=transit" target="_blank" rel="noopener"><span class="rl"><span class="rt-when">귀가</span>피글뮐러 → 호텔</span><span class="rm transit">대중교통</span><span class="ra" aria-hidden="true">↗</span></a><a class="rt-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Leonardo%20Hotel%20Vienna%20Westbahnhof%2C%20Wien&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 Leonardo Hotel Westbahnhof까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg><span aria-hidden="true">여기서</span></a></li></ol></section><p class="stay"><svg class="stay-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18V7M3 14h18v4M21 14v-2.5A2.5 2.5 0 0 0 18.5 9H11v5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7" cy="11" r="1.8" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span class="sl">오늘 밤</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Leonardo%20Hotel%20Vienna%20Westbahnhof%2C%20Wien" target="_blank" rel="noopener">Leonardo Hotel Westbahnhof</a><a class="stay-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Leonardo%20Hotel%20Vienna%20Westbahnhof%2C%20Wien&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 Leonardo Hotel Westbahnhof까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg>호텔로</a><button type="button" class="taxi-btn" data-taxi="leonardo">택시에 보여주기</button></p><details class="more recs"><summary>추천 더보기 6곳</summary><ul class="rec-list"><li><span class="rec-type">명소</span><div><a href="https://www.google.com/maps/search/?api=1&amp;query=Kunsthistorisches%20Museum%2C%20Maria-Theresien-Platz%2C%201010%20Wien" target="_blank" rel="noopener">빈 미술사 박물관</a><small>브뤼헐 방, 돔 아래 카페 · 월요일 휴관 확인</small></div></li><li><span class="rec-type">명소</span><div><a href="https://www.google.com/maps/search/?api=1&amp;query=Albertina%2C%20Albertinaplatz%201%2C%201010%20Wien" target="_blank" rel="noopener">알베르티나</a><small>모네~피카소, 오페라하우스 옆</small></div></li><li><span class="rec-type">명소</span><div><a href="https://www.google.com/maps/search/?api=1&amp;query=Sisi%20Museum%2C%20Hofburg%2C%20Michaelerkuppel%2C%201010%20Wien" target="_blank" rel="noopener">호프부르크 시시 박물관</a><small>황실 아파트, 일요일에도 운영</small></div></li><li><span class="rec-type">식당</span><div><a href="https://www.google.com/maps/search/?api=1&amp;query=Caf%C3%A9%20Central%2C%20Herrengasse%2014%2C%201010%20Wien" target="_blank" rel="noopener">카페 첸트랄</a><small>대표 카페, 아침 일찍 가면 줄 짧음</small></div></li><li><span class="rec-type">식당</span><div><a href="https://www.google.com/maps/search/?api=1&amp;query=Demel%2C%20Kohlmarkt%2014%2C%201010%20Wien" target="_blank" rel="noopener">데멜</a><small>황실 납품 제과점, 케이크</small></div></li><li><span class="rec-type">식당</span><div><a href="https://www.google.com/maps/search/?api=1&amp;query=Caf%C3%A9%20Sacher%20Wien%2C%20Philharmoniker%20Stra%C3%9Fe%204%2C%201010%20Wien" target="_blank" rel="noopener">카페 자허</a><small>원조 자허토르테</small></div></li></ul></details></div></details></article></li><li><article class="day at" id="d1228" data-date="2026-12-28"><details class="day-d"><summary class="day-sum"><span class="date" aria-hidden="true"><span class="n">DAY 8</span><span class="d">12/28</span><span class="w">월</span></span><span class="day-where">비엔나 → 부다페스트</span><h3 class="title"><span class="sr-only">DAY 8 12/28 월, </span>비엔나 자유시간 → 부다페스트</h3><span class="day-meta">19:40 부다행 열차 · 일몰 16:07</span><span class="chev" aria-hidden="true"></span></summary><div class="body"><p class="sun"><svg class="sun-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h18M6.5 18a5.5 5.5 0 0 1 11 0M12 6.5V9M5.4 9.9l1.7 1.7M18.6 9.9l-1.7 1.7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>일몰 <b class="mono">16:07</b><span class="sun-dusk"> · <span class="mono">16:44</span>까지 하늘이 밝아요</span></span><span class="sun-city">비엔나</span></p><ul class="meals" aria-label="식사"><li class="">조식 호텔</li><li class="">저녁은 열차 타기 전에</li></ul><section class="blk"><h4>꼭 지킬 것</h4><ul class="fixed" aria-label="꼭 지킬 것"><li class="fx s-ok"><span class="fx-time">체크아웃</span><div class="fx-main"><p class="fx-label"><span class="fx-kind k-stay">숙소</span>Leonardo 체크아웃, 짐 맡기기</p><p class="fx-note">레이트 체크아웃 30유로 · 짐 보관 가능 여부 확인</p></div><div class="fx-side"><span class="pill ok">확정</span><a class="fx-map" href="https://www.google.com/maps/search/?api=1&amp;query=Leonardo%20Hotel%20Vienna%20Westbahnhof%2C%20Wien" target="_blank" rel="noopener">지도 <span aria-hidden="true">↗</span></a><a class="fx-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Leonardo%20Hotel%20Vienna%20Westbahnhof%2C%20Wien&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 Leonardo Hotel Westbahnhof까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg>여기서 가기</a></div></li><li class="fx s-tbd" data-at="2026-12-28T19:40"><span class="fx-time mono">19:40~20:40</span><div class="fx-main"><p class="fx-label"><span class="fx-kind k-move">교통</span>비엔나 → 부다페스트 열차</p><p class="fx-note">출발역·시간은 티켓으로 (중앙역 예상)</p></div><div class="fx-side"><span class="pill tbd">미정</span><a class="fx-map" href="https://www.google.com/maps/dir/?api=1&amp;origin=Wien%20Hauptbahnhof&amp;destination=Budapest-Keleti%20p%C3%A1lyaudvar%2C%20Kerepesi%20%C3%BAt%202-6%2C%201087%20Budapest&amp;travelmode=transit" target="_blank" rel="noopener">길찾기 <span aria-hidden="true">↗</span></a><a class="fx-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Wien%20Hauptbahnhof&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 비엔나 중앙역까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg>여기서 가기</a></div></li></ul></section><section class="blk"><h4>동선 · 길찾기</h4><ol class="routes"><li><a class="rt" href="https://www.google.com/maps/dir/?api=1&amp;origin=Leonardo%20Hotel%20Vienna%20Westbahnhof%2C%20Wien&amp;destination=Naschmarkt%2C%201060%20Wien&amp;travelmode=transit" target="_blank" rel="noopener"><span class="rl"><span class="rt-when">오전</span>호텔 → 나슈마르크트</span><span class="rm transit">대중교통</span><span class="ra" aria-hidden="true">↗</span></a><a class="rt-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Naschmarkt%2C%201060%20Wien&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 나슈마르크트까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg><span aria-hidden="true">여기서</span></a></li><li><a class="rt" href="https://www.google.com/maps/dir/?api=1&amp;origin=Naschmarkt%2C%201060%20Wien&amp;destination=Wiener%20Riesenrad%2C%20Riesenradplatz%201%2C%201020%20Wien&amp;travelmode=transit" target="_blank" rel="noopener"><span class="rl"><span class="rt-when">오후</span>나슈마르크트 → 프라터 대관람차</span><span class="rm transit">대중교통</span><span class="ra" aria-hidden="true">↗</span></a><a class="rt-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Wiener%20Riesenrad%2C%20Riesenradplatz%201%2C%201020%20Wien&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 프라터 대관람차까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg><span aria-hidden="true">여기서</span></a></li><li><a class="rt" href="https://www.google.com/maps/dir/?api=1&amp;origin=Wiener%20Riesenrad%2C%20Riesenradplatz%201%2C%201020%20Wien&amp;destination=Leonardo%20Hotel%20Vienna%20Westbahnhof%2C%20Wien&amp;travelmode=transit" target="_blank" rel="noopener"><span class="rl"><span class="rt-when">짐 찾으러</span>프라터 → 호텔</span><span class="rm transit">대중교통</span><span class="ra" aria-hidden="true">↗</span></a><a class="rt-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Leonardo%20Hotel%20Vienna%20Westbahnhof%2C%20Wien&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 Leonardo Hotel Westbahnhof까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg><span aria-hidden="true">여기서</span></a></li><li><a class="rt" href="https://www.google.com/maps/dir/?api=1&amp;origin=Leonardo%20Hotel%20Vienna%20Westbahnhof%2C%20Wien&amp;destination=Wien%20Hauptbahnhof&amp;travelmode=driving" target="_blank" rel="noopener"><span class="rl"><span class="rt-when">저녁</span>호텔 → 비엔나 중앙역 (택시 추천)</span><span class="rm driving">차량</span><span class="ra" aria-hidden="true">↗</span></a><a class="rt-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Wien%20Hauptbahnhof&amp;travelmode=driving" target="_blank" rel="noopener" aria-label="내 위치에서 비엔나 중앙역까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg><span aria-hidden="true">여기서</span></a></li></ol></section><details class="more recs"><summary>추천 더보기 2곳</summary><ul class="rec-list"><li><span class="rec-type">명소</span><div><a href="https://www.google.com/maps/search/?api=1&amp;query=Karlskirche%2C%20Karlsplatz%2C%201040%20Wien" target="_blank" rel="noopener">카를 성당</a><small>나슈마르크트에서 도보 5분</small></div></li><li><span class="rec-type">식당</span><div><a href="https://www.google.com/maps/search/?api=1&amp;query=Caf%C3%A9%20Sacher%20Wien%2C%20Philharmoniker%20Stra%C3%9Fe%204%2C%201010%20Wien" target="_blank" rel="noopener">카페 자허</a><small>원조 자허토르테</small></div></li></ul></details></div></details></article></li></ol></section>
+<section class="city hu" aria-labelledby="city-hu"><div class="city-head"><h2 id="city-hu">부다페스트</h2><span class="nights">12/28 – 12/31 · 3박 · 헝가리</span></div><ol class="days"><li><article class="day hu" id="d1228b" data-date="2026-12-28"><details class="day-d"><summary class="day-sum"><span class="date" aria-hidden="true"><span class="n">DAY 8</span><span class="d">12/28</span><span class="w">밤 도착</span></span><span class="day-where">부다페스트</span><h3 class="title"><span class="sr-only">DAY 8 12/28 밤 도착, </span>부다페스트 도착</h3><span class="day-meta">22:20 호텔 도착</span><span class="chev" aria-hidden="true"></span></summary><div class="body"><section class="blk"><h4>꼭 지킬 것</h4><ul class="fixed" aria-label="꼭 지킬 것"><li class="fx s-tbd" data-at="2026-12-28T22:20"><span class="fx-time mono">22:20~23:20</span><div class="fx-main"><p class="fx-label"><span class="fx-kind k-stay">숙소</span>Hotel Nemzeti 체크인</p><p class="fx-note">예상 호텔 · 늦은 도착 미리 알리기</p></div><div class="fx-side"><span class="pill tbd">미정</span><a class="fx-map" href="https://www.google.com/maps/dir/?api=1&amp;origin=Budapest-Keleti%20p%C3%A1lyaudvar%2C%20Kerepesi%20%C3%BAt%202-6%2C%201087%20Budapest&amp;destination=Hotel%20Nemzeti%20Budapest%20MGallery%2C%20J%C3%B3zsef%20krt.%204%2C%201088%20Budapest&amp;travelmode=driving" target="_blank" rel="noopener">길찾기 <span aria-hidden="true">↗</span></a><a class="fx-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Hotel%20Nemzeti%20Budapest%20MGallery%2C%20J%C3%B3zsef%20krt.%204%2C%201088%20Budapest&amp;travelmode=driving" target="_blank" rel="noopener" aria-label="내 위치에서 Hotel Nemzeti MGallery까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg>여기서 가기</a></div></li></ul></section><section class="blk"><h4>동선 · 길찾기</h4><ol class="routes"><li><a class="rt" href="https://www.google.com/maps/dir/?api=1&amp;origin=Budapest-Keleti%20p%C3%A1lyaudvar%2C%20Kerepesi%20%C3%BAt%202-6%2C%201087%20Budapest&amp;destination=Hotel%20Nemzeti%20Budapest%20MGallery%2C%20J%C3%B3zsef%20krt.%204%2C%201088%20Budapest&amp;travelmode=driving" target="_blank" rel="noopener"><span class="rl">켈레티역 → 호텔 (택시·Bolt, 또는 M2 한 정거장)</span><span class="rm driving">차량</span><span class="ra" aria-hidden="true">↗</span></a><a class="rt-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Hotel%20Nemzeti%20Budapest%20MGallery%2C%20J%C3%B3zsef%20krt.%204%2C%201088%20Budapest&amp;travelmode=driving" target="_blank" rel="noopener" aria-label="내 위치에서 Hotel Nemzeti MGallery까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg><span aria-hidden="true">여기서</span></a></li></ol></section><p class="stay"><svg class="stay-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18V7M3 14h18v4M21 14v-2.5A2.5 2.5 0 0 0 18.5 9H11v5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7" cy="11" r="1.8" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span class="sl">오늘 밤</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Hotel%20Nemzeti%20Budapest%20MGallery%2C%20J%C3%B3zsef%20krt.%204%2C%201088%20Budapest" target="_blank" rel="noopener">Hotel Nemzeti MGallery</a><a class="stay-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Hotel%20Nemzeti%20Budapest%20MGallery%2C%20J%C3%B3zsef%20krt.%204%2C%201088%20Budapest&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 Hotel Nemzeti MGallery까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg>호텔로</a><button type="button" class="taxi-btn" data-taxi="nemzeti">택시에 보여주기</button></p></div></details></article></li><li><article class="day hu" id="d1229" data-date="2026-12-29"><details class="day-d"><summary class="day-sum"><span class="date" aria-hidden="true"><span class="n">DAY 9</span><span class="d">12/29</span><span class="w">화</span></span><span class="day-where">부다페스트</span><h3 class="title"><span class="sr-only">DAY 9 12/29 화, </span>낮엔 페스트 강변, 저녁 야경 스냅 <span class="tag">포함</span></h3><span class="day-meta">스냅 시간 미정 · 일몰 16:00</span><span class="chev" aria-hidden="true"></span></summary><div class="body"><p class="sun"><svg class="sun-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h18M6.5 18a5.5 5.5 0 0 1 11 0M12 6.5V9M5.4 9.9l1.7 1.7M18.6 9.9l-1.7 1.7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>일몰 <b class="mono">16:00</b><span class="sun-dusk"> · <span class="mono">16:36</span>까지 하늘이 밝아요</span></span><span class="sun-city">부다페스트</span></p><ul class="meals" aria-label="식사"><li class="">조식 호텔</li><li class="">점심 중앙시장 (추천)</li><li class="">석식 자유</li></ul><section class="blk"><h4>꼭 지킬 것</h4><ul class="fixed" aria-label="꼭 지킬 것"><li class="fx s-tbd"><span class="fx-time">일몰 무렵</span><div class="fx-main"><p class="fx-label"><span class="fx-kind k-tour">투어</span>야경 투어 스냅 (2시간)</p><p class="fx-note">미팅 장소·시간은 일몰 기준, 바우처 확인 · 스냅용 옷 · 늦으면 환불 안 돼요</p></div><div class="fx-side"><span class="pill tbd">미정</span><a class="fx-map" href="https://www.google.com/maps/search/?api=1&amp;query=Sz%C3%A9chenyi%20L%C3%A1nch%C3%ADd%2C%20Budapest" target="_blank" rel="noopener">지도 <span aria-hidden="true">↗</span></a><a class="fx-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Sz%C3%A9chenyi%20L%C3%A1nch%C3%ADd%2C%20Budapest&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 세체니 다리까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg>여기서 가기</a></div></li></ul></section><ol class="flow" aria-label="투어 순서"><li>세체니 다리 (부다성 배경)</li><li>국회의사당 맞은편</li><li>어부의 요새</li></ol><p class="note tip">전날 밤늦게 도착하니 오전은 느긋하게. 낮 코스는 <b>추천</b>이라 컨디션 따라 빼도 돼요.</p><section class="blk"><h4>동선 · 길찾기</h4><ol class="routes"><li><a class="rt" href="https://www.google.com/maps/dir/?api=1&amp;origin=Hotel%20Nemzeti%20Budapest%20MGallery%2C%20J%C3%B3zsef%20krt.%204%2C%201088%20Budapest&amp;destination=Great%20Market%20Hall%2C%20V%C3%A1mh%C3%A1z%20krt.%201-3%2C%201093%20Budapest&amp;travelmode=transit" target="_blank" rel="noopener"><span class="rl"><span class="rt-when">추천</span>점심 · 호텔 → 중앙시장 (랑고시)</span><span class="rm transit">대중교통</span><span class="ra" aria-hidden="true">↗</span></a><a class="rt-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Great%20Market%20Hall%2C%20V%C3%A1mh%C3%A1z%20krt.%201-3%2C%201093%20Budapest&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 중앙시장까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg><span aria-hidden="true">여기서</span></a></li><li><a class="rt" href="https://www.google.com/maps/dir/?api=1&amp;origin=Great%20Market%20Hall%2C%20V%C3%A1mh%C3%A1z%20krt.%201-3%2C%201093%20Budapest&amp;destination=Hungarian%20Parliament%20Building%2C%20Kossuth%20Lajos%20t%C3%A9r%201-3%2C%201055%20Budapest&amp;travelmode=transit" target="_blank" rel="noopener"><span class="rl"><span class="rt-when">추천</span>오후 · 중앙시장 → 국회의사당 (2번 트램 강변)</span><span class="rm transit">대중교통</span><span class="ra" aria-hidden="true">↗</span></a><a class="rt-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Hungarian%20Parliament%20Building%2C%20Kossuth%20Lajos%20t%C3%A9r%201-3%2C%201055%20Budapest&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 국회의사당 가이드투어까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg><span aria-hidden="true">여기서</span></a></li><li><a class="rt" href="https://www.google.com/maps/dir/?api=1&amp;origin=Hungarian%20Parliament%20Building%2C%20Kossuth%20Lajos%20t%C3%A9r%201-3%2C%201055%20Budapest&amp;destination=Shoes%20on%20the%20Danube%20Bank%2C%20Budapest&amp;travelmode=walking" target="_blank" rel="noopener"><span class="rl"><span class="rt-when">추천</span>국회의사당 → 신발 기념비</span><span class="rm walking">도보</span><span class="ra" aria-hidden="true">↗</span></a><a class="rt-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Shoes%20on%20the%20Danube%20Bank%2C%20Budapest&amp;travelmode=walking" target="_blank" rel="noopener" aria-label="내 위치에서 다뉴브 강변 신발 기념비까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg><span aria-hidden="true">여기서</span></a></li><li><a class="rt" href="https://www.google.com/maps/dir/?api=1&amp;origin=Hotel%20Nemzeti%20Budapest%20MGallery%2C%20J%C3%B3zsef%20krt.%204%2C%201088%20Budapest&amp;destination=Sz%C3%A9chenyi%20L%C3%A1nch%C3%ADd%2C%20Budapest&amp;travelmode=transit" target="_blank" rel="noopener"><span class="rl"><span class="rt-when">스냅</span>호텔 → 세체니 다리 (미팅 장소에 따라 변경)</span><span class="rm transit">대중교통</span><span class="ra" aria-hidden="true">↗</span></a><a class="rt-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Sz%C3%A9chenyi%20L%C3%A1nch%C3%ADd%2C%20Budapest&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 세체니 다리까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg><span aria-hidden="true">여기서</span></a></li><li><a class="rt" href="https://www.google.com/maps/dir/?api=1&amp;origin=Hal%C3%A1szb%C3%A1stya%2C%20Szenth%C3%A1roms%C3%A1g%20t%C3%A9r%2C%201014%20Budapest&amp;destination=Hotel%20Nemzeti%20Budapest%20MGallery%2C%20J%C3%B3zsef%20krt.%204%2C%201088%20Budapest&amp;travelmode=transit" target="_blank" rel="noopener"><span class="rl"><span class="rt-when">스냅 후</span>어부의 요새 → 호텔</span><span class="rm transit">대중교통</span><span class="ra" aria-hidden="true">↗</span></a><a class="rt-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Hotel%20Nemzeti%20Budapest%20MGallery%2C%20J%C3%B3zsef%20krt.%204%2C%201088%20Budapest&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 Hotel Nemzeti MGallery까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg><span aria-hidden="true">여기서</span></a></li></ol></section><p class="stay"><svg class="stay-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18V7M3 14h18v4M21 14v-2.5A2.5 2.5 0 0 0 18.5 9H11v5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7" cy="11" r="1.8" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span class="sl">오늘 밤</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Hotel%20Nemzeti%20Budapest%20MGallery%2C%20J%C3%B3zsef%20krt.%204%2C%201088%20Budapest" target="_blank" rel="noopener">Hotel Nemzeti MGallery</a><a class="stay-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Hotel%20Nemzeti%20Budapest%20MGallery%2C%20J%C3%B3zsef%20krt.%204%2C%201088%20Budapest&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 Hotel Nemzeti MGallery까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg>호텔로</a><button type="button" class="taxi-btn" data-taxi="nemzeti">택시에 보여주기</button></p><details class="more"><summary>메모</summary><div class="more-body"><p class="note tip">스냅은 <b>1차 보정 원본 200장 + 정밀 보정 2장</b>을 받아요. 음료·대중교통·입장료는 따로예요.</p></div></details><details class="more recs"><summary>추천 더보기 3곳</summary><ul class="rec-list"><li><span class="rec-type">식당</span><div><a href="https://www.google.com/maps/search/?api=1&amp;query=Great%20Market%20Hall%2C%20V%C3%A1mh%C3%A1z%20krt.%201-3%2C%201093%20Budapest" target="_blank" rel="noopener">중앙시장</a><small>2층 랑고시 점심, 일요일 휴무</small></div></li><li><span class="rec-type">명소</span><div><a href="https://www.google.com/maps/search/?api=1&amp;query=Hungarian%20Parliament%20Building%2C%20Kossuth%20Lajos%20t%C3%A9r%201-3%2C%201055%20Budapest" target="_blank" rel="noopener">국회의사당 가이드투어</a><small>온라인 예매 필수, 연말 운영 확인</small></div></li><li><span class="rec-type">명소</span><div><a href="https://www.google.com/maps/search/?api=1&amp;query=Shoes%20on%20the%20Danube%20Bank%2C%20Budapest" target="_blank" rel="noopener">다뉴브 강변 신발 기념비</a><small>국회의사당 남쪽 강변</small></div></li></ul></details></div></details></article></li><li><article class="day hu" id="d1230" data-date="2026-12-30"><details class="day-d"><summary class="day-sum"><span class="date" aria-hidden="true"><span class="n">DAY 10</span><span class="d">12/30</span><span class="w">수</span></span><span class="day-where">부다페스트</span><h3 class="title"><span class="sr-only">DAY 10 12/30 수, </span>부다페스트 자유일정</h3><span class="day-meta">예약 1 · 일몰 16:01</span><span class="chev" aria-hidden="true"></span></summary><div class="body"><p class="sun"><svg class="sun-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h18M6.5 18a5.5 5.5 0 0 1 11 0M12 6.5V9M5.4 9.9l1.7 1.7M18.6 9.9l-1.7 1.7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>일몰 <b class="mono">16:01</b><span class="sun-dusk"> · <span class="mono">16:37</span>까지 하늘이 밝아요</span></span><span class="sun-city">부다페스트</span></p><ul class="meals" aria-label="식사"><li class="">조식 호텔</li><li class="">점심 제르보 (마켓 바로 앞)</li><li class="bk">석식 예약 · 뉴욕 카페</li></ul><section class="blk"><h4>꼭 지킬 것</h4><ul class="fixed" aria-label="꼭 지킬 것"><li class="fx s-book"><span class="fx-time">저녁</span><div class="fx-main"><p class="fx-label"><span class="fx-kind k-book">예약</span>뉴욕 카페</p><p class="fx-note">예약하면 줄 안 서요</p></div><div class="fx-side"><span class="pill book">예약 필요</span><a class="fx-map" href="https://www.google.com/maps/search/?api=1&amp;query=New%20York%20Caf%C3%A9%2C%20Erzs%C3%A9bet%20krt.%209-11%2C%201073%20Budapest" target="_blank" rel="noopener">지도 <span aria-hidden="true">↗</span></a><a class="fx-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=New%20York%20Caf%C3%A9%2C%20Erzs%C3%A9bet%20krt.%209-11%2C%201073%20Budapest&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 뉴욕 카페까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg>여기서 가기</a><label class="fx-check"><input type="checkbox" data-check="r-newyork"><span>예약함</span></label></div></li></ul></section><section class="blk"><h4>동선 · 길찾기</h4><ol class="routes"><li><a class="rt" href="https://www.google.com/maps/dir/?api=1&amp;origin=Hotel%20Nemzeti%20Budapest%20MGallery%2C%20J%C3%B3zsef%20krt.%204%2C%201088%20Budapest&amp;destination=Budav%C3%A1ri%20Sikl%C3%B3%2C%20Clark%20%C3%81d%C3%A1m%20t%C3%A9r%2C%20Budapest&amp;travelmode=transit" target="_blank" rel="noopener"><span class="rl"><span class="rt-when">오전</span>호텔 → 부다성 푸니쿨라</span><span class="rm transit">대중교통</span><span class="ra" aria-hidden="true">↗</span></a><a class="rt-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Budav%C3%A1ri%20Sikl%C3%B3%2C%20Clark%20%C3%81d%C3%A1m%20t%C3%A9r%2C%20Budapest&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 부다성 푸니쿨라까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg><span aria-hidden="true">여기서</span></a></li><li><a class="rt" href="https://www.google.com/maps/dir/?api=1&amp;origin=Budav%C3%A1ri%20Sikl%C3%B3%2C%20Clark%20%C3%81d%C3%A1m%20t%C3%A9r%2C%20Budapest&amp;destination=Hal%C3%A1szb%C3%A1stya%2C%20Szenth%C3%A1roms%C3%A1g%20t%C3%A9r%2C%201014%20Budapest&amp;travelmode=walking&amp;waypoints=Matthias%20Church%2C%20Szenth%C3%A1roms%C3%A1g%20t%C3%A9r%202%2C%201014%20Budapest" target="_blank" rel="noopener"><span class="rl">부다성 → 마차시 성당 → 어부의 요새 (낮)</span><span class="rm walking">도보</span><span class="ra" aria-hidden="true">↗</span></a><a class="rt-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Hal%C3%A1szb%C3%A1stya%2C%20Szenth%C3%A1roms%C3%A1g%20t%C3%A9r%2C%201014%20Budapest&amp;travelmode=walking&amp;waypoints=Matthias%20Church%2C%20Szenth%C3%A1roms%C3%A1g%20t%C3%A9r%202%2C%201014%20Budapest" target="_blank" rel="noopener" aria-label="내 위치에서 어부의 요새까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg><span aria-hidden="true">여기서</span></a></li><li><a class="rt" href="https://www.google.com/maps/dir/?api=1&amp;origin=Hal%C3%A1szb%C3%A1stya%2C%20Szenth%C3%A1roms%C3%A1g%20t%C3%A9r%2C%201014%20Budapest&amp;destination=Gerbeaud%2C%20V%C3%B6r%C3%B6smarty%20t%C3%A9r%207-8%2C%201051%20Budapest&amp;travelmode=transit" target="_blank" rel="noopener"><span class="rl"><span class="rt-when">점심</span>어부의 요새 → 제르보 (강 건너 시내)</span><span class="rm transit">대중교통</span><span class="ra" aria-hidden="true">↗</span></a><a class="rt-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Gerbeaud%2C%20V%C3%B6r%C3%B6smarty%20t%C3%A9r%207-8%2C%201051%20Budapest&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 제르보까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg><span aria-hidden="true">여기서</span></a></li><li><a class="rt" href="https://www.google.com/maps/dir/?api=1&amp;origin=Gerbeaud%2C%20V%C3%B6r%C3%B6smarty%20t%C3%A9r%207-8%2C%201051%20Budapest&amp;destination=V%C3%B6r%C3%B6smarty%20t%C3%A9r%2C%20Budapest&amp;travelmode=walking" target="_blank" rel="noopener"><span class="rl"><span class="rt-when">오후</span>제르보 → 뵈뢰스마르티 마켓 (바로 앞 광장)</span><span class="rm walking">도보</span><span class="ra" aria-hidden="true">↗</span></a><a class="rt-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=V%C3%B6r%C3%B6smarty%20t%C3%A9r%2C%20Budapest&amp;travelmode=walking" target="_blank" rel="noopener" aria-label="내 위치에서 뵈뢰스마르티 광장 마켓까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg><span aria-hidden="true">여기서</span></a></li><li><a class="rt" href="https://www.google.com/maps/dir/?api=1&amp;origin=V%C3%B6r%C3%B6smarty%20t%C3%A9r%2C%20Budapest&amp;destination=Szent%20Istv%C3%A1n-bazilika%2C%20Szent%20Istv%C3%A1n%20t%C3%A9r%201%2C%201051%20Budapest&amp;travelmode=walking" target="_blank" rel="noopener"><span class="rl"><span class="rt-when">17:30</span>마켓 → 성 이슈트반 대성당 조명 쇼</span><span class="rm walking">도보</span><span class="ra" aria-hidden="true">↗</span></a><a class="rt-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Szent%20Istv%C3%A1n-bazilika%2C%20Szent%20Istv%C3%A1n%20t%C3%A9r%201%2C%201051%20Budapest&amp;travelmode=walking" target="_blank" rel="noopener" aria-label="내 위치에서 성 이슈트반 대성당까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg><span aria-hidden="true">여기서</span></a></li><li><a class="rt" href="https://www.google.com/maps/dir/?api=1&amp;origin=Szent%20Istv%C3%A1n-bazilika%2C%20Szent%20Istv%C3%A1n%20t%C3%A9r%201%2C%201051%20Budapest&amp;destination=New%20York%20Caf%C3%A9%2C%20Erzs%C3%A9bet%20krt.%209-11%2C%201073%20Budapest&amp;travelmode=transit" target="_blank" rel="noopener"><span class="rl"><span class="rt-when">저녁</span>대성당 → 뉴욕 카페</span><span class="rm transit">대중교통</span><span class="ra" aria-hidden="true">↗</span></a><a class="rt-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=New%20York%20Caf%C3%A9%2C%20Erzs%C3%A9bet%20krt.%209-11%2C%201073%20Budapest&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 뉴욕 카페까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg><span aria-hidden="true">여기서</span></a></li><li><a class="rt" href="https://www.google.com/maps/dir/?api=1&amp;origin=New%20York%20Caf%C3%A9%2C%20Erzs%C3%A9bet%20krt.%209-11%2C%201073%20Budapest&amp;destination=Hotel%20Nemzeti%20Budapest%20MGallery%2C%20J%C3%B3zsef%20krt.%204%2C%201088%20Budapest&amp;travelmode=walking" target="_blank" rel="noopener"><span class="rl"><span class="rt-when">귀가</span>뉴욕 카페 → 호텔</span><span class="rm walking">도보</span><span class="ra" aria-hidden="true">↗</span></a><a class="rt-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Hotel%20Nemzeti%20Budapest%20MGallery%2C%20J%C3%B3zsef%20krt.%204%2C%201088%20Budapest&amp;travelmode=walking" target="_blank" rel="noopener" aria-label="내 위치에서 Hotel Nemzeti MGallery까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg><span aria-hidden="true">여기서</span></a></li></ol></section><p class="stay"><svg class="stay-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18V7M3 14h18v4M21 14v-2.5A2.5 2.5 0 0 0 18.5 9H11v5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7" cy="11" r="1.8" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span class="sl">오늘 밤</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Hotel%20Nemzeti%20Budapest%20MGallery%2C%20J%C3%B3zsef%20krt.%204%2C%201088%20Budapest" target="_blank" rel="noopener">Hotel Nemzeti MGallery</a><a class="stay-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Hotel%20Nemzeti%20Budapest%20MGallery%2C%20J%C3%B3zsef%20krt.%204%2C%201088%20Budapest&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 Hotel Nemzeti MGallery까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg>호텔로</a><button type="button" class="taxi-btn" data-taxi="nemzeti">택시에 보여주기</button></p><details class="more"><summary>메모</summary><div class="more-body"><p class="note tip">점심을 시내 중심(제르보)으로 옮겨서 부다 언덕 → 시내 → 호텔 쪽으로 한 방향으로만 움직여요. 헝가리 전통 요리가 먹고 싶으면 호텔 근처 로젠슈타인을 다른 날 저녁 대안으로 두세요.</p></div></details><details class="more recs"><summary>추천 더보기 3곳</summary><ul class="rec-list"><li><span class="rec-type">식당</span><div><a href="https://www.google.com/maps/search/?api=1&amp;query=Rosenstein%20Vend%C3%A9gl%C5%91%2C%20Mosonyi%20u.%203%2C%201087%20Budapest" target="_blank" rel="noopener">로젠슈타인</a><small>헝가리 전통 요리, 호텔 근처라 저녁 대안</small></div></li><li><span class="rec-type">명소</span><div><a href="https://www.google.com/maps/search/?api=1&amp;query=Doh%C3%A1ny%20Street%20Synagogue%2C%20Doh%C3%A1ny%20u.%202%2C%201074%20Budapest" target="_blank" rel="noopener">도하니 거리 시나고그</a><small>토요일 휴관, 호텔에서 걸어갈 거리</small></div></li><li><span class="rec-type">식당</span><div><a href="https://www.google.com/maps/search/?api=1&amp;query=Szimpla%20Kert%2C%20Kazinczy%20u.%2014%2C%201075%20Budapest" target="_blank" rel="noopener">심플라 케르트</a><small>폐허 바, 저녁 한 잔</small></div></li></ul></details></div></details></article></li><li><article class="day hu" id="d1231" data-date="2026-12-31"><details class="day-d"><summary class="day-sum"><span class="date" aria-hidden="true"><span class="n">DAY 11</span><span class="d">12/31</span><span class="w">목</span></span><span class="day-where">부다페스트 → 인천</span><h3 class="title"><span class="sr-only">DAY 11 12/31 목, </span>세체니 온천 → 공항 <span class="tag">포함</span></h3><span class="day-meta">예약 1 · 일몰 16:02</span><span class="chev" aria-hidden="true"></span></summary><div class="body"><p class="sun"><svg class="sun-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h18M6.5 18a5.5 5.5 0 0 1 11 0M12 6.5V9M5.4 9.9l1.7 1.7M18.6 9.9l-1.7 1.7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>일몰 <b class="mono">16:02</b><span class="sun-dusk"> · <span class="mono">16:38</span>까지 하늘이 밝아요</span></span><span class="sun-city">부다페스트</span></p><ul class="meals" aria-label="식사"><li class="">조식 호텔</li></ul><section class="blk"><h4>꼭 지킬 것</h4><ul class="fixed" aria-label="꼭 지킬 것"><li class="fx s-ok"><span class="fx-time">오전</span><div class="fx-main"><p class="fx-label"><span class="fx-kind k-ticket">입장</span>세체니 온천 (패스트트랙 · 전용 탈의실)</p><p class="fx-note">연말 운영시간 확인 · 수영복·슬리퍼</p></div><div class="fx-side"><span class="pill ok">확정</span><a class="fx-map" href="https://www.google.com/maps/search/?api=1&amp;query=Sz%C3%A9chenyi%20gy%C3%B3gyf%C3%BCrd%C5%91%2C%20%C3%81llatkerti%20krt.%209-11%2C%201146%20Budapest" target="_blank" rel="noopener">지도 <span aria-hidden="true">↗</span></a><a class="fx-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Sz%C3%A9chenyi%20gy%C3%B3gyf%C3%BCrd%C5%91%2C%20%C3%81llatkerti%20krt.%209-11%2C%201146%20Budapest&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 세체니 온천까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg>여기서 가기</a></div></li><li class="fx s-book"><span class="fx-time">출발 3:30 전</span><div class="fx-main"><p class="fx-label"><span class="fx-kind k-book">예약</span>호텔 → 공항 이동</p><p class="fx-note">패키지 미포함 · 연말이라 미리 예약</p></div><div class="fx-side"><span class="pill book">예약 필요</span><a class="fx-map" href="https://www.google.com/maps/dir/?api=1&amp;origin=Hotel%20Nemzeti%20Budapest%20MGallery%2C%20J%C3%B3zsef%20krt.%204%2C%201088%20Budapest&amp;destination=Budapest%20Liszt%20Ferenc%20International%20Airport&amp;travelmode=driving" target="_blank" rel="noopener">길찾기 <span aria-hidden="true">↗</span></a><a class="fx-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Budapest%20Liszt%20Ferenc%20International%20Airport&amp;travelmode=driving" target="_blank" rel="noopener" aria-label="내 위치에서 부다페스트 공항까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg>여기서 가기</a><label class="fx-check"><input type="checkbox" data-check="r-airport"><span>예약함</span></label></div></li><li class="fx s-tbd"><span class="fx-time">시간 미정</span><div class="fx-main"><p class="fx-label"><span class="fx-kind k-move">교통</span>부다페스트 → 인천 항공</p><p class="fx-note">편명·출발 시간 바우처 후 추가</p></div><div class="fx-side"><span class="pill tbd">미정</span><a class="fx-map" href="https://www.google.com/maps/search/?api=1&amp;query=Budapest%20Liszt%20Ferenc%20International%20Airport" target="_blank" rel="noopener">지도 <span aria-hidden="true">↗</span></a></div></li></ul></section><p class="note warn"><b>출국에도 EES 등록</b>이 있고 연말이라 붐벼요. 항공 출발 <b>3시간 30분 전</b> 공항 도착을 목표로 온천 시간을 거꾸로 계산하세요.</p><section class="blk"><h4>동선 · 길찾기</h4><ol class="routes"><li><a class="rt" href="https://www.google.com/maps/dir/?api=1&amp;origin=Hotel%20Nemzeti%20Budapest%20MGallery%2C%20J%C3%B3zsef%20krt.%204%2C%201088%20Budapest&amp;destination=Sz%C3%A9chenyi%20gy%C3%B3gyf%C3%BCrd%C5%91%2C%20%C3%81llatkerti%20krt.%209-11%2C%201146%20Budapest&amp;travelmode=transit" target="_blank" rel="noopener"><span class="rl"><span class="rt-when">오전</span>호텔 → 세체니 온천</span><span class="rm transit">대중교통</span><span class="ra" aria-hidden="true">↗</span></a><a class="rt-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Sz%C3%A9chenyi%20gy%C3%B3gyf%C3%BCrd%C5%91%2C%20%C3%81llatkerti%20krt.%209-11%2C%201146%20Budapest&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 세체니 온천까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg><span aria-hidden="true">여기서</span></a></li><li><a class="rt" href="https://www.google.com/maps/dir/?api=1&amp;origin=Sz%C3%A9chenyi%20gy%C3%B3gyf%C3%BCrd%C5%91%2C%20%C3%81llatkerti%20krt.%209-11%2C%201146%20Budapest&amp;destination=Hotel%20Nemzeti%20Budapest%20MGallery%2C%20J%C3%B3zsef%20krt.%204%2C%201088%20Budapest&amp;travelmode=transit" target="_blank" rel="noopener"><span class="rl"><span class="rt-when">짐 찾으러</span>온천 → 호텔</span><span class="rm transit">대중교통</span><span class="ra" aria-hidden="true">↗</span></a><a class="rt-here" href="https://www.google.com/maps/dir/?api=1&amp;destination=Hotel%20Nemzeti%20Budapest%20MGallery%2C%20J%C3%B3zsef%20krt.%204%2C%201088%20Budapest&amp;travelmode=transit" target="_blank" rel="noopener" aria-label="내 위치에서 Hotel Nemzeti MGallery까지 길찾기"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="11" r="2.2" fill="currentColor"/></svg><span aria-hidden="true">여기서</span></a></li></ol></section><p class="stay"><svg class="stay-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18V7M3 14h18v4M21 14v-2.5A2.5 2.5 0 0 0 18.5 9H11v5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7" cy="11" r="1.8" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span class="sl">오늘 밤</span>기내 1박</p></div></details></article></li><li><article class="day hu" id="d11" data-date="2027-01-01"><div class="day-sum static"><span class="date" aria-hidden="true"><span class="n">DAY 12</span><span class="d">1/1</span><span class="w">금</span></span><span class="day-where">인천</span><h3 class="title"><span class="sr-only">DAY 12 1/1 금, </span>인천 도착</h3></div></article></li></ol></section>
+<!-- /DAYS -->
+</div>
+
+<!-- ============ 정보 ============ -->
+<div class="panel" role="tabpanel" id="panel-info" aria-labelledby="tab-info" tabindex="0" hidden>
+  <section class="sec" aria-labelledby="sosTitle">
+    <div class="sec-head"><h2 id="sosTitle">긴급 연락처</h2></div>
+    <ul class="contacts card">
+      <li><div><b>긴급 신고</b><small>경찰·구급·소방 · 체코·오스트리아·헝가리 공통</small></div><a class="call" href="tel:112">112</a></li>
+      <li><div><b>외교부 영사콜센터</b><small>24시간 · 한국어 · 여권 분실, 사건·사고</small></div><a class="call" href="tel:+82232100404">+82-2-3210-0404</a></li>
+      <li><div><b>여행사 현지 비상연락처</b><small>바우처에 적힌 번호를 여기에 추가</small></div><span class="todo-later">바우처 후</span></li>
+      <li><div><b>항공편 · 예약번호</b><small>출국·귀국 편명, 호텔 예약번호</small></div><span class="todo-later">바우처 후</span></li>
+    </ul>
+  </section>
+
+  <section class="sec" aria-labelledby="phraseTitle">
+    <div class="sec-head"><h2 id="phraseTitle">현지어 한마디</h2>
+      <p class="lead">누르면 크게 보여줘요. 직원에게 화면을 그대로 보여주세요. 한글 발음은 대략이라, 말이 안 통하면 화면을 보여주는 게 가장 정확해요.</p></div>
+    <div class="lang-switch" role="group" aria-label="언어">
+      <button type="button" class="lang-btn" data-lang="cs" aria-pressed="true">체코어</button>
+      <button type="button" class="lang-btn" data-lang="de" aria-pressed="false">독일어 <small>오스트리아</small></button>
+      <button type="button" class="lang-btn" data-lang="hu" aria-pressed="false">헝가리어</button>
+    </div>
+    <div class="phrases card" id="phraseList"></div>
+  </section>
+
+  <section class="sec" aria-labelledby="hotelTitle">
+    <div class="sec-head"><h2 id="hotelTitle">호텔 4곳</h2></div>
+    <ul class="hotels">
+      <li class="hotel cz">
+        <div class="top"><div><h3>Hotel Adria</h3><p class="where">프라하 · 바츨라프 광장 26 · 12/21–24 · 3박</p></div><span class="pill tbd">예상 · 바우처 확인</span></div>
+        <dl>
+          <dt>위치</dt><dd>바츨라프 광장 1분, 구시가지 광장 7분</dd>
+          <dt>교통</dt><dd>무제움 지하철역 도보 5분</dd>
+          <dt>팁</dt><dd>조용한 정원 쪽 객실 요청</dd>
+        </dl>
+        <p class="addr"><span lang="cs">Václavské náměstí 26, 110 00 Praha 1</span><button type="button" class="copy" data-copy="Václavské náměstí 26, 110 00 Praha 1">주소 복사</button></p>
+        <button type="button" class="taxi-btn big" data-taxi="adria">택시 기사에게 보여주기</button>
+        <a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=Hotel%20Adria%20Prague%2C%20V%C3%A1clavsk%C3%A9%20n%C3%A1m%C4%9Bst%C3%AD%2026%2C%20110%2000%20Praha%201" target="_blank" rel="noopener">구글맵에서 보기 ↗</a>
+      </li>
+      <li class="hotel cz">
+        <div class="top"><div><h3>Hotel Oldinn</h3><p class="where">체스키크룸로프 · 스보르노스티 광장 12 · 12/24 · 1박</p></div><span class="pill tbd">픽스 요청 · 바우처 확인</span></div>
+        <dl>
+          <dt>위치</dt><dd>마을 중앙 광장 정면, 성까지 도보 5분</dd>
+          <dt>교통</dt><dd>12/25 셔틀 탑승장이 같은 광장 2번지</dd>
+          <dt>팁</dt><dd>광장 전망·엘리베이터 되는 층 요청</dd>
+        </dl>
+        <p class="addr"><span lang="cs">náměstí Svornosti 12, 381 01 Český Krumlov</span><button type="button" class="copy" data-copy="náměstí Svornosti 12, 381 01 Český Krumlov">주소 복사</button></p>
+        <button type="button" class="taxi-btn big" data-taxi="oldinn">택시 기사에게 보여주기</button>
+        <a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=Hotel%20Oldinn%2C%20n%C3%A1m%C4%9Bst%C3%AD%20Svornosti%2012%2C%20381%2001%20%C4%8Cesk%C3%BD%20Krumlov" target="_blank" rel="noopener">구글맵에서 보기 ↗</a>
+      </li>
+      <li class="hotel at">
+        <div class="top"><div><h3>Leonardo Westbahnhof</h3><p class="where">비엔나 · 6구 마리아힐프 · 12/25–28 · 3박</p></div><span class="pill fix">지정 · 확정</span></div>
+        <dl>
+          <dt>위치</dt><dd>서역 200m, 마리아힐퍼 쇼핑가 옆</dd>
+          <dt>교통</dt><dd>U3·U6 도보 5분, 슈테판 대성당 약 10분</dd>
+          <dt>팁</dt><dd>얼리 체크인·레이트 체크아웃 30유로</dd>
+        </dl>
+        <p class="addr"><span>정확한 주소는 바우처로 확인</span><button type="button" class="copy" data-copy="Leonardo Hotel Vienna Westbahnhof">호텔명 복사</button></p>
+        <button type="button" class="taxi-btn big" data-taxi="leonardo">택시 기사에게 보여주기</button>
+        <a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=Leonardo%20Hotel%20Vienna%20Westbahnhof%2C%20Wien" target="_blank" rel="noopener">구글맵에서 보기 ↗</a>
+      </li>
+      <li class="hotel hu">
+        <div class="top"><div><h3>Nemzeti MGallery</h3><p class="where">부다페스트 · 블라하 루이저 광장 · 12/28–31 · 3박</p></div><span class="pill tbd">예상 · 바우처 확인</span></div>
+        <dl>
+          <dt>위치</dt><dd>페스트 8구, 그랜드 불러바드</dd>
+          <dt>교통</dt><dd>M2·트램 도보 1분, 켈레티역 도보 14분</dd>
+          <dt>팁</dt><dd>후보 중 1위, 지정 추가금 확인 추천</dd>
+        </dl>
+        <p class="addr"><span lang="hu">József krt. 4, 1088 Budapest</span><button type="button" class="copy" data-copy="József krt. 4, 1088 Budapest">주소 복사</button></p>
+        <button type="button" class="taxi-btn big" data-taxi="nemzeti">택시 기사에게 보여주기</button>
+        <a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=Hotel%20Nemzeti%20Budapest%20MGallery%2C%20J%C3%B3zsef%20krt.%204%2C%201088%20Budapest" target="_blank" rel="noopener">구글맵에서 보기 ↗</a>
+      </li>
+    </ul>
+  </section>
+
+  <section class="sec" aria-labelledby="inclTitle">
+    <div class="sec-head"><h2 id="inclTitle">포함된 것 · 직접 챙길 것</h2></div>
+    <details class="incl-d card"><summary>포함 9가지 보기</summary>
+    <ul class="incl">
+      <li><span class="ic y" aria-hidden="true">✓</span><div>전 일정 4성급 호텔 + 조식<small>스탠다드 룸</small></div></li>
+      <li><span class="ic y" aria-hidden="true">✓</span><div>일정에 있는 열차·셔틀 이동<small>열차 2등석, 예약 포함</small></div></li>
+      <li><span class="ic y" aria-hidden="true">✓</span><div>프라하 공항 → 호텔 픽업<small>한인 기사</small></div></li>
+      <li><span class="ic y" aria-hidden="true">✓</span><div>프라하 시내투어 <span class="mono">12/22</span><small>체코식 중식 · 프라하성 입장 · 천문시계탑 전망대 (원하는 시간 자유 입장)</small></div></li>
+      <li><span class="ic y" aria-hidden="true">✓</span><div>체스키크룸로프 차량투어 <span class="mono">12/24</span><small>중세식 중식</small></div></li>
+      <li><span class="ic y" aria-hidden="true">✓</span><div>비엔나 가이드투어 <span class="mono">12/26</span><small>쇤부른 궁전 입장 · 패스트트랙</small></div></li>
+      <li><span class="ic y" aria-hidden="true">✓</span><div>부다페스트 야경 스냅 2시간 <span class="mono">12/29</span><small>원본 200장 + 정밀 보정 2장</small></div></li>
+      <li><span class="ic y" aria-hidden="true">✓</span><div>세체니 온천 <span class="mono">12/31</span><small>패스트트랙 · 전용 락커·탈의실</small></div></li>
+      <li><span class="ic n" aria-hidden="true">!</span><div>직접 챙길 것<small>국제선 항공 (자체 수배) · 12/31 호텔 → 공항 이동 · 열차 2인 나란히 좌석 (별도 요청) · 여행자보험 포함 여부 확인 중</small></div></li>
+    </ul>
+    </details>
+  </section>
+
+  <section class="sec" aria-labelledby="localTitle">
+    <div class="sec-head"><h2 id="localTitle">나라별 한눈에</h2></div>
+    <ul class="countries">
+      <li class="country cz">
+        <h3>체코 <span class="where">프라하 · 체스키크룸로프 · 12/21–25</span></h3>
+        <dl>
+          <dt>돈</dt><dd>코루나 (CZK)</dd>
+          <dt>교통</dt><dd>Lítačka 앱, 종이표는 노란 기계에 펀칭</dd>
+          <dt>팁</dt><dd>식당 10% 정도</dd>
+          <dt>쉬는 날</dt><dd><span class="mono">12/24</span> 오후부터, <span class="mono">12/25·26</span></dd>
+        </dl>
+      </li>
+      <li class="country at">
+        <h3>오스트리아 <span class="where">잘츠부르크 · 비엔나 · 12/25–28</span></h3>
+        <dl>
+          <dt>돈</dt><dd>유로 (EUR)</dd>
+          <dt>교통</dt><dd>WienMobil 앱, 비엔나는 48·72시간권 추천</dd>
+          <dt>팁</dt><dd>5~10% 올려서 계산</dd>
+          <dt>쉬는 날</dt><dd><span class="mono">12/24</span> 오후부터, <span class="mono">12/25·26</span>, 일요일(<span class="mono">12/27</span>)</dd>
+        </dl>
+      </li>
+      <li class="country hu">
+        <h3>헝가리 <span class="where">부다페스트 · 12/28–31</span></h3>
+        <dl>
+          <dt>돈</dt><dd>포린트 (HUF)</dd>
+          <dt>교통</dt><dd>지하철 개찰기에 카드 태그(Pay&amp;GO), 24시간권 2,750포린트</dd>
+          <dt>팁</dt><dd>계산서에 봉사료 12~15% 포함됐는지 먼저 확인</dd>
+          <dt>쉬는 날</dt><dd><span class="mono">12/31</span> 오후 일찍 닫는 곳 많음</dd>
+        </dl>
+      </li>
+    </ul>
+  </section>
+
+
+  <p class="source">2026년 11월 18일 기준이에요. 바우처를 받으면 호텔·열차·투어 시간이 바뀔 수 있어요. 지도는 구글맵 검색 결과라 현지에서 한 번 더 확인하세요.</p>
+</div>
+
+<!-- ============ 준비 ============ -->
+<div class="panel" role="tabpanel" id="panel-prep" aria-labelledby="tab-prep" tabindex="0" hidden>
+  <section class="sec" aria-labelledby="todoTitle">
+    <div class="sec-head"><h2 id="todoTitle">시기별 할 일</h2>
+      <p class="lead">예식 직후 출발이라 짐은 결혼식 전에 다 싸두는 걸 목표로 잡았어요. 체크하면 이 브라우저에 저장돼요.</p></div>
+    <div class="tl ck card" id="todo">
+      <div class="tl-step">
+        <div class="tl-when"><span class="mono">지금 ~ 11월 말</span><span>D-33 ~ D-21</span></div>
+        <div class="tl-body">
+          <h3>서류와 예약</h3>
+          <ul>
+            <li><label><input type="checkbox" id="t1"><span>두 사람 여권 만료일 확인<small>여행사 기준 출발일부터 6개월 이상 (2027.6.21 이후 만료)</small></span></label></li>
+            <li><label><input type="checkbox" id="t2"><span>항공권·예약의 영문 이름이 여권과 철자까지 같은지 확인</span></label></li>
+            <li><label><input type="checkbox" id="t3"><span>트래블카드 2장 발급 (각자 1장, 비자·마스터 컨택리스)</span></label></li>
+            <li><label><input type="checkbox" id="t4"><span>애플페이 등록 카드가 해외 결제되는지 카드사 앱에서 확인</span></label></li>
+            <li><label><input type="checkbox" id="t6"><span>(선택) 부다페스트 다뉴브 디너 크루즈 예약<small>식당 예약은 일정 탭 '꼭 지킬 일정'에서 체크해요</small></span></label></li>
+            <li><label><input type="checkbox" id="t7"><span>(선택) 비엔나 연말 음악회 예매</span></label></li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-step">
+        <div class="tl-when"><span class="mono">12/6 ~ 12/11</span><span>D-15 ~ D-10</span></div>
+        <div class="tl-body">
+          <h3>바우처 받기</h3>
+          <ul>
+            <li><label><input type="checkbox" id="t8"><span>호텔 바우처 4곳 (프라하·체스키·비엔나·부다페스트) 확정 호텔명 확인</span></label></li>
+            <li><label><input type="checkbox" id="t9"><span>열차 2구간 티켓 (잘츠→비엔나, 비엔나→부다) 출발 시간 확인</span></label></li>
+            <li><label><input type="checkbox" id="t10"><span>12/25 셔틀 확정 (9:20, 잘츠부르크 중앙역 하차)</span></label></li>
+            <li><label><input type="checkbox" id="t11"><span>투어별 미팅 시간·장소 (프라하·체스키·비엔나·야경 스냅)</span></label></li>
+            <li><label><input type="checkbox" id="t12"><span>여행자보험 증권 (포함인지 최종 확인)</span></label></li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-step">
+        <div class="tl-when"><span class="mono">12/12 ~ 12/16</span><span>D-9 ~ D-5</span></div>
+        <div class="tl-body">
+          <h3>앱·통신·운영시간</h3>
+          <ul>
+            <li><label><input type="checkbox" id="t13"><span>유럽 eSIM 구매 (체코·오스트리아·헝가리 모두 되는 EU 상품)</span></label></li>
+            <li><label><input type="checkbox" id="t14"><span>앱 설치·카드 등록: Lítačka, WienMobil, BudapestGO, Bolt, 구글맵(오프라인 지도), 번역 앱</span></label></li>
+            <li><label><input type="checkbox" id="t15"><span>성탄절·연말 운영시간 확인: 호헨잘츠부르크성, 모차르트 생가(12/25), 세체니 온천(12/31)</span></label></li>
+            <li><label><input type="checkbox" id="t17"><span>캐리어 두께 재기 (잘츠 역 락커 깊이 35cm, 크면 점보 칸 예약)</span></label></li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-step">
+        <div class="tl-when"><span class="mono">결혼식 전</span><span>D-4 이전</span></div>
+        <div class="tl-body">
+          <h3>짐 싸기 끝내기</h3>
+          <ul>
+            <li><label><input type="checkbox" id="t18"><span>아래 준비물 목록대로 캐리어 완성</span></label></li>
+            <li><label><input type="checkbox" id="t19"><span>바우처·e티켓·보험증권을 휴대폰에 오프라인 저장 + 1부 출력</span></label></li>
+            <li><label><input type="checkbox" id="t20"><span>여권 사본·사진 2장 따로 보관 (분실 대비)</span></label></li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-step">
+        <div class="tl-when"><span class="mono">12/21 출발</span><span>D-day</span></div>
+        <div class="tl-body">
+          <h3>공항</h3>
+          <ul>
+            <li><label><input type="checkbox" id="t21"><span>항공기 출발 3시간 전 인천공항 도착</span></label></li>
+            <li><label><input type="checkbox" id="t22"><span>보조배터리는 기내 수하물로</span></label></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="packTitle">
+    <div class="sec-head row">
+      <div><h2 id="packTitle">준비물</h2></div>
+      <span class="progress" id="packProgress"></span>
+    </div>
+    <p class="lead">한낮에도 0~3°C, 밤엔 영하로 내려가고 오후 4시쯤 해가 져요. 돌길과 눈길을 많이 걸으니 신발이 가장 중요해요. 콘센트는 한국과 같아서 어댑터는 필요 없어요.</p>
+    <div class="pack ck" id="pack">
+      <div class="pack-card">
+        <h3>서류</h3>
+        <ul>
+          <li><label><input type="checkbox" id="p1"><span>여권 2개</span></label></li>
+          <li><label><input type="checkbox" id="p2"><span>여권 사본 · 여권 사진 2장</span></label></li>
+          <li><label><input type="checkbox" id="p3"><span>항공 e티켓</span></label></li>
+          <li><label><input type="checkbox" id="p4"><span>호텔·열차·셔틀·투어 바우처</span></label></li>
+          <li><label><input type="checkbox" id="p5"><span>여행자보험 증권</span></label></li>
+        </ul>
+      </div>
+      <div class="pack-card">
+        <h3>돈·결제</h3>
+        <ul>
+          <li><label><input type="checkbox" id="p6"><span>트래블카드 2장 (각자)</span></label></li>
+          <li><label><input type="checkbox" id="p7"><span>해외 결제 신용카드 1장 (예비)</span></label></li>
+          <li><label><input type="checkbox" id="p8"><span>유로 현금 소액 + 동전<small>체코 코루나·헝가리 포린트는 현지 ATM에서 트래블카드로 조금만</small></span></label></li>
+        </ul>
+      </div>
+      <div class="pack-card">
+        <h3>전자기기</h3>
+        <ul>
+          <li><label><input type="checkbox" id="p9"><span>휴대폰 충전기 · 케이블</span></label></li>
+          <li><label><input type="checkbox" id="p10"><span>보조배터리 (기내 반입)</span></label></li>
+          <li><label><input type="checkbox" id="p11"><span>멀티탭 (호텔 콘센트가 적은 편)</span></label></li>
+          <li><label><input type="checkbox" id="p12"><span>eSIM 설치 QR</span></label></li>
+        </ul>
+      </div>
+      <div class="pack-card">
+        <h3>옷</h3>
+        <ul>
+          <li><label><input type="checkbox" id="p13"><span>롱패딩이나 두꺼운 코트</span></label></li>
+          <li><label><input type="checkbox" id="p14"><span>히트텍 같은 내복 · 니트</span></label></li>
+          <li><label><input type="checkbox" id="p15"><span>방수·미끄럼 방지 운동화</span></label></li>
+          <li><label><input type="checkbox" id="p16"><span>목도리 · 장갑(터치 되는 것) · 비니</span></label></li>
+          <li><label><input type="checkbox" id="p17"><span>야경 스냅용 옷 (12/29)</span></label></li>
+          <li><label><input type="checkbox" id="p18"><span>디너·음악회용 깔끔한 옷</span></label></li>
+        </ul>
+      </div>
+      <div class="pack-card">
+        <h3>세체니 온천 (12/31)</h3>
+        <ul>
+          <li><label><input type="checkbox" id="p19"><span>수영복 2벌</span></label></li>
+          <li><label><input type="checkbox" id="p20"><span>슬리퍼</span></label></li>
+          <li><label><input type="checkbox" id="p21"><span>타월 (대여도 가능) · 방수 파우치</span></label></li>
+        </ul>
+      </div>
+      <div class="pack-card">
+        <h3>생활·기타</h3>
+        <ul>
+          <li><label><input type="checkbox" id="p22"><span>핫팩 넉넉히</span></label></li>
+          <li><label><input type="checkbox" id="p23"><span>상비약 · 평소 먹는 약</span></label></li>
+          <li><label><input type="checkbox" id="p24"><span>립밤 · 핸드크림 · 보습제 (건조함)</span></label></li>
+          <li><label><input type="checkbox" id="p25"><span>접이식 우산</span></label></li>
+          <li><label><input type="checkbox" id="p26"><span>지퍼 달린 크로스백 (소매치기 대비)</span></label></li>
+          <li><label><input type="checkbox" id="p27"><span>12/25 열차용 간식 (성탄절이라 문 연 곳 적음)</span></label></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="askTitle">
+    <div class="sec-head row">
+      <div><h2 id="askTitle">아직 답 받을 것</h2></div>
+      <span class="progress" id="progress"></span>
+    </div>
+    <ul class="boxed ck card" id="checklist">
+      <li><label><input type="checkbox" id="c1"><span>잘츠→비엔나 열차 정확한 출발 시간 (서역 도착편 요청)</span></label></li>
+      <li><label><input type="checkbox" id="c2"><span>12/25 셔틀 성탄절 정상 운행 확정 · 중앙역 하차</span></label></li>
+      <li><label><input type="checkbox" id="c3"><span>Scherer 지정 추가금 + 시티패스 1인 6만원 환불 방식</span></label></li>
+      <li><label><input type="checkbox" id="c4"><span>12/24 투어 때 짐을 Oldinn까지 옮겨주는지</span></label></li>
+      <li><label><input type="checkbox" id="c5"><span>여행자보험 포함 여부와 증권 발급</span></label></li>
+      <li><label><input type="checkbox" id="c6"><span>특별취소규정 원문</span></label></li>
+      <li><label><input type="checkbox" id="c7"><span>열차 2인 좌석 나란히 지정 비용</span></label></li>
+      <li><label><input type="checkbox" id="c8"><span>12/23 중식 '현지식' 표기 오기 여부</span></label></li>
+      <li><label><input type="checkbox" id="c9"><span>프라하 공항 픽업: 입국 지연 시 기사 대기 여부</span></label></li>
+      <li><label><input type="checkbox" id="c10"><span>12/24 체스키 투어: 성탄 휴관이면 성 내부 대신 무엇을 보는지</span></label></li>
+    </ul>
+  </section>
+
+  <section class="sec" aria-labelledby="mymapTitle">
+    <div class="sec-head"><h2 id="mymapTitle">구글 내 지도 만들기</h2></div>
+    <details class="howto card">
+      <summary>모든 장소를 한 지도에 핀으로 띄우는 방법</summary>
+      <ol>
+        <li>PC 브라우저에서 <a href="https://www.google.com/maps/d/" target="_blank" rel="noopener">구글 내 지도</a>를 열고 <b>새 지도 만들기</b>를 누르세요.</li>
+        <li>레이어의 <b>가져오기</b>에 <a href="data/honeymoon_places.csv" download>honeymoon_places.csv</a>를 올리세요.</li>
+        <li>위치 열은 <b>주소</b>, 제목 열은 <b>이름</b>을 고르세요.</li>
+        <li>레이어 스타일에서 <b>날짜</b> 기준으로 색을 나누면 날짜별로 구분돼요.</li>
+        <li>휴대폰 구글맵 앱의 <b>저장됨 → 지도</b>에서 열면 내 위치와 함께 보여요.</li>
+      </ol>
+      <p class="small">"위치를 찾지 못한 행"이 나오면 그 장소만 검색해서 직접 핀을 옮겨주세요.</p>
+    </details>
+  </section>
+</div>
+
+
+</main>
+
+<dialog class="taxi phrase-d" id="phrase" aria-labelledby="phraseLocal">
+  <p class="taxi-say-en" id="phraseKo"></p>
+  <h2 class="phrase-local" id="phraseLocal"></h2>
+  <p class="phrase-pr"><span class="phrase-pr-l">읽는 법 (대략)</span><span id="phrasePr"></span></p>
+  <p class="phrase-en" lang="en" id="phraseEn"></p>
+  <button type="button" class="btn taxi-close" id="phraseClose">닫기</button>
+</dialog>
+
+<dialog class="taxi" id="taxi" aria-labelledby="taxiName">
+  <p class="taxi-say" id="taxiSay"></p>
+  <p class="taxi-say-en" lang="en">Please take us to this address.</p>
+  <h2 class="taxi-name" id="taxiName"></h2>
+  <p class="taxi-addr" id="taxiAddr"></p>
+  <p class="taxi-note" id="taxiNote" hidden></p>
+  <button type="button" class="btn taxi-close" id="taxiClose">닫기</button>
+</dialog>
+</div>
+
+<script>
+(function(){
+  var TRIP_START = '2026-12-21';
+
+  // 오늘 날짜 (테스트: ?today=2026-12-26)
+  function isoOf(d){ return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0'); }
+  var params = new URLSearchParams(location.search);
+  var param = params.get('today');
+  var todayIso = /^\d{4}-\d{2}-\d{2}$/.test(param || '') ? param : isoOf(new Date());
+  var $ = function(id){ return document.getElementById(id); };
+  var each = function(list, fn){ Array.prototype.forEach.call(list, fn); };
+
+  // ---------- 체크리스트 ----------
+  var KEY = 'honeymoon-check';
+  var saved = {};
+  try { saved = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch(e) { saved = {}; }
+  function store(){ try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch(e) {} }
+  var listeners = [];
+  function boxesIn(ids){
+    var out = [];
+    ids.forEach(function(id){ out = out.concat([].slice.call(document.querySelectorAll('#' + id + ' input[type=checkbox]'))); });
+    return out;
+  }
+  function count(ids){ var b = boxesIn(ids); return b.filter(function(x){ return x.checked; }).length + ' / ' + b.length; }
+  function refresh(){ listeners.forEach(function(fn){ fn(); }); }
+  function group(rootId, outId){
+    var out = outId ? $(outId) : null;
+    if (out) listeners.push(function(){ out.textContent = count([rootId]) + ' 완료'; });
+    boxesIn([rootId]).forEach(function(b){
+      if (saved[b.id]) b.checked = true;
+      b.addEventListener('change', function(){ saved[b.id] = b.checked; store(); refresh(); });
+    });
+  }
+  group('todo', null);
+  group('pack', 'packProgress');
+  group('checklist', 'progress');
+
+  // 예약 체크 (같은 항목이 일정 카드·모아보기·오늘 화면에 여러 번 나와서 data-check 키로 동기화)
+  function bookKeys(){
+    var keys = [];
+    each(document.querySelectorAll('.fixed-all input[data-check]'), function(i){ if (keys.indexOf(i.dataset.check) < 0) keys.push(i.dataset.check); });
+    return keys;
+  }
+  function markFx(i){
+    var li = i.closest('.fx'); if (!li) return;
+    li.classList.toggle('done', i.checked);
+    var p = li.querySelector('.pill.book'); if (p) p.textContent = i.checked ? '예약 완료' : '예약 필요';
+  }
+  function applyChecks(root){
+    each(root.querySelectorAll('input[data-check]'), function(i){ i.checked = !!saved[i.dataset.check]; markFx(i); });
+  }
+  document.addEventListener('change', function(e){
+    var i = e.target;
+    if (!i.matches || !i.matches('input[data-check]')) return;
+    var key = i.dataset.check;
+    saved[key] = i.checked; store();
+    each(document.querySelectorAll('input[data-check="' + key + '"]'), function(x){ x.checked = i.checked; markFx(x); });
+    refresh();
+  });
+  applyChecks(document);
+
+  listeners.push(function(){
+    $('prepCount').textContent = count(['todo', 'pack']);
+    $('askCount').textContent = count(['checklist']);
+    var keys = bookKeys(), done = keys.filter(function(k){ return saved[k]; }).length;
+    $('bookCount').textContent = done + ' / ' + keys.length;
+    // 진행 막대
+    each(document.querySelectorAll('.stats li'), function(li){
+      var m = /(\d+) \/ (\d+)/.exec(li.querySelector('.stat-n').textContent);
+      var bar = li.querySelector('.bar b');
+      if (m && bar) bar.style.width = (+m[2] ? Math.round(m[1] / m[2] * 100) : 0) + '%';
+    });
+    each(document.querySelectorAll('[data-book-count]'), function(el){ el.textContent = keys.length - done; });
+  });
+  refresh();
+
+  // ---------- 탭 (APG Tabs, 자동 활성화) ----------
+  var tabs = [].slice.call(document.querySelectorAll('[role="tab"]'));
+  function selectTab(tab, focus){
+    tabs.forEach(function(t){
+      var on = t === tab;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.tabIndex = on ? 0 : -1;
+      $(t.getAttribute('aria-controls')).hidden = !on;
+    });
+    if (focus) tab.focus();
+  }
+  tabs.forEach(function(t, i){
+    t.addEventListener('click', function(){ selectTab(t, false); window.scrollTo(0, 0); });
+    t.addEventListener('keydown', function(e){
+      var next = null;
+      if (e.key === 'ArrowRight') next = tabs[(i + 1) % tabs.length];
+      else if (e.key === 'ArrowLeft') next = tabs[(i - 1 + tabs.length) % tabs.length];
+      else if (e.key === 'Home') next = tabs[0];
+      else if (e.key === 'End') next = tabs[tabs.length - 1];
+      if (next){ e.preventDefault(); selectTab(next, true); window.scrollTo(0, 0); }
+    });
+  });
+  each(document.querySelectorAll('[data-goto]'), function(b){
+    b.addEventListener('click', function(){ selectTab($(b.getAttribute('data-goto')), true); window.scrollTo(0, 0); });
+  });
+
+  // ---------- 날짜 데이터 ----------
+  var cards = [].slice.call(document.querySelectorAll('#panel-plan article.day'));
+  var dates = [];
+  cards.forEach(function(c){ var d = c.getAttribute('data-date'); if (dates.indexOf(d) < 0) dates.push(d); });
+  function cardsOf(d){ return cards.filter(function(c){ return c.getAttribute('data-date') === d; }); }
+  function txt(el, sel){ var x = el.querySelector(sel); return x ? x.textContent : ''; }
+  function cityOf(c){ return c.classList.contains('cz') ? 'cz' : c.classList.contains('at') ? 'at' : 'hu'; }
+  var first = dates[0], last = dates[dates.length - 1];
+  var phase = todayIso < first ? 'before' : (todayIso > last ? 'after' : 'during');
+  var todayIdx = phase === 'before' ? 0 : (phase === 'after' ? dates.length - 1 : dates.filter(function(d){ return d <= todayIso; }).length - 1);
+  var idx = todayIdx;
+
+  // 일정 탭: 여행 중이면 오늘 카드를 펼치고 '오늘' 표시
+  if (phase === 'during'){
+    cardsOf(dates[todayIdx]).forEach(function(c){ c.classList.add('is-today'); var d = c.querySelector('details'); if (d) d.open = true; });
+  }
+
+  // ---------- 오늘 보기 ----------
+  var body = $('viewerBody'), label = $('viewerLabel'), kind = $('viewerKind'), live = $('viewerLive');
+  var prev = $('prevDay'), next = $('nextDay'), back = $('backToday'), strip = $('dayStrip');
+  var viewer = document.querySelector('.viewer');
+
+  // 날짜 스트립
+  var chips = dates.map(function(d, i){
+    var c = cardsOf(d)[0];
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'ds ' + cityOf(c) + (phase === 'during' && i === todayIdx ? ' is-today' : '');
+    var w = txt(c, '.date .w').split(' · ')[0];
+    b.innerHTML = '<span class="ds-w">' + (phase === 'during' && i === todayIdx ? '오늘' : w) + '</span><span class="ds-d">' + txt(c, '.date .d') + '</span><span class="ds-dot"></span>';
+    b.setAttribute('aria-label', txt(c, '.date .n') + ' ' + txt(c, '.date .d') + ' ' + w);
+    b.addEventListener('click', function(){ go(i, false); });
+    strip.appendChild(b);
+    return b;
+  });
+
+  // 일정 탭 카드를 복제해서, 접힘(details) 대신 펼친 카드로 바꿔 보여줌
+  function openCopy(c){
+    var copy = c.cloneNode(true);
+    copy.removeAttribute('id');
+    copy.classList.remove('is-today');
+    var det = copy.querySelector('details.day-d');
+    var sum = copy.querySelector('.day-sum');
+    var head = document.createElement('header');
+    head.className = 'day-head';
+    [].slice.call(sum.children).forEach(function(ch){
+      if (!ch.classList.contains('date') && !ch.classList.contains('chev')) head.appendChild(ch);
+    });
+    if (det) det.replaceWith(head, det.querySelector('.body'));
+    else sum.replaceWith(head);
+    return copy;
+  }
+
+  function render(announce){
+    var d = dates[idx];
+    var group = cardsOf(d);
+    var c0 = group[0];
+    label.textContent = txt(c0, '.date .n') + ' · ' + txt(c0, '.date .d') + ' ' + txt(c0, '.date .w');
+    var isToday = phase === 'during' && idx === todayIdx;
+    kind.textContent = isToday ? '오늘' : (phase === 'before' && idx === 0 ? '첫날 미리보기' : (idx + 1) + ' / ' + dates.length + '일째');
+    body.innerHTML = '';
+    group.forEach(function(c){
+      var li = document.createElement('li');
+      li.appendChild(openCopy(c));
+      body.appendChild(li);
+    });
+    applyChecks(body);
+    prev.disabled = idx === 0;
+    next.disabled = idx === dates.length - 1;
+    back.hidden = !(phase === 'during' && idx !== todayIdx);
+    // 날짜 스트립 선택
+    chips.forEach(function(b, i){ if (i === idx) b.setAttribute('aria-current', 'true'); else b.removeAttribute('aria-current'); });
+    var chip = chips[idx];
+    strip.scrollTo({ left: chip.offsetLeft - strip.clientWidth / 2 + chip.clientWidth / 2, behavior: announce ? 'smooth' : 'auto' });
+    if (announce) live.textContent = kind.textContent + ', ' + label.textContent + ' 일정';
+  }
+  function go(i, keepScroll){
+    if (i < 0 || i >= dates.length || i === idx) return;
+    var fwd = i > idx;
+    idx = i;
+    render(true);
+    body.classList.remove('from-r', 'from-l');
+    void body.offsetWidth;
+    body.classList.add(fwd ? 'from-r' : 'from-l');
+    // 카드 중간까지 내려와 있었다면 카드 맨 위로
+    var top = viewer.getBoundingClientRect().top + window.scrollY;
+    if (!keepScroll && window.scrollY > top) window.scrollTo(0, top);
+  }
+  prev.addEventListener('click', function(){ go(idx - 1); });
+  next.addEventListener('click', function(){ go(idx + 1); });
+  back.addEventListener('click', function(){ go(todayIdx); prev.focus(); });
+
+  // 좌우로 밀어서 날짜 이동
+  var sx = 0, sy = 0, st = 0;
+  body.addEventListener('touchstart', function(e){ var t = e.touches[0]; sx = t.clientX; sy = t.clientY; st = Date.now(); }, { passive: true });
+  body.addEventListener('touchend', function(e){
+    var t = e.changedTouches[0], dx = t.clientX - sx, dy = t.clientY - sy;
+    if (Date.now() - st < 600 && Math.abs(dx) > 70 && Math.abs(dy) < 50) go(idx + (dx < 0 ? 1 : -1));
+  }, { passive: true });
+
+  render(false);
+
+  // ---------- D-day ----------
+  var dday = $('dday');
+  var diff = Math.round((new Date(TRIP_START + 'T00:00:00') - new Date(todayIso + 'T00:00:00')) / 86400000);
+  if (phase === 'before'){
+    dday.textContent = 'D-' + diff;
+    $('ddayBig').textContent = 'D-' + diff;
+    $('todayPre').hidden = false;
+  } else if (phase === 'during'){
+    dday.textContent = txt(cardsOf(dates[todayIdx])[0], '.date .n');
+  } else {
+    dday.textContent = '다녀왔어요';
+  }
+
+  // ---------- 다음 꼭 지킬 일정 (여행 중, 시간이 정해진 항목만) ----------
+  // 테스트: ?now=2026-12-25T14:00 (없으면 ?today 날짜 + 현재 시각)
+  function nowDate(){
+    var p = params.get('now');
+    if (/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(p || '')) return new Date(p);
+    var n = new Date();
+    if (param) { var t = new Date(todayIso + 'T00:00'); t.setHours(n.getHours(), n.getMinutes()); return t; }
+    return n;
+  }
+  var timed = [].slice.call(document.querySelectorAll('.fixed-all .fx[data-at]'))
+    .sort(function(a, b){ return a.dataset.at < b.dataset.at ? -1 : 1; });
+  var nextBox = $('nextFixed');
+  // 안내판: ① 오늘 남은 '시간 정해진' 일정이 있으면 카운트다운
+  //         ② 없으면 오늘 꼭 지킬 일정(시간 미정 포함, 최대 3개)
+  //         ③ 오늘 것이 하나도 없으면 다음 시간 일정(날짜와 함께)
+  function updateNext(){
+    if (phase !== 'during'){ nextBox.hidden = true; return; }
+    var now = nowDate(), nowIso = isoOf(now);
+    var nextTimed = timed.filter(function(li){ return new Date(li.dataset.at) >= now; })[0];
+    var nb = $('nextBody'), items = [], title = '다음 일정', when = '';
+    if (nextTimed && nextTimed.dataset.at.slice(0, 10) === nowIso){
+      var mins = Math.round((new Date(nextTimed.dataset.at) - now) / 60000);
+      when = mins < 60 ? mins + '분 후' : Math.floor(mins / 60) + '시간 ' + (mins % 60) + '분 후';
+      items = [nextTimed];
+    } else {
+      var todays = [];
+      cardsOf(nowIso).forEach(function(c){
+        each(c.querySelectorAll('.fixed .fx'), function(li){
+          if (li.dataset.at && new Date(li.dataset.at) < now) return;  // 이미 지난 시간 일정
+          todays.push(li);
+        });
+      });
+      if (todays.length){
+        title = '오늘 꼭 지킬 일정';
+        when = todays.length > 3 ? '3건 표시 · 전체 ' + todays.length + '건' : todays.length + '건';
+        items = todays.slice(0, 3);
+      } else if (nextTimed){
+        var at = nextTimed.dataset.at;
+        when = (+at.slice(5, 7)) + '/' + (+at.slice(8, 10)) + ' ' + at.slice(11);
+        items = [nextTimed];
+      }
+    }
+    if (!items.length){ nextBox.hidden = true; return; }
+    $('nextTitle').textContent = title;
+    $('nextWhen').textContent = when;
+    nb.innerHTML = '';
+    items.forEach(function(li){ nb.appendChild(li.cloneNode(true)); });
+    applyChecks(nb);
+    nextBox.hidden = false;
+  }
+  updateNext();
+  setInterval(updateNext, 60000);
+
+  // #d1226 같은 날짜 링크 → 일정 탭에서 그 날을 펼치고 이동
+  function openHash(){
+    var el = /^#d\d+b?$/.test(location.hash) && document.querySelector(location.hash);
+    if (!el || !el.closest('#panel-plan')) return;
+    selectTab($('tab-plan'), false);
+    var d = el.querySelector('details'); if (d) d.open = true;
+    el.scrollIntoView();
+  }
+  window.addEventListener('hashchange', openHash);
+  openHash();
+
+  // 주소 복사 (택시 기사에게 보여주거나 앱에 붙여넣기)
+  each(document.querySelectorAll('.copy[data-copy]'), function(b){
+    var label = b.textContent;
+    b.addEventListener('click', function(){
+      var text = b.getAttribute('data-copy');
+      function done(ok){
+        b.textContent = ok ? '복사했어요' : '길게 눌러 복사';
+        b.classList.toggle('done', ok);
+        setTimeout(function(){ b.textContent = label; b.classList.remove('done'); }, 1800);
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function(){ done(true); }, function(){ done(false); });
+      else done(false);
+    });
+  });
+
+  // 택시 기사에게 보여주기 (APG 모달 대화상자: 열면 닫기 버튼에 포커스, Esc로 닫힘, 닫으면 연 버튼으로 포커스 복귀)
+  var TAXI = {
+    adria:    { name: 'Hotel Adria', addr: 'Václavské náměstí 26, 110 00 Praha 1', lang: 'cs' },
+    oldinn:   { name: 'Hotel Oldinn', addr: 'náměstí Svornosti 12, 381 01 Český Krumlov', lang: 'cs' },
+    leonardo: { name: 'Leonardo Hotel Vienna Westbahnhof', addr: 'Wien Westbahnhof', lang: 'de', note: '정확한 주소는 바우처로 확인해서 바꿔주세요' },
+    nemzeti:  { name: 'Hotel Nemzeti Budapest MGallery', addr: 'József krt. 4, 1088 Budapest', lang: 'hu' }
+  };
+  var SAY = { cs: 'Dobrý den, prosím odvezte nás na tuto adresu.', de: 'Guten Tag, bitte bringen Sie uns zu dieser Adresse.', hu: 'Jó napot! Kérem, vigyen minket erre a címre.' };
+  var taxi = $('taxi'), taxiFrom = null;
+  document.addEventListener('click', function(e){
+    var b = e.target.closest && e.target.closest('[data-taxi]');
+    if (!b || !TAXI[b.dataset.taxi]) return;
+    var h = TAXI[b.dataset.taxi];
+    $('taxiSay').textContent = SAY[h.lang]; $('taxiSay').lang = h.lang;
+    $('taxiName').textContent = h.name;
+    $('taxiAddr').textContent = h.addr; $('taxiAddr').lang = h.lang;
+    $('taxiNote').hidden = !h.note; $('taxiNote').textContent = h.note || '';
+    taxiFrom = b;
+    if (taxi.showModal) taxi.showModal(); else taxi.setAttribute('open', '');
+    $('taxiClose').focus();
+  });
+  $('taxiClose').addEventListener('click', function(){ if (taxi.close) taxi.close(); else taxi.removeAttribute('open'); });
+  taxi.addEventListener('close', function(){ if (taxiFrom && document.body.contains(taxiFrom)) taxiFrom.focus(); });
+  taxi.addEventListener('click', function(e){  // 바깥(배경) 누르면 닫기
+    if (e.target !== taxi) return;
+    var r = taxi.getBoundingClientRect();
+    if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) taxi.close();
+  });
+
+  // ---------- 현지어 한마디 ----------
+  // 보여주기용 문장. 상대가 영어를 하면 영어 줄을 보여줘도 돼요.
+  var PHRASES = [
+    { g: '인사·기본', ko: '안녕하세요 (낮) / 감사합니다', pr: { cs: '도브리 덴! 데쿠이', de: '그뤼스 곳! 당케 셴', hu: '요 나폿! 쾨쇠뇜' }, cs: 'Dobrý den! Děkuji.', de: 'Grüß Gott! Danke schön.', hu: 'Jó napot! Köszönöm.', en: 'Hello! Thank you.' },
+    { g: '인사·기본', ko: '안녕하세요 (저녁, 해 진 뒤)', pr: { cs: '도브리 베체르!', de: '구텐 아벤트!', hu: '요 에슈테트!' }, cs: 'Dobrý večer!', de: 'Guten Abend!', hu: 'Jó estét!', en: 'Good evening!' },
+    { g: '인사·기본', ko: '안녕히 계세요', pr: { cs: '나 슬레다노우!', de: '아우프 비더젠!', hu: '비손틀라타슈러!' }, cs: 'Na shledanou!', de: 'Auf Wiedersehen!', hu: 'Viszontlátásra!', en: 'Goodbye!' },
+    { g: '인사·기본', ko: '우리 신혼여행 중이에요', pr: { cs: '스메 나 스바테브니 체스테', de: '비어 진트 아우프 호흐차이츠라이제', hu: '나수톤 버쥰크' }, cs: 'Jsme na svatební cestě.', de: 'Wir sind auf Hochzeitsreise.', hu: 'Nászúton vagyunk.', en: 'We are on our honeymoon.' },
+    { g: '인사·기본', ko: '화장실 어디예요?', pr: { cs: '그데 예 토알레타?', de: '보 이스트 디 토알레테?', hu: '홀 번 어 모슈도?' }, cs: 'Kde je toaleta?', de: 'Wo ist die Toilette?', hu: 'Hol van a mosdó?', en: 'Where is the restroom?' },
+    { g: '식당·계산', ko: '2명 예약했어요', pr: { cs: '도브리 덴, 마메 레제르바치 나 드볘 오소비', de: '구텐 탁, 비어 하벤 아이네 레저비룽 퓌어 츠바이 페르조넨', hu: '요 나폿! 어스털트 포글럴툰크 케트 푀레' }, cs: 'Dobrý den, máme rezervaci na dvě osoby.', de: 'Guten Tag, wir haben eine Reservierung für zwei Personen.', hu: 'Jó napot! Asztalt foglaltunk két főre.', en: 'Hello, we have a reservation for two.' },
+    { g: '식당·계산', ko: '2명 자리 있나요?', pr: { cs: '마테 볼니 스툴 프로 드바?', de: '하벤 지 아이넨 티슈 퓌어 츠바이 페르조넨 프라이?', hu: '번 서벋 어스털루크 케트 푀레?' }, cs: 'Máte volný stůl pro dva?', de: 'Haben Sie einen Tisch für zwei Personen frei?', hu: 'Van szabad asztaluk két főre?', en: 'Do you have a table for two?' },
+    { g: '식당·계산', ko: '영어 메뉴 있나요?', pr: { cs: '마테 이델니 리스텍 브 앙글리치티녜?', de: '하벤 지 아이네 슈파이제카르테 아우프 엥글리슈?', hu: '번 엉골 녤뷔 에틀럽유크?' }, cs: 'Máte jídelní lístek v angličtině?', de: 'Haben Sie eine Speisekarte auf Englisch?', hu: 'Van angol nyelvű étlapjuk?', en: 'Do you have an English menu?' },
+    { g: '식당·계산', ko: '탄산 없는 물 주세요', pr: { cs: '네페를리보우 보두, 프로심', de: '아인 슈틸레스 바서, 비테', hu: '센셔브멘테시 비젯 케렉' }, cs: 'Neperlivou vodu, prosím.', de: 'Ein stilles Wasser, bitte.', hu: 'Szénsavmentes vizet kérek.', en: 'Still water, please.' },
+    { g: '식당·계산', ko: '계산서 주세요', pr: { cs: '자플라티메, 프로심', de: '디 레히눙, 비테', hu: '케렘 어 삼라트' }, cs: 'Zaplatíme, prosím.', de: 'Die Rechnung, bitte.', hu: 'Kérem a számlát.', en: 'The bill, please.' },
+    { g: '식당·계산', ko: '카드로 낼 수 있나요?', pr: { cs: '무주 플라티트 카르토우?', de: '칸 이히 밋 카르테 찰렌?', hu: '피제트헤텍 카르탸벌?' }, cs: 'Můžu platit kartou?', de: 'Kann ich mit Karte zahlen?', hu: 'Fizethetek kártyával?', en: 'Can I pay by card?' },
+    { g: '식당·계산', ko: '봉사료 포함인가요?', pr: { cs: '예 옵슬루하 자흐르누타 프 체녜?', de: '이스트 다스 제르비스 인클루지베?', hu: '벤네 번 어 세르비즈디이 어 삼라반?' }, cs: 'Je obsluha zahrnutá v ceně?', de: 'Ist das Service inklusive?', hu: 'Benne van a szervizdíj a számlában?', en: 'Is service included?' },
+    { g: '열차·숙소', ko: '이 열차(버스) 맞나요? 표 여기 있어요', pr: { cs: '예 토흘레 텐 스프라브니 스포이? 타디 예 나셰 이즈덴카', de: '이스트 다스 데어 리히티게 추크? 히어 이스트 운저 티켓', hu: '에즈 어 요 보너트? 잇 어 예쥔크' }, cs: 'Je tohle ten správný spoj? Tady je naše jízdenka.', de: 'Ist das der richtige Zug? Hier ist unser Ticket.', hu: 'Ez a jó vonat? Itt a jegyünk.', en: 'Is this the right train? Here is our ticket.' },
+    { g: '열차·숙소', ko: '짐 맡길 수 있나요?', pr: { cs: '무제메 시 우 바스 네하트 자바자들라?', de: '쾬넨 비어 운저 게펙 히어 라센?', hu: '잇 허지허튝 어 초머거인커트?' }, cs: 'Můžeme si u vás nechat zavazadla?', de: 'Können wir unser Gepäck hier lassen?', hu: 'Itt hagyhatjuk a csomagjainkat?', en: 'Can we leave our luggage here?' },
+    { g: '열차·숙소', ko: '택시 불러주실 수 있나요?', pr: { cs: '무제테 남 자볼라트 탁시?', de: '쾬넨 지 운스 아인 탁시 루펜?', hu: '히브너 네퀸크 에지 탁시트?' }, cs: 'Můžete nám zavolat taxi?', de: 'Können Sie uns ein Taxi rufen?', hu: 'Hívna nekünk egy taxit?', en: 'Could you call us a taxi?' },
+    { g: '긴급', ko: '도와주세요! 경찰 불러주세요', pr: { cs: '포모츠! 자볼레이테 프로심 폴리치이', de: '힐페! 비테 루펜 지 디 폴리차이', hu: '셰기체그! 케렘, 히브야 어 렌되르셰겟' }, cs: 'Pomoc! Zavolejte prosím policii.', de: 'Hilfe! Bitte rufen Sie die Polizei.', hu: 'Segítség! Kérem, hívja a rendőrséget.', en: 'Help! Please call the police.' },
+    { g: '긴급', ko: '여권을 잃어버렸어요', pr: { cs: '스트라틸 세 미 파스', de: '이히 하베 마이넨 라이제파스 페얼로렌', hu: '엘베셋 어즈 우틀레벨렘' }, cs: 'Ztratil se mi pas.', de: 'Ich habe meinen Reisepass verloren.', hu: 'Elveszett az útlevelem.', en: 'I lost my passport.' }
+  ];
+  var phraseList = $('phraseList'), phraseD = $('phrase'), phraseFrom = null;
+  var langBtns = [].slice.call(document.querySelectorAll('.lang-btn'));
+  // 기본 언어: 오늘(여행 전엔 첫날) 있는 나라
+  var curLang = { cz: 'cs', at: 'de', hu: 'hu' }[cityOf(cardsOf(dates[todayIdx])[0])] || 'cs';
+  function renderPhrases(){
+    langBtns.forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.lang === curLang ? 'true' : 'false'); });
+    var html = '', last = '';
+    PHRASES.forEach(function(p, i){
+      if (p.g !== last){ html += (last ? '</ul>' : '') + '<h3>' + p.g + '</h3><ul>'; last = p.g; }
+      html += '<li><button type="button" class="ph" data-ph="' + i + '"><span class="ph-txt"><span class="ph-ko">' + p.ko + '</span>' +
+        '<span class="ph-local" lang="' + curLang + '">' + p[curLang] + '</span>' +
+        '<span class="ph-pr">' + p.pr[curLang] + '</span></span><span class="ph-go" aria-hidden="true">›</span></button></li>';
+    });
+    phraseList.innerHTML = html + '</ul>';
+  }
+  langBtns.forEach(function(b){ b.addEventListener('click', function(){ curLang = b.dataset.lang; renderPhrases(); }); });
+  phraseList.addEventListener('click', function(e){
+    var b = e.target.closest('.ph'); if (!b) return;
+    var p = PHRASES[+b.dataset.ph];
+    $('phraseKo').textContent = p.ko;
+    $('phraseLocal').textContent = p[curLang]; $('phraseLocal').lang = curLang;
+    $('phraseEn').textContent = p.en;
+    $('phrasePr').textContent = p.pr[curLang];
+    phraseFrom = b;
+    if (phraseD.showModal) phraseD.showModal(); else phraseD.setAttribute('open', '');
+    $('phraseClose').focus();
+  });
+  $('phraseClose').addEventListener('click', function(){ if (phraseD.close) phraseD.close(); else phraseD.removeAttribute('open'); });
+  phraseD.addEventListener('close', function(){ if (phraseFrom && document.body.contains(phraseFrom)) phraseFrom.focus(); });
+  phraseD.addEventListener('click', function(e){
+    if (e.target !== phraseD) return;
+    var r = phraseD.getBoundingClientRect();
+    if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) phraseD.close();
+  });
+  renderPhrases();
+
+  // 오프라인 지원: 한 번 열면 저장해 두고, 연결이 끊기면 알려줌
+  if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) {
+    navigator.serviceWorker.register('sw.js').catch(function(){});
+  }
+  var off = $('offline');
+  function net(){ off.hidden = navigator.onLine !== false; }
+  window.addEventListener('online', net);
+  window.addEventListener('offline', net);
+  net();
+})();
+</script>
+</body>
+</html>
