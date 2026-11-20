@@ -2,7 +2,7 @@
 // 페이지(index.html)는 '네트워크 먼저' — 연결되면 항상 최신, 끊기면(또는 4초 넘게 느리면) 저장본.
 // 아이콘·CSV 같은 파일과 글꼴은 '저장본 먼저'.
 // 아이콘·CSV를 바꾸면 CACHE 이름의 숫자를 올린다.
-const CACHE = 'honeymoon-v1';
+const CACHE = 'honeymoon-v2';
 const CORE = [
   './',
   './index.html',

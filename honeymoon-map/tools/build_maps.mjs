@@ -52,10 +52,10 @@ const P = {
   stephans:  ['슈테판 대성당', 'Stephansdom, Stephansplatz 3, 1010 Wien', '12/26–27', '명소', '시내투어 + 연말 조명'],
   oper:      ['비엔나 국립오페라하우스', 'Wiener Staatsoper, Opernring 2, 1010 Wien', '12/26', '명소', '시내투어 포함'],
   schoen:    ['쇤부른 궁전 · 크리스마스 마켓', 'Schloss Schönbrunn, Schönbrunner Schloßstraße 47, 1130 Wien', '12/26', '명소', '투어 종료 지점, 마켓 1/6까지'],
-  sperl:     ['카페 슈페를', 'Café Sperl, Gumpendorfer Straße 11, 1060 Wien', '12/27', '식당', '비엔나식 아침, 일요일은 10시 오픈'],
-  belvedere: ['벨베데레 궁전', 'Oberes Belvedere, Prinz-Eugen-Straße 27, 1030 Wien', '12/27', '명소', '클림트 「키스」, 마켓 12/31까지'],
-  figl:      ['피글뮐러', 'Figlmüller Wollzeile, Wollzeile 5, 1010 Wien', '12/27', '식당', '슈니첼, 예약'],
-  plachutta: ['플라후타', 'Plachutta Wollzeile, Wollzeile 38, 1010 Wien', '12/27', '식당', '타펠슈피츠, 예약 (대안)'],
+  sperl:     ['카페 슈페를', 'Café Sperl, Gumpendorfer Straße 11, 1060 Wien', '12/28', '식당', '클래식 비엔나 카페, 나슈마르크트에서 도보 5분'],
+  belvedere: ['벨베데레 궁전', 'Oberes Belvedere, Prinz-Eugen-Straße 27, 1030 Wien', '12/28', '명소', '클림트 「키스」, 마켓 12/31까지'],
+  figl:      ['피글뮐러', 'Figlmüller Wollzeile, Wollzeile 5, 1010 Wien', '12/26', '식당', '슈니첼, 예약'],
+  plachutta: ['플라후타', 'Plachutta Wollzeile, Wollzeile 38, 1010 Wien', '12/26', '식당', '타펠슈피츠, 예약 (대안)'],
   naschmarkt:['나슈마르크트', 'Naschmarkt, 1060 Wien', '12/28', '명소', '월요일 영업'],
   riesenrad: ['프라터 대관람차', 'Wiener Riesenrad, Riesenradplatz 1, 1020 Wien', '12/28', '명소', '윈터마켓 1/6까지'],
   // Budapest
@@ -71,6 +71,14 @@ const P = {
   newyork:   ['뉴욕 카페', 'New York Café, Erzsébet krt. 9-11, 1073 Budapest', '12/30', '식당', '예약 추천'],
   szechenyi: ['세체니 온천', 'Széchenyi gyógyfürdő, Állatkerti krt. 9-11, 1146 Budapest', '12/31', '명소', '입장권 포함, 연말 운영시간 확인'],
   bud_air:   ['부다페스트 공항', 'Budapest Liszt Ferenc International Airport', '12/31', '교통', '출발 3시간 30분 전 도착'],
+  // Hallstatt 당일치기 (12/27)
+  attnang:   ['아트낭푸흐하임역', 'Attnang-Puchheim Bahnhof', '12/27', '교통', '갈 때 환승역 (REX 70, Selzthal행)'],
+  hallstatt_bf:['할슈타트역', 'Hallstatt Bahnhof, 4830 Hallstatt', '12/27', '교통', '마을 건너편 호숫가 · 역 앞 선착장에서 배'],
+  hallstatt_markt:['할슈타트 마을 선착장', 'Schiffsanlegestelle Hallstatt Markt, 4830 Hallstatt', '12/27', '교통', '역 ↔ 마을 배, 열차 시간에 맞춰 운항 · 현금'],
+  hallstatt_square:['할슈타트 마르크트 광장', 'Marktplatz, 4830 Hallstatt', '12/27', '명소', '마을 중심, 점심'],
+  hallstatt_church:['할슈타트 개신교 교회', 'Evangelische Pfarrkirche Hallstatt, 4830 Hallstatt', '12/27', '명소', '물가의 하얀 첨탑'],
+  hallstatt_catholic:['할슈타트 가톨릭 교회', 'Katholische Pfarrkirche Hallstatt, 4830 Hallstatt', '12/27', '명소', '계단 위, 지붕과 호수 전망'],
+  hallstatt_view:['할슈타트 엽서 전망 포인트', 'Hallstatt Viewpoint, Gosaumühlstraße, 4830 Hallstatt', '12/27', '명소', '마을 북쪽 · 해 지기 전에 사진'],
   // 자유일정 추천 (선택) — 메모 앞에 '추천'
   slavia:    ['카바르나 슬라비아', 'Kavárna Slavia, Smetanovo nábřeží 1012/2, Praha 1', '12/23', '식당', '추천 · 국민극장 맞은편 강변 클래식 카페'],
   savoy:     ['카페 사보이', 'Café Savoy, Vítězná 124/5, Praha 5', '12/23', '식당', '추천 · 레기교 건너 바로, 아침·브런치'],
@@ -200,10 +208,11 @@ const SUN_CITY = {
   salzburg: { ko: '잘츠부르크', lat: 47.8095, lng: 13.0550 },
   vienna:   { ko: '비엔나', lat: 48.2082, lng: 16.3738 },
   budapest: { ko: '부다페스트', lat: 47.4979, lng: 19.0402 },
+  hallstatt: { ko: '할슈타트', lat: 47.5622, lng: 13.6493 },
 };
 // 그날 해 질 무렵 있을 도시
 const SUN_AT = { '12/21': 'prague', '12/22': 'prague', '12/23': 'prague', '12/24': 'krumlov', '12/25': 'salzburg',
-  '12/26': 'vienna', '12/27': 'vienna', '12/28': 'vienna', '12/29': 'budapest', '12/30': 'budapest', '12/31': 'budapest' };
+  '12/26': 'vienna', '12/27': 'hallstatt', '12/28': 'vienna', '12/29': 'budapest', '12/30': 'budapest', '12/31': 'budapest' };
 const SUN_ICON = '<svg class="sun-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h18M6.5 18a5.5 5.5 0 0 1 11 0M12 6.5V9M5.4 9.9l1.7 1.7M18.6 9.9l-1.7 1.7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
 function sunInfo(d) {
   const c = SUN_CITY[SUN_AT[d]]; if (!c) return null;
@@ -326,31 +335,56 @@ const AT = [
       note('tip', '<b>셔틀이 13시 넘어 도착하면</b> 미라벨을 건너뛰고 바로 구시가지로 가세요. <b>열차가 19:30이면</b> 1시간 여유가 생기니 장크트 페터 슈티프츠쿨리나리움에서 이른 저녁(예약)도 가능해요.') +
       note('tip', '시티패스 없이 성(€16.5, 푸니쿨라 포함)과 모차르트 생가(€13, 선택)만 현장 구매. 성이 휴관이면 묀히스베르크 엘리베이터로 바꾸세요.'),
     places: ['shuttle', 'szghbf', 'mirabell', 'domplatz', 'mozart', 'dom', 'stpeter', 'festung', 'nonnberg', 'tomaselli', 'moench'], stay: 'leonardo' }),
-  at('DAY 6', '12/26', '토 · 공휴일', '비엔나 시내 가이드투어', { tags: INC, where: '비엔나', meal: ['조식 호텔', '소시지·비엔나 커피 시음 포함', '석식 자유'],
-    fixed: [fx('미정', 'tour', '비엔나 시내 가이드투어 (쇤부른 포함)', { status: 'tbd', place: 'stephans', note: '미팅 시간·장소를 바우처로 확인 · 늦으면 환불 안 돼요' })],
+  at('DAY 6', '12/26', '토 · 공휴일', '비엔나 시내 가이드투어', { tags: INC, where: '비엔나', meal: ['조식 호텔', '소시지·비엔나 커피 시음 포함', '석식 예약 · 피글뮐러'],
+    fixed: [fx('미정', 'tour', '비엔나 시내 가이드투어 (쇤부른 포함)', { status: 'tbd', place: 'stephans', note: '미팅 시간·장소를 바우처로 확인 · 늦으면 환불 안 돼요' }),
+            fx('저녁', 'book', '피글뮐러 슈니첼 디너', { status: 'book', id: 'r-figl', place: 'figl', note: '12/27 할슈타트 때문에 이날로 옮김 · 안 되면 플라후타 (타펠슈피츠)' })],
     body: flow('슈테판 대성당', '그라벤·성 페터 성당', '미카엘 광장·콜마르크트', '호프부르크 왕궁·영웅광장', '국립오페라하우스', '소시지·커피 시음', '쇤부른 궁전 (40개 방, 패스트트랙)', '글로리에떼 전망') +
       routes(route('leonardo', 'stephans', 'transit', { label: '호텔 → 슈테판 대성당 (미팅 장소에 따라 변경)' }),
-             route('schoen', 'leonardo', 'transit', { label: '투어 후 · 쇤부른 → 호텔' })),
-    notes: note('tip', '투어가 쇤부른에서 끝나고 <b>오후는 자유시간</b>이에요. 궁전 앞 크리스마스 마켓(1/6까지)을 바로 구경하세요.'),
-    places: ['stephans', 'oper', 'schoen'], stay: 'leonardo' }),
-  at('DAY 7', '12/27', '일', '비엔나 자유일정', { where: '비엔나', meal: ['조식 호텔', '석식 예약 · 피글뮐러'],
-    fixed: [fx('저녁', 'book', '피글뮐러 슈니첼 디너', { status: 'book', id: 'r-figl', place: 'figl', note: '안 되면 플라후타 (타펠슈피츠)' })],
-    body: note('warn', '일요일이라 상점 대부분이 쉬어요. 미술관·카페 위주로 다니세요.') +
-      routes(route('leonardo', 'sperl', 'transit', { label: '10:00 · 호텔 → 카페 슈페를 (일요일 10시 오픈)' }),
-             route('sperl', 'belvedere', 'transit', { label: '오전 · 카페 슈페를 → 벨베데레 궁전' }),
-             route('belvedere', 'stephans', 'transit', { label: '오후 · 벨베데레 → 슈테판 대성당' }),
-             route('stephans', 'figl', 'walking', { label: '저녁 · 슈테판 대성당 → 피글뮐러' }),
+             route('schoen', 'figl', 'transit', { label: '저녁 · 쇤부른 → 피글뮐러' }),
              route('figl', 'leonardo', 'transit', { label: '귀가 · 피글뮐러 → 호텔' })),
-    places: ['sperl', 'belvedere', 'stephans', 'figl', 'plachutta'],
-    recs: ['khm', 'albertina', 'sisi', 'central', 'demel', 'sacher'], stay: 'leonardo' }),
-  at('DAY 8', '12/28', '월', '비엔나 자유시간 → 부다페스트', { where: '비엔나 → 부다페스트', meal: ['조식 호텔', '저녁은 열차 타기 전에'],
+    notes: note('tip', '투어가 쇤부른에서 끝나고 <b>오후는 자유시간</b>이에요. 궁전 앞 크리스마스 마켓(1/6까지)을 구경하고 저녁에 피글뮐러로 가세요.') +
+      note('tip', '<b>내일(12/27)은 할슈타트 당일치기</b>예요. 08:10에 호텔을 나서니 일찍 쉬세요. 표 PDF와 대표자 여권을 미리 챙겨두세요.'),
+    places: ['stephans', 'oper', 'schoen', 'figl', 'plachutta'], stay: 'leonardo' }),
+  // 할슈타트 당일치기 — ÖBB 2인 단체 정가표(열차 지정 없음, 12/27~28 유효, 12/26까지 무료 취소). 좌석은 표 PDF 기준
+  at('DAY 7', '12/27', '일', '할슈타트 당일치기', { where: '비엔나 → 할슈타트 → 비엔나', meal: ['조식 호텔 (일요일 7시부터)', '점심 할슈타트', '저녁 역에서'],
+    fixed: [fx('08:57', 'move', '비엔나 중앙역 → 할슈타트 (IC 546)', { tag: '할슈타트행 열차', status: 'ok', here: 'wienhbf', dir: ['wienhbf', 'attnang', 'train'], note: '5호차 125(창가)·126(통로) · 10:58 아트낭푸흐하임에서 11:09 REX 70 (Selzthal행, 자유석)으로 환승' }),
+            fx('12:24', 'move', '할슈타트역 도착 → 배 타고 마을로', { tag: '할슈타트 도착', status: 'ok', here: null, place: 'hallstatt_bf', note: '역 바로 앞 선착장 · 약 10분 · 현금 · 마을에 내리면 선착장 시간표 사진 찍기' }),
+            fx('16:30', 'move', '마을 선착장 → 배 → 할슈타트역', { tag: '돌아가는 배', status: 'tbd', place: 'hallstatt_markt', hereMode: 'walking', note: '17:03 열차에 맞춘 배 (보통 열차 20~25분 전) · 찍어둔 시간표로 확인 · 10분 전 대기' }),
+            fx('17:03', 'move', '할슈타트 → 비엔나 (IC 1119)', { tag: '비엔나행 열차', status: 'ok', here: null, dir: ['hallstatt_bf', 'westbf', 'train'], note: '16호차 46(창가)·44(통로) · 그대로 타면 비엔나 서역(호텔 도보 2분) · 린츠에서 갈아타면 19:17 RJX 567 34호차 41·43 → 20:32 중앙역' })],
+    body: note('warn', '<b>대표자 여권 + 표 PDF</b> 필수 (두 사람 함께 다니기). 배는 <b>현금</b>이에요.') +
+      sched([
+        ['07:00', '호텔 조식 (일요일은 7시 시작)'],
+        ['08:10', '호텔 출발 → 트램 18번 (Stadion 방향) 또는 Bolt → 중앙역'],
+        ['08:57', '비엔나 중앙역 출발 · IC 546 5호차 125·126'],
+        ['10:58', '아트낭푸흐하임 도착 → 11:09 REX 70 (Selzthal행)'],
+        ['12:24', '할슈타트역 → 배 (10분) → 마을'],
+        ['12:40', '점심 (마르크트 광장 주변)'],
+        ['13:30', '호숫가 산책 · 개신교 교회 · 가톨릭 교회 전망'],
+        ['14:30', '엽서 전망 포인트 (산 그림자 지기 전에)'],
+        ['15:30', `카페 · 일몰 ${sunInfo('12/27').set}경 · 불 켜지는 마을`],
+        ['16:30', '마을 선착장 도착 → 배 → 역'],
+        ['17:03', 'IC 1119 출발 · 16호차 44·46'],
+        ['20:30', '비엔나 서역 도착 예정 (IC 1119 그대로) → 호텔 도보 2분'],
+        ['20:32', '린츠에서 갈아탈 때: 비엔나 중앙역 도착 → 트램 18번 또는 Bolt', 'opt']]) +
+      routes(route('leonardo', 'wienhbf', 'transit', { label: '08:10 · 호텔 → 비엔나 중앙역 (트램 18번)' }),
+             route('wienhbf', 'hallstatt_bf', 'train', { label: '08:57 · 중앙역 → 할슈타트역 (아트낭푸흐하임 환승)' }),
+             route('hallstatt_markt', 'hallstatt_view', 'walking', { via: ['hallstatt_square', 'hallstatt_church'], label: '오후 · 선착장 → 마르크트 광장 → 개신교 교회 → 엽서 전망 포인트' }),
+             route('hallstatt_view', 'hallstatt_markt', 'walking', { label: '16:15 · 전망 포인트 → 마을 선착장 (16:30까지)' }),
+             route('hallstatt_bf', 'westbf', 'train', { here: 'hallstatt_markt', hereMode: 'walking', label: '17:03 · 할슈타트역 → 비엔나 서역 (IC 1119 그대로)' }),
+             route('westbf', 'leonardo', 'walking', { label: '도착 · 서역 → 호텔' })),
+    notes: note('tip', '표가 <b>열차 지정 없는 정가표</b>라 열차를 놓쳐도 같은 날 다른 열차를 탈 수 있어요. 목적지가 "WIEN"이라 <b>서역에서 내려도 유효</b>해요. RJX 567은 공항행이니 린츠에서 갈아탔다면 중앙역에서 꼭 내리세요.') +
+      note('warn', '소금광산·스카이워크는 겨울 운영이 확인되지 않았어요. 마을 산책 위주로 다니세요. 산에 둘러싸여 15:30쯤부터 그늘이 져요.'),
+    places: ['hallstatt_bf', 'hallstatt_markt', 'hallstatt_square', 'hallstatt_church', 'hallstatt_catholic', 'hallstatt_view'], stay: 'leonardo' }),
+  at('DAY 8', '12/28', '월', '비엔나 자유시간 → 부다페스트', { where: '비엔나 → 부다페스트', meal: ['조식 호텔', '점심 나슈마르크트', '저녁은 열차 타기 전에'],
     fixed: [fx('체크아웃', 'stay', 'Leonardo 체크아웃, 짐 맡기기', { place: 'leonardo', note: '레이트 체크아웃 30유로 · 짐 보관 가능 여부 확인' }),
             fx('19:40~20:40', 'move', '비엔나 → 부다페스트 열차', { here: 'wienhbf', tag: '부다행 열차', status: 'tbd', dir: ['wienhbf', 'keleti', 'train'], note: '출발역·시간은 티켓으로 (중앙역 예상)' })],
-    body: routes(route('leonardo', 'naschmarkt', 'transit', { label: '오전 · 호텔 → 나슈마르크트' }),
-                 route('naschmarkt', 'riesenrad', 'transit', { label: '오후 · 나슈마르크트 → 프라터 대관람차' }),
-                 route('riesenrad', 'leonardo', 'transit', { label: '짐 찾으러 · 프라터 → 호텔' }),
+    body: routes(route('leonardo', 'belvedere', 'transit', { label: '오전 · 호텔 → 벨베데레 궁전 (클림트 「키스」)' }),
+                 route('belvedere', 'naschmarkt', 'transit', { label: '점심 · 벨베데레 → 나슈마르크트' }),
+                 route('naschmarkt', 'sperl', 'walking', { label: '오후 · 나슈마르크트 → 카페 슈페를 (도보 5분)' }),
+                 route('sperl', 'leonardo', 'transit', { label: '짐 찾으러 · 카페 슈페를 → 호텔' }),
                  route('leonardo', 'wienhbf', 'driving', { label: '저녁 · 호텔 → 비엔나 중앙역 (택시 추천)' })),
-    places: ['naschmarkt', 'riesenrad', 'wienhbf'], recs: ['karlskirche', 'sacher'] }),
+    notes: note('tip', '벨베데레·카페 슈페를은 12/27 할슈타트 때문에 이날로 옮겼어요. 벨베데레 크리스마스 마켓은 12/31까지 해요.'),
+    places: ['belvedere', 'naschmarkt', 'sperl', 'wienhbf'], recs: ['karlskirche', 'albertina', 'sisi', 'sacher', 'riesenrad'] }),
 ];
 
 const HU = [
